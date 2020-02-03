@@ -8,14 +8,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        App.shared.appManager.didFinishLaunching()
+        App.shared.appManager.didFinishLaunching()
         Theme.updateNavigationBarTheme()
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
 
         window?.backgroundColor = .themeTyler
-        window?.rootViewController = ViewController()
+        window?.rootViewController = LaunchRouter.module()
 
         UIApplication.shared.setMinimumBackgroundFetchInterval(3600)
 
@@ -23,15 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-//        App.shared.appManager.willResignActive()
+        App.shared.appManager.willResignActive()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-//        App.shared.appManager.didBecomeActive()
+        App.shared.appManager.didBecomeActive()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-//        App.shared.appManager.didEnterBackground()
+        App.shared.appManager.didEnterBackground()
 
         backgroundTask = UIApplication.shared.beginBackgroundTask {
             UIApplication.shared.endBackgroundTask(self.backgroundTask)
@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-//        App.shared.appManager.willEnterForeground()
+        App.shared.appManager.willEnterForeground()
 
         if backgroundTask != UIBackgroundTaskIdentifier.invalid {
             UIApplication.shared.endBackgroundTask(backgroundTask)
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-//        App.shared.appManager.willTerminate()
+        App.shared.appManager.willTerminate()
     }
 
     func application(_ application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: UIApplication.ExtensionPointIdentifier) -> Bool {
