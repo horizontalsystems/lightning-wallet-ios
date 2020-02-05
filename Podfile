@@ -12,6 +12,8 @@ def appPods
   # pod 'ThemeKit.swift', path: '../component-kit-ios/'
   pod 'LanguageKit.swift', git: 'https://github.com/horizontalsystems/component-kit-ios/'
   # pod 'LanguageKit.swift', path: '../component-kit-ios/'
+  pod 'StorageKit.swift', git: 'https://github.com/horizontalsystems/component-kit-ios/'
+  # pod 'StorageKit.swift', path: '../component-kit-ios/'
 
   pod 'Alamofire'
   pod 'ObjectMapper'

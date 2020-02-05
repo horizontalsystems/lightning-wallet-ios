@@ -1,4 +1,5 @@
 protocol ILaunchInteractor {
+    var passcodeLocked: Bool { get }
     var mainShownOnce: Bool { get }
 }
 
@@ -7,6 +8,7 @@ protocol ILaunchPresenter {
 }
 
 enum LaunchMode {
+    case noPasscode
     case welcome
     case main
 }

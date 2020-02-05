@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */; };
 		D3A8074F23E8251000BD50FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8074E23E8251000BD50FB /* AppDelegate.swift */; };
 		D3A8075823E8251100BD50FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3A8075723E8251100BD50FB /* Assets.xcassets */; };
 		D3A8076323E82B4500BD50FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3A8076223E82B4500BD50FB /* LaunchScreen.xib */; };
@@ -19,7 +20,7 @@
 		D3A8077623E8384100BD50FB /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8076D23E8384100BD50FB /* WelcomeScreenViewController.swift */; };
 		D3A8077723E8384100BD50FB /* WelcomeScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8076E23E8384100BD50FB /* WelcomeScreenInteractor.swift */; };
 		D3A8077823E8384100BD50FB /* WelcomeScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8076F23E8384100BD50FB /* WelcomeScreenPresenter.swift */; };
-		D3A8077E23E8391A00BD50FB /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8077B23E8391A00BD50FB /* UserDefaultsStorage.swift */; };
+		D3A8077E23E8391A00BD50FB /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8077B23E8391A00BD50FB /* LocalStorage.swift */; };
 		D3A8077F23E8391A00BD50FB /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8077C23E8391A00BD50FB /* Protocols.swift */; };
 		D3A8078023E8391A00BD50FB /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8077D23E8391A00BD50FB /* App.swift */; };
 		D3A8078323E8397B00BD50FB /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8078223E8397B00BD50FB /* AppManager.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainKitDelegate.swift; sourceTree = "<group>"; };
 		8758F8D6862013B6D4FD9365 /* libPods-LightningWallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LightningWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3E0FA35CCCB9EEA7C8943F /* Pods-LightningWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningWallet.release.xcconfig"; path = "Target Support Files/Pods-LightningWallet/Pods-LightningWallet.release.xcconfig"; sourceTree = "<group>"; };
 		D3A8074B23E8251000BD50FB /* LightningWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightningWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,7 +47,7 @@
 		D3A8076D23E8384100BD50FB /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		D3A8076E23E8384100BD50FB /* WelcomeScreenInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreenInteractor.swift; sourceTree = "<group>"; };
 		D3A8076F23E8384100BD50FB /* WelcomeScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreenPresenter.swift; sourceTree = "<group>"; };
-		D3A8077B23E8391A00BD50FB /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
+		D3A8077B23E8391A00BD50FB /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		D3A8077C23E8391A00BD50FB /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D3A8077D23E8391A00BD50FB /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		D3A8078223E8397B00BD50FB /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -169,7 +171,8 @@
 		D3A8077A23E8391A00BD50FB /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				D3A8077B23E8391A00BD50FB /* UserDefaultsStorage.swift */,
+				D3A8077B23E8391A00BD50FB /* LocalStorage.swift */,
+				11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -318,7 +321,7 @@
 				D3A8077023E8384100BD50FB /* LaunchPresenter.swift in Sources */,
 				D3A8077723E8384100BD50FB /* WelcomeScreenInteractor.swift in Sources */,
 				D3A8077423E8384100BD50FB /* WelcomeScreenRouter.swift in Sources */,
-				D3A8077E23E8391A00BD50FB /* UserDefaultsStorage.swift in Sources */,
+				D3A8077E23E8391A00BD50FB /* LocalStorage.swift in Sources */,
 				D3A8078023E8391A00BD50FB /* App.swift in Sources */,
 				D3A8078323E8397B00BD50FB /* AppManager.swift in Sources */,
 				D3A8077323E8384100BD50FB /* LaunchModule.swift in Sources */,
@@ -330,6 +333,7 @@
 				D3A8077523E8384100BD50FB /* WelcomeScreenModule.swift in Sources */,
 				D3A8077123E8384100BD50FB /* LaunchInteractor.swift in Sources */,
 				D3A8078723E83BF300BD50FB /* LanguageManager.swift in Sources */,
+				11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
