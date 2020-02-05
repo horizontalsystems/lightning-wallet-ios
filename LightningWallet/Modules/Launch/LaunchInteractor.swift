@@ -1,7 +1,11 @@
+import StorageKit
+
 class LaunchInteractor {
+    private let keychainKit: IKeychainKit
     private let localStorage: ILocalStorage
 
-    init(localStorage: ILocalStorage) {
+    init(keychainKit: IKeychainKit, localStorage: ILocalStorage) {
+        self.keychainKit = keychainKit
         self.localStorage = localStorage
     }
 
@@ -10,7 +14,7 @@ class LaunchInteractor {
 extension LaunchInteractor: ILaunchInteractor {
 
     var passcodeLocked: Bool {
-        false
+        keychainKit.locked
     }
 
     var isPinSet: Bool {

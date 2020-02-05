@@ -10,7 +10,9 @@ class LaunchPresenter {
 extension LaunchPresenter: ILaunchPresenter {
 
     var launchMode: LaunchMode {
-        if !interactor.mainShownOnce {
+        if interactor.passcodeLocked {
+            return .noPasscode
+        } else if !interactor.mainShownOnce {
             return  .welcome
         } else {
             return .main

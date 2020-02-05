@@ -1,10 +1,14 @@
 import RxSwift
+import StorageKit
 
 class AppManager {
+    private let keychainKit: IKeychainKit
+
     private let didBecomeActiveSubject = PublishSubject<()>()
     private let willEnterForegroundSubject = PublishSubject<()>()
 
-    init() {
+    init(keychainKit: IKeychainKit) {
+        self.keychainKit = keychainKit
     }
 
 }
@@ -12,6 +16,7 @@ class AppManager {
 extension AppManager {
 
     func didFinishLaunching() {
+        keychainKit.handleLaunch()
     }
 
     func willResignActive() {
@@ -24,6 +29,7 @@ extension AppManager {
     }
 
     func willEnterForeground() {
+        keychainKit.handleForeground()
     }
 
     func willTerminate() {
