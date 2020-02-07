@@ -27,6 +27,14 @@
 		D3A8078723E83BF300BD50FB /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8078623E83BF300BD50FB /* LanguageManager.swift */; };
 		D3A8078C23E83DD100BD50FB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3A8078E23E83DD100BD50FB /* Localizable.strings */; };
 		D3A807A123E83F6700BD50FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3A807A323E83F6700BD50FB /* InfoPlist.strings */; };
+		D3F0071B23EC211F00AB7250 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0071623EC211F00AB7250 /* MainViewController.swift */; };
+		D3F0071E23EC211F00AB7250 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0071923EC211F00AB7250 /* MainRouter.swift */; };
+		D3F0072823EC235500AB7250 /* MainSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0072223EC235500AB7250 /* MainSettingsPresenter.swift */; };
+		D3F0072923EC235500AB7250 /* MainSettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0072323EC235500AB7250 /* MainSettingsModule.swift */; };
+		D3F0072A23EC235500AB7250 /* MainSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0072423EC235500AB7250 /* MainSettingsViewController.swift */; };
+		D3F0072B23EC235500AB7250 /* MainSettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0072523EC235500AB7250 /* MainSettingsInteractor.swift */; };
+		D3F0072C23EC235500AB7250 /* MainSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0072623EC235500AB7250 /* MainSettingsRouter.swift */; };
+		D3F0072D23EC235500AB7250 /* MainSettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F0072723EC235500AB7250 /* MainSettingsFooter.swift */; };
 		D95B63C6E3F50D536C90D48D /* libPods-LightningWallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8758F8D6862013B6D4FD9365 /* libPods-LightningWallet.a */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +77,14 @@
 		D3A807A823E83F6F00BD50FB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D3A807A923E83F7000BD50FB /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D3A807AA23E83F7100BD50FB /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D3F0071623EC211F00AB7250 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D3F0071923EC211F00AB7250 /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		D3F0072223EC235500AB7250 /* MainSettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSettingsPresenter.swift; sourceTree = "<group>"; };
+		D3F0072323EC235500AB7250 /* MainSettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSettingsModule.swift; sourceTree = "<group>"; };
+		D3F0072423EC235500AB7250 /* MainSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSettingsViewController.swift; sourceTree = "<group>"; };
+		D3F0072523EC235500AB7250 /* MainSettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSettingsInteractor.swift; sourceTree = "<group>"; };
+		D3F0072623EC235500AB7250 /* MainSettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSettingsRouter.swift; sourceTree = "<group>"; };
+		D3F0072723EC235500AB7250 /* MainSettingsFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSettingsFooter.swift; sourceTree = "<group>"; };
 		EB968F035AA9EA6131340DBB /* Pods-LightningWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningWallet.debug.xcconfig"; path = "Target Support Files/Pods-LightningWallet/Pods-LightningWallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +146,8 @@
 			children = (
 				D3A8076523E8384100BD50FB /* Launch */,
 				D3A8076A23E8384100BD50FB /* Welcome */,
+				D3F0071523EC211F00AB7250 /* Main */,
+				D3F0072023EC235500AB7250 /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -184,6 +202,36 @@
 				D3A8078223E8397B00BD50FB /* AppManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		D3F0071523EC211F00AB7250 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D3F0071923EC211F00AB7250 /* MainRouter.swift */,
+				D3F0071623EC211F00AB7250 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D3F0072023EC235500AB7250 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D3F0072123EC235500AB7250 /* Main */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D3F0072123EC235500AB7250 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D3F0072323EC235500AB7250 /* MainSettingsModule.swift */,
+				D3F0072623EC235500AB7250 /* MainSettingsRouter.swift */,
+				D3F0072523EC235500AB7250 /* MainSettingsInteractor.swift */,
+				D3F0072223EC235500AB7250 /* MainSettingsPresenter.swift */,
+				D3F0072423EC235500AB7250 /* MainSettingsViewController.swift */,
+				D3F0072723EC235500AB7250 /* MainSettingsFooter.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		D438B4583A9E356DBD1E0BAE /* Pods */ = {
@@ -323,14 +371,22 @@
 				D3A8077423E8384100BD50FB /* WelcomeScreenRouter.swift in Sources */,
 				D3A8077E23E8391A00BD50FB /* LocalStorage.swift in Sources */,
 				D3A8078023E8391A00BD50FB /* App.swift in Sources */,
+				D3F0071E23EC211F00AB7250 /* MainRouter.swift in Sources */,
 				D3A8078323E8397B00BD50FB /* AppManager.swift in Sources */,
+				D3F0072923EC235500AB7250 /* MainSettingsModule.swift in Sources */,
+				D3F0072D23EC235500AB7250 /* MainSettingsFooter.swift in Sources */,
 				D3A8077323E8384100BD50FB /* LaunchModule.swift in Sources */,
+				D3F0071B23EC211F00AB7250 /* MainViewController.swift in Sources */,
 				D3A8077823E8384100BD50FB /* WelcomeScreenPresenter.swift in Sources */,
+				D3F0072C23EC235500AB7250 /* MainSettingsRouter.swift in Sources */,
 				D3A8077223E8384100BD50FB /* LaunchRouter.swift in Sources */,
 				D3A8077623E8384100BD50FB /* WelcomeScreenViewController.swift in Sources */,
 				D3A8077F23E8391A00BD50FB /* Protocols.swift in Sources */,
 				D3A8074F23E8251000BD50FB /* AppDelegate.swift in Sources */,
+				D3F0072A23EC235500AB7250 /* MainSettingsViewController.swift in Sources */,
+				D3F0072B23EC235500AB7250 /* MainSettingsInteractor.swift in Sources */,
 				D3A8077523E8384100BD50FB /* WelcomeScreenModule.swift in Sources */,
+				D3F0072823EC235500AB7250 /* MainSettingsPresenter.swift in Sources */,
 				D3A8077123E8384100BD50FB /* LaunchInteractor.swift in Sources */,
 				D3A8078723E83BF300BD50FB /* LanguageManager.swift in Sources */,
 				11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */,

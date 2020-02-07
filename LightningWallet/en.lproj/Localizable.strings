@@ -4,3 +4,21 @@
 "welcome.restore_wallet" = "Restore Wallet";
 "welcome.connect_to_remote_node" = "Connect to Remote Node";
 "welcome.version" = "Version %@";
+
+// Settings
+
+"settings.title" = "Settings";
+"settings.tab_bar_item" = "Settings";
+"settings.base_currency" = "Base Currency";
+"settings.language" = "Language";
+"settings.light_mode" = "Light Mode";
+"settings.about" = "About";
+"settings.tell_friends" = "Tell Friends";
+"settings.contact" = "Contact";
+"settings.info_title" = "LIGHTNING WALLET";
+"settings.info_subtitle" = "decentralized app";
+"settings.log_out" = "Log Out";
+
+// Settings -> Tell Friends
+
+"settings_tell_friends.text" = "Lightning Wallet - a lightning wallet I recommend";

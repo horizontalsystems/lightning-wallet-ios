@@ -34,6 +34,7 @@ DEPENDENCIES:
   - LanguageKit.swift (from `https://github.com/horizontalsystems/component-kit-ios/`)
   - ObjectMapper
   - RxSwift
+  - SectionsTableView.swift
   - SnapKit
   - StorageKit.swift (from `https://github.com/horizontalsystems/component-kit-ios/`)
   - ThemeKit.swift (from `https://github.com/horizontalsystems/component-kit-ios/`)
@@ -62,16 +63,16 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   LanguageKit.swift:
-    :commit: f13023bd96de64e093375d9a268824ab347d1042
+    :commit: 08eb226900bebfb9be174754532d65c02175cefd
     :git: https://github.com/horizontalsystems/component-kit-ios/
   StorageKit.swift:
-    :commit: f13023bd96de64e093375d9a268824ab347d1042
+    :commit: 08eb226900bebfb9be174754532d65c02175cefd
     :git: https://github.com/horizontalsystems/component-kit-ios/
   ThemeKit.swift:
-    :commit: f13023bd96de64e093375d9a268824ab347d1042
+    :commit: 08eb226900bebfb9be174754532d65c02175cefd
     :git: https://github.com/horizontalsystems/component-kit-ios/
   UIExtensions.swift:
-    :commit: d2831ee47e270f98c931e1dae9d0e5b86b48a84a
+    :commit: 2a1753c94dca9460454d8ffe8797ef7c2f48e6cd
     :git: https://github.com/horizontalsystems/gui-kit/
 
 SPEC CHECKSUMS:
@@ -88,6 +89,6 @@ SPEC CHECKSUMS:
   ThemeKit.swift: ab5c081b10f6a80149d37751f3ee98f1292bf497
   UIExtensions.swift: b3852a339a81c730d98b3342ae0275e807703782
 
-PODFILE CHECKSUM: 13c41d7d520586c3a0dbcc52560b87fdbd5d0e2a
+PODFILE CHECKSUM: 4b4217964965f9ca93837f4669e2cb814aff8b45
 
 COCOAPODS: 1.8.4

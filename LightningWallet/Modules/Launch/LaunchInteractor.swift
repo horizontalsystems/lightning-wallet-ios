@@ -2,11 +2,9 @@ import StorageKit
 
 class LaunchInteractor {
     private let keychainKit: IKeychainKit
-    private let localStorage: ILocalStorage
 
-    init(keychainKit: IKeychainKit, localStorage: ILocalStorage) {
+    init(keychainKit: IKeychainKit) {
         self.keychainKit = keychainKit
-        self.localStorage = localStorage
     }
 
 }
@@ -21,8 +19,8 @@ extension LaunchInteractor: ILaunchInteractor {
         true
     }
 
-    var mainShownOnce: Bool {
-        localStorage.mainShownOnce
+    var loggedIn: Bool {
+        keychainKit.secureStorage.value(for: "logged_in") ?? false
     }
 
 }
