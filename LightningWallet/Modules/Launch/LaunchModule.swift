@@ -1,6 +1,6 @@
 protocol ILaunchInteractor {
     var passcodeLocked: Bool { get }
-    var mainShownOnce: Bool { get }
+    var loggedIn: Bool { get }
 }
 
 protocol ILaunchPresenter {

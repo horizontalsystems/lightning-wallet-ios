@@ -1,5 +1,6 @@
 import UIKit
 import ThemeKit
+import UIExtensions
 
 class WelcomeScreenRouter {
     weak var viewController: UIViewController?
@@ -14,6 +15,8 @@ extension WelcomeScreenRouter: IWelcomeScreenRouter {
     }
 
     func showConnectToRemoteNode() {
+        try? App.shared.keychainKit.secureStorage.set(value: true, for: "logged_in")
+        UIApplication.shared.keyWindow?.set(newRootController: MainRouter.module())
     }
 
 }

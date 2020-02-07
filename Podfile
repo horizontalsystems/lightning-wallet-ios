@@ -15,6 +15,8 @@ def appPods
   pod 'StorageKit.swift', git: 'https://github.com/horizontalsystems/component-kit-ios/'
   # pod 'StorageKit.swift', path: '../component-kit-ios/'
 
+  pod 'SectionsTableView.swift'
+
   pod 'Alamofire'
   pod 'ObjectMapper'
 

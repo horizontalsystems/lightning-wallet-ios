@@ -12,7 +12,7 @@ extension LaunchPresenter: ILaunchPresenter {
     var launchMode: LaunchMode {
         if interactor.passcodeLocked {
             return .noPasscode
-        } else if !interactor.mainShownOnce {
+        } else if !interactor.loggedIn {
             return  .welcome
         } else {
             return .main
