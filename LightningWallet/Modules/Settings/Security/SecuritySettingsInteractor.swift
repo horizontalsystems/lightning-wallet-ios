@@ -6,11 +6,9 @@ class SecuritySettingsInteractor {
 
     weak var delegate: ISecuritySettingsInteractorDelegate?
 
-    private let biometryManager: IBiometryManager
     private let pinKit: IPinKit
 
-    init(biometryManager: IBiometryManager, pinKit: IPinKit) {
-        self.biometryManager = biometryManager
+    init(pinKit: IPinKit) {
         self.pinKit = pinKit
 
         pinKit.isPinSetObservable
@@ -20,7 +18,7 @@ class SecuritySettingsInteractor {
                 })
                 .disposed(by: disposeBag)
 
-        biometryManager.biometryTypeObservable
+        pinKit.biometryTypeObservable
                 .observeOn(MainScheduler.instance)
                 .subscribe(onNext: { [weak self] biometryType in
                     self?.delegate?.didUpdate(biometryType: biometryType)
@@ -33,7 +31,7 @@ class SecuritySettingsInteractor {
 extension SecuritySettingsInteractor: ISecuritySettingsInteractor {
 
     var biometryType: BiometryType {
-        biometryManager.biometryType
+        pinKit.biometryType
     }
 
     var pinSet: Bool {
