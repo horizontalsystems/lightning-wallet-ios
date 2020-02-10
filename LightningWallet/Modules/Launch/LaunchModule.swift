@@ -1,5 +1,6 @@
 protocol ILaunchInteractor {
     var passcodeLocked: Bool { get }
+    var isPinSet: Bool { get }
     var loggedIn: Bool { get }
 }
 
@@ -10,5 +11,6 @@ protocol ILaunchPresenter {
 enum LaunchMode {
     case noPasscode
     case welcome
+    case unlock
     case main
 }

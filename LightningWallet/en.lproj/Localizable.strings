@@ -9,6 +9,7 @@
 
 "settings.title" = "Settings";
 "settings.tab_bar_item" = "Settings";
+"settings.security_center" = "Security Center";
 "settings.base_currency" = "Base Currency";
 "settings.language" = "Language";
 "settings.light_mode" = "Light Mode";
@@ -22,3 +23,12 @@
 // Settings -> Tell Friends
 
 "settings_tell_friends.text" = "Lightning Wallet - a lightning wallet I recommend";
+
+// Settings -> Security
+
+"settings_security.title" = "Security Center";
+"settings_security.passcode" = "Passcode";
+"settings_security.change_pin" = "Edit Passcode";
+"settings_security.touch_id" = "Touch ID";
+"settings_security.face_id" = "Face ID";
+"security_settings.delete_alert_button" = "Delete from Phone";

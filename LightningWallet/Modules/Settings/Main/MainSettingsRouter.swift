@@ -8,6 +8,10 @@ class MainSettingsRouter {
 
 extension MainSettingsRouter: IMainSettingsRouter {
 
+    func showSecuritySettings() {
+        viewController?.navigationController?.pushViewController(SecuritySettingsRouter.module(), animated: true)
+    }
+
     func showBaseCurrencySettings() {
 //        viewController?.navigationController?.pushViewController(BaseCurrencySettingsRouter.module(), animated: true)
     }

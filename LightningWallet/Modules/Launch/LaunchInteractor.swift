@@ -1,10 +1,13 @@
 import StorageKit
+import PinKit
 
 class LaunchInteractor {
     private let keychainKit: IKeychainKit
+    private let pinKit: IPinKit
 
-    init(keychainKit: IKeychainKit) {
+    init(keychainKit: IKeychainKit, pinKit: IPinKit) {
         self.keychainKit = keychainKit
+        self.pinKit = pinKit
     }
 
 }
@@ -16,7 +19,7 @@ extension LaunchInteractor: ILaunchInteractor {
     }
 
     var isPinSet: Bool {
-        true
+        pinKit.isPinSet
     }
 
     var loggedIn: Bool {

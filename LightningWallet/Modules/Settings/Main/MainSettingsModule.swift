@@ -9,6 +9,7 @@ protocol IMainSettingsView: class {
 
 protocol IMainSettingsViewDelegate {
     func viewDidLoad()
+    func didTapSecurity()
     func didTapBaseCurrency()
     func didTapLanguage()
     func didSwitch(lightMode: Bool)
@@ -33,6 +34,7 @@ protocol IMainSettingsInteractorDelegate: class {
 }
 
 protocol IMainSettingsRouter {
+    func showSecuritySettings()
     func showBaseCurrencySettings()
     func showLanguageSettings()
     func showAbout()
