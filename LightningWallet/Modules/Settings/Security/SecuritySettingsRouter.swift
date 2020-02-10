@@ -25,7 +25,7 @@ extension SecuritySettingsRouter {
 
     static func module() -> UIViewController {
         let router = SecuritySettingsRouter()
-        let interactor = SecuritySettingsInteractor(biometryManager: App.shared.biometryManager, pinKit: App.shared.pinKit)
+        let interactor = SecuritySettingsInteractor(pinKit: App.shared.pinKit)
         let presenter = SecuritySettingsPresenter(router: router, interactor: interactor)
         let view = SecuritySettingsViewController(delegate: presenter)
 

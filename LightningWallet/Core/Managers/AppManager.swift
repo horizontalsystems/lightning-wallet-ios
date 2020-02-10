@@ -5,15 +5,13 @@ import PinKit
 class AppManager {
     private let keychainKit: IKeychainKit
     private let pinKit: IPinKit
-    private let biometryManager: IBiometryManager
 
     private let didBecomeActiveSubject = PublishSubject<()>()
     private let willEnterForegroundSubject = PublishSubject<()>()
 
-    init(keychainKit: IKeychainKit, pinKit: IPinKit, biometryManager: IBiometryManager) {
+    init(keychainKit: IKeychainKit, pinKit: IPinKit) {
         self.keychainKit = keychainKit
         self.pinKit = pinKit
-        self.biometryManager = biometryManager
     }
 
 }
@@ -22,7 +20,7 @@ extension AppManager {
 
     func didFinishLaunching() {
         keychainKit.handleLaunch()
-        biometryManager.refresh()
+        pinKit.didFinishLaunching()
     }
 
     func willResignActive() {
@@ -38,7 +36,6 @@ extension AppManager {
     func willEnterForeground() {
         keychainKit.handleForeground()
         pinKit.willEnterForeground()
-        biometryManager.refresh()
     }
 
     func willTerminate() {

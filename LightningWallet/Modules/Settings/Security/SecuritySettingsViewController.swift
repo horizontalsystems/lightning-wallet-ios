@@ -3,6 +3,7 @@ import UIExtensions
 import SectionsTableView
 import RxSwift
 import ThemeKit
+import PinKit
 
 class SecuritySettingsViewController: ThemeViewController {
     private let delegate: ISecuritySettingsViewDelegate
