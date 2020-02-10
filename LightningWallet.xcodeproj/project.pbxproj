@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */; };
+		58AAA39D527EBF8886066D71 /* BiometryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA29FDC0C058C2274F822 /* BiometryManager.swift */; };
+		58AAA3A9C06B7142C3467E7A /* PinKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAB65C063B54DC2266CFA /* PinKitDelegate.swift */; };
+		58AAA448589681EF01120EF7 /* LockScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAAF9D51AAE55EB7E014C /* LockScreenRouter.swift */; };
+		58AAA46F6C541658E2352CE2 /* SecuritySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAF81437191FA362D0CCF /* SecuritySettingsViewController.swift */; };
+		58AAA7E108A397EDB835D740 /* SystemInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA42363736FA6B78B7EE6 /* SystemInfoManager.swift */; };
+		58AAA8C1A3ECE3D267C09C6A /* SecuritySettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA8BED4F9D86E461BF20F /* SecuritySettingsPresenter.swift */; };
+		58AAA91927C3E9A375E196F1 /* LockScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAE982DDF9634A16DC5F7 /* LockScreenController.swift */; };
+		58AAAA7D317C4D4D18A89743 /* LockScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */; };
+		58AAAAAD09F046AFF9C60AAB /* SecuritySettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */; };
+		58AAABE2600CA0FD6573A38B /* SecuritySettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAB978F51AD0B8C254AEE /* SecuritySettingsInteractor.swift */; };
+		58AAAC048A0E1F28A600AEF7 /* BiometryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA761E9295E7F998A0F45 /* BiometryType.swift */; };
+		58AAAE4CD23170E9F413A321 /* SecuritySettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA9B8C44AB28A278F3DF8 /* SecuritySettingsModule.swift */; };
+		58AAAF9B51F8863C844B8B81 /* LockScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA74FA4E281B7206273AB /* LockScreenModule.swift */; };
 		D3A8074F23E8251000BD50FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8074E23E8251000BD50FB /* AppDelegate.swift */; };
 		D3A8075823E8251100BD50FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3A8075723E8251100BD50FB /* Assets.xcassets */; };
 		D3A8076323E82B4500BD50FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3A8076223E82B4500BD50FB /* LaunchScreen.xib */; };
@@ -40,6 +53,19 @@
 
 /* Begin PBXFileReference section */
 		11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainKitDelegate.swift; sourceTree = "<group>"; };
+		58AAA29FDC0C058C2274F822 /* BiometryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiometryManager.swift; sourceTree = "<group>"; };
+		58AAA42363736FA6B78B7EE6 /* SystemInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfoManager.swift; sourceTree = "<group>"; };
+		58AAA74FA4E281B7206273AB /* LockScreenModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenModule.swift; sourceTree = "<group>"; };
+		58AAA761E9295E7F998A0F45 /* BiometryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiometryType.swift; sourceTree = "<group>"; };
+		58AAA8BED4F9D86E461BF20F /* SecuritySettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsPresenter.swift; sourceTree = "<group>"; };
+		58AAA9B8C44AB28A278F3DF8 /* SecuritySettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsModule.swift; sourceTree = "<group>"; };
+		58AAAAF9D51AAE55EB7E014C /* LockScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenRouter.swift; sourceTree = "<group>"; };
+		58AAAB65C063B54DC2266CFA /* PinKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinKitDelegate.swift; sourceTree = "<group>"; };
+		58AAAB978F51AD0B8C254AEE /* SecuritySettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsInteractor.swift; sourceTree = "<group>"; };
+		58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenPresenter.swift; sourceTree = "<group>"; };
+		58AAAE982DDF9634A16DC5F7 /* LockScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenController.swift; sourceTree = "<group>"; };
+		58AAAF81437191FA362D0CCF /* SecuritySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsViewController.swift; sourceTree = "<group>"; };
+		58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsRouter.swift; sourceTree = "<group>"; };
 		8758F8D6862013B6D4FD9365 /* libPods-LightningWallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LightningWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3E0FA35CCCB9EEA7C8943F /* Pods-LightningWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningWallet.release.xcconfig"; path = "Target Support Files/Pods-LightningWallet/Pods-LightningWallet.release.xcconfig"; sourceTree = "<group>"; };
 		D3A8074B23E8251000BD50FB /* LightningWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightningWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +134,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		58AAA0D9FBCC0E564DDDB01C /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				58AAAB978F51AD0B8C254AEE /* SecuritySettingsInteractor.swift */,
+				58AAA9B8C44AB28A278F3DF8 /* SecuritySettingsModule.swift */,
+				58AAA8BED4F9D86E461BF20F /* SecuritySettingsPresenter.swift */,
+				58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */,
+				58AAAF81437191FA362D0CCF /* SecuritySettingsViewController.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		58AAA112FDE7F0994B5B0769 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				58AAA761E9295E7F998A0F45 /* BiometryType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		58AAADC4308B7119C5E36D54 /* LockScreen */ = {
+			isa = PBXGroup;
+			children = (
+				58AAAE982DDF9634A16DC5F7 /* LockScreenController.swift */,
+				58AAA74FA4E281B7206273AB /* LockScreenModule.swift */,
+				58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */,
+				58AAAAF9D51AAE55EB7E014C /* LockScreenRouter.swift */,
+			);
+			path = LockScreen;
+			sourceTree = "<group>";
+		};
 		D3A8074223E8251000BD50FB = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +194,7 @@
 				D3A8079D23E83EC500BD50FB /* Info.plist */,
 				D3A807A323E83F6700BD50FB /* InfoPlist.strings */,
 				D3A8078E23E83DD100BD50FB /* Localizable.strings */,
+				58AAA112FDE7F0994B5B0769 /* Models */,
 			);
 			path = LightningWallet;
 			sourceTree = "<group>";
@@ -148,6 +206,7 @@
 				D3A8076A23E8384100BD50FB /* Welcome */,
 				D3F0071523EC211F00AB7250 /* Main */,
 				D3F0072023EC235500AB7250 /* Settings */,
+				58AAADC4308B7119C5E36D54 /* LockScreen */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -200,6 +259,9 @@
 			children = (
 				D3A8078623E83BF300BD50FB /* LanguageManager.swift */,
 				D3A8078223E8397B00BD50FB /* AppManager.swift */,
+				58AAA29FDC0C058C2274F822 /* BiometryManager.swift */,
+				58AAA42363736FA6B78B7EE6 /* SystemInfoManager.swift */,
+				58AAAB65C063B54DC2266CFA /* PinKitDelegate.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -217,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				D3F0072123EC235500AB7250 /* Main */,
+				58AAA0D9FBCC0E564DDDB01C /* Security */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -390,6 +453,19 @@
 				D3A8077123E8384100BD50FB /* LaunchInteractor.swift in Sources */,
 				D3A8078723E83BF300BD50FB /* LanguageManager.swift in Sources */,
 				11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */,
+				58AAABE2600CA0FD6573A38B /* SecuritySettingsInteractor.swift in Sources */,
+				58AAAE4CD23170E9F413A321 /* SecuritySettingsModule.swift in Sources */,
+				58AAA8C1A3ECE3D267C09C6A /* SecuritySettingsPresenter.swift in Sources */,
+				58AAAAAD09F046AFF9C60AAB /* SecuritySettingsRouter.swift in Sources */,
+				58AAA46F6C541658E2352CE2 /* SecuritySettingsViewController.swift in Sources */,
+				58AAA39D527EBF8886066D71 /* BiometryManager.swift in Sources */,
+				58AAAC048A0E1F28A600AEF7 /* BiometryType.swift in Sources */,
+				58AAA7E108A397EDB835D740 /* SystemInfoManager.swift in Sources */,
+				58AAA3A9C06B7142C3467E7A /* PinKitDelegate.swift in Sources */,
+				58AAA91927C3E9A375E196F1 /* LockScreenController.swift in Sources */,
+				58AAAF9B51F8863C844B8B81 /* LockScreenModule.swift in Sources */,
+				58AAAA7D317C4D4D18A89743 /* LockScreenPresenter.swift in Sources */,
+				58AAA448589681EF01120EF7 /* LockScreenRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

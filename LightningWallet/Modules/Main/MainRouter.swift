@@ -12,7 +12,11 @@ class MainRouter {
             settingsNavigation
         ]
 
-        return MainViewController(viewControllers: viewControllers, selectedIndex: selectedTab.rawValue)
+        let viewController = MainViewController(viewControllers: viewControllers, selectedIndex: selectedTab.rawValue)
+
+        App.shared.pinKitDelegate.viewController = viewController
+
+        return viewController
     }
 
     private static var settingsNavigation: UIViewController {

@@ -25,6 +25,10 @@ extension MainSettingsPresenter: IMainSettingsViewDelegate {
         view?.set(appVersion: interactor.appVersion)
     }
 
+    func didTapSecurity() {
+        router.showSecuritySettings()
+    }
+
     func didTapBaseCurrency() {
         router.showBaseCurrencySettings()
     }

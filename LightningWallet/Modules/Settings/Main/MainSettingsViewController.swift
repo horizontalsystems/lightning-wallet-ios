@@ -35,6 +35,7 @@ class MainSettingsViewController: ThemeViewController {
 
         tableView.registerCell(forClass: TitleCell.self)
         tableView.registerCell(forClass: RightLabelCell.self)
+        tableView.registerCell(forClass: RightImageCell.self)
         tableView.registerCell(forClass: ToggleCell.self)
         tableView.registerHeaderFooter(forClass: MainSettingsFooter.self)
 
@@ -59,6 +60,16 @@ class MainSettingsViewController: ThemeViewController {
 
     @objc private func onLogOut() {
         delegate.didTapLogOut()
+    }
+
+    private var securityRows: [RowProtocol] {
+        [
+            Row<RightImageCell>(id: "security_center", height: .heightSingleLineCell, bind: { cell, _ in
+                cell.bind(titleIcon: UIImage(named: "Security Icon"), title: "settings.security_center".localized, rightImage: nil, rightImageTintColor: nil, showDisclosure: true)
+            }, action: { [weak self] _ in
+                self?.delegate.didTapSecurity()
+            }),
+        ]
     }
 
     private var appearanceRows: [RowProtocol] {
@@ -121,6 +132,7 @@ extension MainSettingsViewController: SectionsDataSource {
 
     func buildSections() -> [SectionProtocol] {
         [
+            Section(id: "security_settings", headerState: .margin(height: .margin8x), rows: securityRows),
             Section(id: "appearance_settings", headerState: .margin(height: .margin8x), rows: appearanceRows),
             Section(id: "about", headerState: .margin(height: .margin8x), footerState: footer, rows: aboutRows)
         ]
