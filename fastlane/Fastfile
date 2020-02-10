@@ -5,7 +5,7 @@ lane :build_for_hockey do |options|
   sigh(app_identifier: "io.horizontalsystems.LightningWallet", force: true, adhoc: true, username: ENV['ITUNES_CONNECT_USERNAME'], team_id: options[:dp_team_id])
   gym(scheme: "LightningWallet", export_method: "ad-hoc", silent: true, clean: true, export_options: { compileBitcode: false })
 
-  upload_to_hockey(options[:hockey_api_token])
+  upload_to_app_center(options[:hockey_api_token])
 end
 
 def prepare_environment
@@ -23,9 +23,11 @@ def prepare_environment
   cocoapods(repo_update: true)
 end
 
-def upload_to_hockey(api_token)
-  hockey(
+def upload_to_app_center(api_token)
+  appcenter_upload(
     api_token: api_token,
-    notes: last_git_commit[:message]
+    owner_name: "Horizontal-Systems",
+    owner_type: "organization",
+    app_name: "Lightning-Wallet"
   )
 end
