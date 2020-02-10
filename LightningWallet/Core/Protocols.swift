@@ -6,7 +6,6 @@ protocol IAppManager {
 }
 
 protocol ILocalStorage: class {
-    var mainShownOnce: Bool { get set }
 }
 
 protocol IBiometryManager {

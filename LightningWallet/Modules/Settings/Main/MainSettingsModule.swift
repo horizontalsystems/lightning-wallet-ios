@@ -1,3 +1,5 @@
+import CurrencyKit
+
 protocol IMainSettingsView: class {
     func refresh()
 
@@ -24,7 +26,7 @@ protocol IMainSettingsInteractor: AnyObject {
     var companyWebPageLink: String { get }
     var appWebPageLink: String { get }
     var currentLanguageDisplayName: String? { get }
-//    var baseCurrency: Currency { get }
+    var baseCurrency: Currency { get }
     var lightMode: Bool { get set }
     var appVersion: String { get }
 }
