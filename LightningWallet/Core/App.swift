@@ -1,13 +1,14 @@
 import StorageKit
 import PinKit
+import CurrencyKit
 
 class App {
     static let shared = App()
 
     let keychainKit: IKeychainKit
     let pinKit: IPinKit
+    let currencyKit: ICurrencyKit
 
-    let localStorage: ILocalStorage
     let keychainKitDelegate: KeychainKitDelegate
     let pinKitDelegate: PinKitDelegate
 
@@ -18,10 +19,8 @@ class App {
 
     init() {
         keychainKit = KeychainKit(service: "io.horizontalsystems.lightning")
-
-        localStorage = LocalStorage(storage: StorageKit.LocalStorage.default)
-
         pinKit = PinKit.Kit(secureStorage: keychainKit.secureStorage, localStorage: StorageKit.LocalStorage.default)
+        currencyKit = CurrencyKit.Kit(localStorage: StorageKit.LocalStorage.default)
 
         systemInfoManager = SystemInfoManager()
         biometryManager = BiometryManager(systemInfoManager: systemInfoManager)

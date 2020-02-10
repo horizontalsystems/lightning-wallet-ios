@@ -1,5 +1,11 @@
 PODS:
   - Alamofire (4.9.1)
+  - CurrencyKit.swift (1.0):
+    - LanguageKit.swift (~> 1.0)
+    - RxSwift (~> 5.0)
+    - SectionsTableView.swift (~> 1.1)
+    - StorageKit.swift (~> 1.0)
+    - ThemeKit.swift (~> 1.0)
   - GRDB.swift (4.9.0):
     - GRDB.swift/standard (= 4.9.0)
   - GRDB.swift/standard (4.9.0)
@@ -35,6 +41,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - CurrencyKit.swift (from `https://github.com/horizontalsystems/component-kit-ios/`)
   - GRDB.swift
   - KeychainAccess
   - LanguageKit.swift (from `https://github.com/horizontalsystems/component-kit-ios/`)
@@ -59,6 +66,8 @@ SPEC REPOS:
     - SnapKit
 
 EXTERNAL SOURCES:
+  CurrencyKit.swift:
+    :git: https://github.com/horizontalsystems/component-kit-ios/
   LanguageKit.swift:
     :git: https://github.com/horizontalsystems/component-kit-ios/
   PinKit.swift:
@@ -71,6 +80,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/horizontalsystems/gui-kit/
 
 CHECKOUT OPTIONS:
+  CurrencyKit.swift:
+    :commit: ee2fd2f8f530a68ba33dfc8ff0b4f70c9742df0e
+    :git: https://github.com/horizontalsystems/component-kit-ios/
   LanguageKit.swift:
     :commit: 08eb226900bebfb9be174754532d65c02175cefd
     :git: https://github.com/horizontalsystems/component-kit-ios/
@@ -89,6 +101,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  CurrencyKit.swift: c1a37e0e43eac3828be95c8348693f192d67b376
   GRDB.swift: 4a6aab0c6f492db0ed42c76efdd5733245516db4
   HUD.swift: 0b9d074f07f601891878f87ff10ad867eed3182b
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
@@ -102,6 +115,6 @@ SPEC CHECKSUMS:
   ThemeKit.swift: ab5c081b10f6a80149d37751f3ee98f1292bf497
   UIExtensions.swift: b3852a339a81c730d98b3342ae0275e807703782
 
-PODFILE CHECKSUM: 23daa1a8c1f62664a69b92e6db08eca1a7b4e05c
+PODFILE CHECKSUM: 30ce6887c97a6fcd46b3b029613840237b43a989
 
 COCOAPODS: 1.8.4

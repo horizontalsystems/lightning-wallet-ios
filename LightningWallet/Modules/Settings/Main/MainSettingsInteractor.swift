@@ -1,6 +1,7 @@
 import RxSwift
 import LanguageKit
 import ThemeKit
+import CurrencyKit
 
 class MainSettingsInteractor {
     private let disposeBag = DisposeBag()
@@ -8,9 +9,19 @@ class MainSettingsInteractor {
     weak var delegate: IMainSettingsInteractorDelegate?
 
     private let themeManager: ThemeManager
+    private let currencyKit: ICurrencyKit
 
-    init(themeManager: ThemeManager) {
+    init(themeManager: ThemeManager, currencyKit: ICurrencyKit) {
         self.themeManager = themeManager
+        self.currencyKit = currencyKit
+
+        currencyKit.baseCurrencyUpdatedObservable
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .background))
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { [weak self] _ in
+                    self?.delegate?.didUpdateBaseCurrency()
+                })
+                .disposed(by: disposeBag)
     }
 
 }
@@ -29,9 +40,9 @@ extension MainSettingsInteractor: IMainSettingsInteractor {
         LanguageManager.shared.currentLanguageDisplayName
     }
 
-//    var baseCurrency: Currency {
-//        "ERM"
-//    }
+    var baseCurrency: Currency {
+        currencyKit.baseCurrency
+    }
 
     var lightMode: Bool {
         get {

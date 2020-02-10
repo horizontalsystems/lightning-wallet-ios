@@ -10,8 +10,7 @@ class MainSettingsPresenter {
     }
 
     private func syncCurrentBaseCurrency() {
-//        view?.set(currentBaseCurrency: interactor.baseCurrency.code)
-        view?.set(currentBaseCurrency: "ERM")
+        view?.set(currentBaseCurrency: interactor.baseCurrency.code)
     }
 
 }
