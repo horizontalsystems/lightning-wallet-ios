@@ -626,7 +626,7 @@
 			baseConfigurationReference = EB968F035AA9EA6131340DBB /* Pods-LightningWallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HC4MCAXJ66;
 				INFOPLIST_FILE = LightningWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -636,6 +636,7 @@
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.horizontalsystems.LightningWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "io.horizontalsystems.LightningWallet Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -646,7 +647,7 @@
 			baseConfigurationReference = CB3E0FA35CCCB9EEA7C8943F /* Pods-LightningWallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HC4MCAXJ66;
 				INFOPLIST_FILE = LightningWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -656,6 +657,7 @@
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.horizontalsystems.LightningWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "io.horizontalsystems.LightningWallet AdHoc";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
