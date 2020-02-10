@@ -1,4 +1,4 @@
-lane :hockey do |options|
+lane :build_for_hockey do |options|
   prepare_environment
 
   cert(username: ENV['ITUNES_CONNECT_USERNAME'], team_id: options[:dp_team_id])
