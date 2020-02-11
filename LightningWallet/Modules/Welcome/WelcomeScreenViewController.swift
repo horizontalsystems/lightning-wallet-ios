@@ -4,10 +4,14 @@ import SnapKit
 class WelcomeScreenViewController: UIViewController {
     private let delegate: IWelcomeScreenViewDelegate
 
-    private let backgroundImageView = UIImageView()
+    private let topWrapper = UIView()
+    private let titleWrapper = UIView()
+    private let titleLabel = UILabel()
+    private let subtitleLabel = UILabel()
+
     private let createButton = UIButton.appYellow
     private let restoreButton = UIButton.appGray
-    private let connectButton = UIButton.appGray
+    private let connectButton = UIButton.appGreen
     private let versionLabel = UILabel()
 
     init(delegate: IWelcomeScreenViewDelegate) {
@@ -23,15 +27,36 @@ class WelcomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let image = UIImage(named: "Welcome Background") ?? UIImage()
-        backgroundImageView.image = image
-        backgroundImageView.contentMode = .scaleAspectFit
-
-        view.addSubview(backgroundImageView)
-        backgroundImageView.snp.makeConstraints { maker in
+        view.addSubview(topWrapper)
+        topWrapper.snp.makeConstraints { maker in
             maker.top.equalTo(view.safeAreaLayoutGuide)
             maker.leading.trailing.equalToSuperview()
-            maker.height.equalTo(view.bounds.size.width * image.size.height / image.size.width)
+        }
+
+        topWrapper.addSubview(titleWrapper)
+        titleWrapper.snp.makeConstraints { maker in
+            maker.centerY.equalToSuperview()
+            maker.leading.trailing.equalToSuperview().inset(CGFloat.margin8x)
+        }
+
+        titleLabel.text = "welcome.title".localized
+        titleLabel.numberOfLines = 0
+        titleLabel.font = .title2
+        titleLabel.textColor = .themeOz
+
+        titleWrapper.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { maker in
+            maker.leading.top.trailing.equalToSuperview()
+        }
+
+        subtitleLabel.text = "welcome.subtitle".localized
+        subtitleLabel.font = .body
+        subtitleLabel.textColor = .themeGray
+
+        titleWrapper.addSubview(subtitleLabel)
+        subtitleLabel.snp.makeConstraints { maker in
+            maker.leading.trailing.bottom.equalToSuperview()
+            maker.top.equalTo(titleLabel.snp.bottom).offset(CGFloat.margin4x)
         }
 
         createButton.setTitle("welcome.new_wallet".localized, for: .normal)
@@ -40,6 +65,7 @@ class WelcomeScreenViewController: UIViewController {
         view.addSubview(createButton)
         createButton.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview().inset(CGFloat.margin6x)
+            maker.top.equalTo(topWrapper.snp.bottom)
             maker.height.equalTo(CGFloat.heightButton)
         }
 

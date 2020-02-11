@@ -60,7 +60,7 @@
 		58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsRouter.swift; sourceTree = "<group>"; };
 		8758F8D6862013B6D4FD9365 /* libPods-LightningWallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LightningWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3E0FA35CCCB9EEA7C8943F /* Pods-LightningWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningWallet.release.xcconfig"; path = "Target Support Files/Pods-LightningWallet/Pods-LightningWallet.release.xcconfig"; sourceTree = "<group>"; };
-		D3A8074B23E8251000BD50FB /* LightningWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightningWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3A8074B23E8251000BD50FB /* Lightning Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lightning Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A8074E23E8251000BD50FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3A8075723E8251100BD50FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3A8076223E82B4500BD50FB /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		D3A8074C23E8251000BD50FB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D3A8074B23E8251000BD50FB /* LightningWallet.app */,
+				D3A8074B23E8251000BD50FB /* Lightning Wallet.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -305,7 +305,7 @@
 			);
 			name = LightningWallet;
 			productName = LightningWallet;
-			productReference = D3A8074B23E8251000BD50FB /* LightningWallet.app */;
+			productReference = D3A8074B23E8251000BD50FB /* Lightning Wallet.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -611,7 +611,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.horizontalsystems.LightningWallet;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Lightning Wallet";
 				PROVISIONING_PROFILE_SPECIFIER = "io.horizontalsystems.LightningWallet Dev";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -633,7 +633,7 @@
 				);
 				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.horizontalsystems.LightningWallet;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Lightning Wallet";
 				PROVISIONING_PROFILE_SPECIFIER = "io.horizontalsystems.LightningWallet AdHoc";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

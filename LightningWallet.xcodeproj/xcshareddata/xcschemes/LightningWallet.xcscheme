@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D3A8074A23E8251000BD50FB"
-               BuildableName = "LightningWallet.app"
+               BuildableName = "Lightning Wallet.app"
                BlueprintName = "LightningWallet"
                ReferencedContainer = "container:LightningWallet.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D3A8074A23E8251000BD50FB"
-            BuildableName = "LightningWallet.app"
+            BuildableName = "Lightning Wallet.app"
             BlueprintName = "LightningWallet"
             ReferencedContainer = "container:LightningWallet.xcodeproj">
          </BuildableReference>
