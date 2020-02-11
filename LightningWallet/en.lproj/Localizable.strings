@@ -1,5 +1,7 @@
 // Welcome
 
+"welcome.title" = "Welcome to\nLightning\nWallet";
+"welcome.subtitle" = "by Horizontal Systems";
 "welcome.new_wallet" = "Create Wallet";
 "welcome.restore_wallet" = "Restore Wallet";
 "welcome.connect_to_remote_node" = "Connect to Remote Node";
