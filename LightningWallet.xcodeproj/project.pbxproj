@@ -142,8 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				58AAA74FA4E281B7206273AB /* LockScreenModule.swift */,
-				58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */,
 				58AAAAF9D51AAE55EB7E014C /* LockScreenRouter.swift */,
+				58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */,
 			);
 			path = LockScreen;
 			sourceTree = "<group>";

@@ -1,7 +1,8 @@
 import UIKit
 import SnapKit
+import ThemeKit
 
-class WelcomeScreenViewController: UIViewController {
+class WelcomeScreenViewController: ThemeViewController {
     private let delegate: IWelcomeScreenViewDelegate
 
     private let topWrapper = UIView()
@@ -17,7 +18,7 @@ class WelcomeScreenViewController: UIViewController {
     init(delegate: IWelcomeScreenViewDelegate) {
         self.delegate = delegate
 
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -59,6 +60,7 @@ class WelcomeScreenViewController: UIViewController {
             maker.top.equalTo(titleLabel.snp.bottom).offset(CGFloat.margin4x)
         }
 
+        createButton.isEnabled = false
         createButton.setTitle("welcome.new_wallet".localized, for: .normal)
         createButton.addTarget(self, action: #selector(onTapCreate), for: .touchUpInside)
 
@@ -69,6 +71,7 @@ class WelcomeScreenViewController: UIViewController {
             maker.height.equalTo(CGFloat.heightButton)
         }
 
+        restoreButton.isEnabled = false
         restoreButton.setTitle("welcome.restore_wallet".localized, for: .normal)
         restoreButton.addTarget(self, action: #selector(onTapRestore), for: .touchUpInside)
 
@@ -100,10 +103,6 @@ class WelcomeScreenViewController: UIViewController {
         }
 
         delegate.viewDidLoad()
-    }
-
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
     }
 
     override func viewWillAppear(_ animated: Bool) {
