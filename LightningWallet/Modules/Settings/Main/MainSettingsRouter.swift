@@ -18,7 +18,7 @@ extension MainSettingsRouter: IMainSettingsRouter {
     }
 
     func showLanguageSettings() {
-        let module = LanguageSettingsRouter.module { MainRouter.module(selectedTab: .settings) }
+        let module = LanguageSettingsRouter.module { MainRouter.module() }
         viewController?.navigationController?.pushViewController(module, animated: true)
     }
 
@@ -43,7 +43,7 @@ extension MainSettingsRouter: IMainSettingsRouter {
     }
 
     func reloadAppInterface() {
-        UIApplication.shared.keyWindow?.set(newRootController: MainRouter.module(selectedTab: .settings))
+        UIApplication.shared.keyWindow?.set(newRootController: MainRouter.module())
     }
 
     func showWelcome() {

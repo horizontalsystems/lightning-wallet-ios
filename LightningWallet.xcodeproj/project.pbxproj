@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */; };
+		1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */; };
+		1A5644133D6B175582CABE71 /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564925F4176E6330B59F29 /* MainModule.swift */; };
+		1A5644D113C1C0105D2EF6C6 /* MainViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */; };
+		1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564F92D5FD4DF85F029682 /* MainInteractor.swift */; };
 		58AAA3A9C06B7142C3467E7A /* PinKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAB65C063B54DC2266CFA /* PinKitDelegate.swift */; };
 		58AAA448589681EF01120EF7 /* LockScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAAF9D51AAE55EB7E014C /* LockScreenRouter.swift */; };
 		58AAA46F6C541658E2352CE2 /* SecuritySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAF81437191FA362D0CCF /* SecuritySettingsViewController.swift */; };
@@ -49,6 +53,10 @@
 
 /* Begin PBXFileReference section */
 		11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainKitDelegate.swift; sourceTree = "<group>"; };
+		1A564925F4176E6330B59F29 /* MainModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
+		1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewFactory.swift; sourceTree = "<group>"; };
+		1A564F92D5FD4DF85F029682 /* MainInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		58AAA74FA4E281B7206273AB /* LockScreenModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenModule.swift; sourceTree = "<group>"; };
 		58AAA8BED4F9D86E461BF20F /* SecuritySettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsPresenter.swift; sourceTree = "<group>"; };
 		58AAA9B8C44AB28A278F3DF8 /* SecuritySettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsModule.swift; sourceTree = "<group>"; };
@@ -249,8 +257,12 @@
 		D3F0071523EC211F00AB7250 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1A564925F4176E6330B59F29 /* MainModule.swift */,
 				D3F0071923EC211F00AB7250 /* MainRouter.swift */,
+				1A564F92D5FD4DF85F029682 /* MainInteractor.swift */,
+				1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */,
 				D3F0071623EC211F00AB7250 /* MainViewController.swift */,
+				1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -442,6 +454,10 @@
 				58AAAF9B51F8863C844B8B81 /* LockScreenModule.swift in Sources */,
 				58AAAA7D317C4D4D18A89743 /* LockScreenPresenter.swift in Sources */,
 				58AAA448589681EF01120EF7 /* LockScreenRouter.swift in Sources */,
+				1A5644133D6B175582CABE71 /* MainModule.swift in Sources */,
+				1A5644D113C1C0105D2EF6C6 /* MainViewFactory.swift in Sources */,
+				1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */,
+				1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

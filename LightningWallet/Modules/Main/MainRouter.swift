@@ -2,25 +2,34 @@ import UIKit
 import ThemeKit
 
 class MainRouter {
+    weak var viewController: UIViewController?
+}
 
-    enum Tab: Int {
-        case settings
+extension MainRouter: IMainRouter {
+
+    func openSettings() {
+        viewController?.navigationController?.pushViewController(MainSettingsRouter.module(), animated: true)
     }
 
-    static func module(selectedTab: Tab = .settings) -> UIViewController {
-        let viewControllers = [
-            settingsNavigation
-        ]
+    func openTransactions() {
+    }
 
-        let viewController = MainViewController(viewControllers: viewControllers, selectedIndex: selectedTab.rawValue)
+}
+
+extension MainRouter {
+
+    static func module() -> UIViewController {
+        let router = MainRouter()
+        let interactor = MainInteractor(currencyKit: App.shared.currencyKit)
+        let presenter = MainPresenter(interactor: interactor, router: router, viewFactory: MainViewFactory())
+        let viewController = MainViewController(delegate: presenter)
+
+        presenter.view = viewController
+        router.viewController = viewController
 
         App.shared.pinKitDelegate.viewController = viewController
 
-        return viewController
-    }
-
-    private static var settingsNavigation: UIViewController {
-        ThemeNavigationController(rootViewController: MainSettingsRouter.module())
+        return ThemeNavigationController(rootViewController: viewController)
     }
 
 }
