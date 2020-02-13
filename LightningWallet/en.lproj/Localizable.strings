@@ -1,3 +1,7 @@
+"channels" = "Channels";
+"receive" = "Receive";
+"send" = "Send";
+
 // Welcome
 
 "welcome.title" = "Welcome to\nLightning\nWallet";
@@ -6,6 +10,11 @@
 "welcome.restore_wallet" = "Restore Wallet";
 "welcome.connect_to_remote_node" = "Connect to Remote Node";
 "welcome.version" = "Version %@";
+
+//Main
+
+"main_controller.sync_text" = "Synchronizing... %@%%";
+"main_controller.total_balance" = "Total Balance";
 
 // Settings
 
