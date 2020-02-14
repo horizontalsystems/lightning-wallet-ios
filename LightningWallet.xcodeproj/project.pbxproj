@@ -207,8 +207,8 @@
 				D0E3ACB923F6615B00526999 /* Remote */,
 				D0E3ACB823F6615B00526999 /* ILndNode.swift */,
 				D0E3ACBE23F6615B00526999 /* Kit.swift */,
-				D0E3ACBF23F6615B00526999 /* LocalNodeCredentials.swift */,
 				D0E3ACCA23F6615B00526999 /* NodeStatus.swift */,
+				D0E3ACBF23F6615B00526999 /* LocalNodeCredentials.swift */,
 				D0E3ACC323F6615B00526999 /* RpcCredentials.swift */,
 			);
 			path = Kit;
