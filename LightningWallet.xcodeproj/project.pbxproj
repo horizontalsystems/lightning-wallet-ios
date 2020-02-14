@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,26 @@
 		58AAABE2600CA0FD6573A38B /* SecuritySettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAB978F51AD0B8C254AEE /* SecuritySettingsInteractor.swift */; };
 		58AAAE4CD23170E9F413A321 /* SecuritySettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA9B8C44AB28A278F3DF8 /* SecuritySettingsModule.swift */; };
 		58AAAF9B51F8863C844B8B81 /* LockScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA74FA4E281B7206273AB /* LockScreenModule.swift */; };
+		D0E3ACB623F6606F00526999 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = D0E3ACB523F6606F00526999 /* GRPC */; };
+		D0E3ACCF23F6615B00526999 /* ILndNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACB823F6615B00526999 /* ILndNode.swift */; };
+		D0E3ACD023F6615B00526999 /* RemoteLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACBA23F6615B00526999 /* RemoteLnd.swift */; };
+		D0E3ACD123F6615B00526999 /* WalletUnlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACBB23F6615B00526999 /* WalletUnlocker.swift */; };
+		D0E3ACD223F6615B00526999 /* LndNioConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACBC23F6615B00526999 /* LndNioConnection.swift */; };
+		D0E3ACD323F6615B00526999 /* ConnectivityStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACBD23F6615B00526999 /* ConnectivityStateManager.swift */; };
+		D0E3ACD423F6615B00526999 /* Kit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACBE23F6615B00526999 /* Kit.swift */; };
+		D0E3ACD523F6615B00526999 /* LocalNodeCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACBF23F6615B00526999 /* LocalNodeCredentials.swift */; };
+		D0E3ACD623F6615B00526999 /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACC123F6615B00526999 /* rpc.pb.swift */; };
+		D0E3ACD723F6615B00526999 /* rpc.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACC223F6615B00526999 /* rpc.grpc.swift */; };
+		D0E3ACD823F6615B00526999 /* RpcCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACC323F6615B00526999 /* RpcCredentials.swift */; };
+		D0E3ACD923F6615B00526999 /* MessageResponseCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACC623F6615B00526999 /* MessageResponseCallback.swift */; };
+		D0E3ACDA23F6615B00526999 /* LndMobileCallbackError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACC723F6615B00526999 /* LndMobileCallbackError.swift */; };
+		D0E3ACDB23F6615B00526999 /* VoidResponseCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACC823F6615B00526999 /* VoidResponseCallback.swift */; };
+		D0E3ACDC23F6615B00526999 /* LocalLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACC923F6615B00526999 /* LocalLnd.swift */; };
+		D0E3ACDD23F6615B00526999 /* NodeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACCA23F6615B00526999 /* NodeStatus.swift */; };
+		D0E3ACDE23F6615B00526999 /* EventLoopFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACCC23F6615B00526999 /* EventLoopFuture.swift */; };
+		D0E3ACDF23F6615B00526999 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACCD23F6615B00526999 /* Data.swift */; };
+		D0E3ACE023F6615B00526999 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E3ACCE23F6615B00526999 /* FileManager.swift */; };
+		D0E3ACE923F6669800526999 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E3ACE823F6669800526999 /* Lndmobile.framework */; };
 		D3A8074F23E8251000BD50FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A8074E23E8251000BD50FB /* AppDelegate.swift */; };
 		D3A8075823E8251100BD50FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3A8075723E8251100BD50FB /* Assets.xcassets */; };
 		D3A8076323E82B4500BD50FB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3A8076223E82B4500BD50FB /* LaunchScreen.xib */; };
@@ -68,6 +88,25 @@
 		58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsRouter.swift; sourceTree = "<group>"; };
 		8758F8D6862013B6D4FD9365 /* libPods-LightningWallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LightningWallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB3E0FA35CCCB9EEA7C8943F /* Pods-LightningWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningWallet.release.xcconfig"; path = "Target Support Files/Pods-LightningWallet/Pods-LightningWallet.release.xcconfig"; sourceTree = "<group>"; };
+		D0E3ACB823F6615B00526999 /* ILndNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ILndNode.swift; sourceTree = "<group>"; };
+		D0E3ACBA23F6615B00526999 /* RemoteLnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteLnd.swift; sourceTree = "<group>"; };
+		D0E3ACBB23F6615B00526999 /* WalletUnlocker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletUnlocker.swift; sourceTree = "<group>"; };
+		D0E3ACBC23F6615B00526999 /* LndNioConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LndNioConnection.swift; sourceTree = "<group>"; };
+		D0E3ACBD23F6615B00526999 /* ConnectivityStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityStateManager.swift; sourceTree = "<group>"; };
+		D0E3ACBE23F6615B00526999 /* Kit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kit.swift; sourceTree = "<group>"; };
+		D0E3ACBF23F6615B00526999 /* LocalNodeCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNodeCredentials.swift; sourceTree = "<group>"; };
+		D0E3ACC123F6615B00526999 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
+		D0E3ACC223F6615B00526999 /* rpc.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.grpc.swift; sourceTree = "<group>"; };
+		D0E3ACC323F6615B00526999 /* RpcCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RpcCredentials.swift; sourceTree = "<group>"; };
+		D0E3ACC623F6615B00526999 /* MessageResponseCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponseCallback.swift; sourceTree = "<group>"; };
+		D0E3ACC723F6615B00526999 /* LndMobileCallbackError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LndMobileCallbackError.swift; sourceTree = "<group>"; };
+		D0E3ACC823F6615B00526999 /* VoidResponseCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoidResponseCallback.swift; sourceTree = "<group>"; };
+		D0E3ACC923F6615B00526999 /* LocalLnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalLnd.swift; sourceTree = "<group>"; };
+		D0E3ACCA23F6615B00526999 /* NodeStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeStatus.swift; sourceTree = "<group>"; };
+		D0E3ACCC23F6615B00526999 /* EventLoopFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLoopFuture.swift; sourceTree = "<group>"; };
+		D0E3ACCD23F6615B00526999 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		D0E3ACCE23F6615B00526999 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		D0E3ACE823F6669800526999 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Carthage/Build/iOS/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		D3A8074B23E8251000BD50FB /* Lightning Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lightning Wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A8074E23E8251000BD50FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3A8075723E8251100BD50FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,6 +158,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E3ACB623F6606F00526999 /* GRPC in Frameworks */,
+				D0E3ACE923F6669800526999 /* Lndmobile.framework in Frameworks */,
 				D95B63C6E3F50D536C90D48D /* libPods-LightningWallet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,9 +197,76 @@
 			path = LockScreen;
 			sourceTree = "<group>";
 		};
+		D0E3ACB723F660BF00526999 /* Kit */ = {
+			isa = PBXGroup;
+			children = (
+				D0E3ACE823F6669800526999 /* Lndmobile.framework */,
+				D0E3ACCB23F6615B00526999 /* Extensions */,
+				D0E3ACC423F6615B00526999 /* Local */,
+				D0E3ACC023F6615B00526999 /* Proto */,
+				D0E3ACB923F6615B00526999 /* Remote */,
+				D0E3ACB823F6615B00526999 /* ILndNode.swift */,
+				D0E3ACBE23F6615B00526999 /* Kit.swift */,
+				D0E3ACBF23F6615B00526999 /* LocalNodeCredentials.swift */,
+				D0E3ACCA23F6615B00526999 /* NodeStatus.swift */,
+				D0E3ACC323F6615B00526999 /* RpcCredentials.swift */,
+			);
+			path = Kit;
+			sourceTree = "<group>";
+		};
+		D0E3ACB923F6615B00526999 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				D0E3ACBA23F6615B00526999 /* RemoteLnd.swift */,
+				D0E3ACBB23F6615B00526999 /* WalletUnlocker.swift */,
+				D0E3ACBC23F6615B00526999 /* LndNioConnection.swift */,
+				D0E3ACBD23F6615B00526999 /* ConnectivityStateManager.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		D0E3ACC023F6615B00526999 /* Proto */ = {
+			isa = PBXGroup;
+			children = (
+				D0E3ACC123F6615B00526999 /* rpc.pb.swift */,
+				D0E3ACC223F6615B00526999 /* rpc.grpc.swift */,
+			);
+			path = Proto;
+			sourceTree = "<group>";
+		};
+		D0E3ACC423F6615B00526999 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				D0E3ACC523F6615B00526999 /* LndMobileCallbacks */,
+				D0E3ACC923F6615B00526999 /* LocalLnd.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		D0E3ACC523F6615B00526999 /* LndMobileCallbacks */ = {
+			isa = PBXGroup;
+			children = (
+				D0E3ACC623F6615B00526999 /* MessageResponseCallback.swift */,
+				D0E3ACC723F6615B00526999 /* LndMobileCallbackError.swift */,
+				D0E3ACC823F6615B00526999 /* VoidResponseCallback.swift */,
+			);
+			path = LndMobileCallbacks;
+			sourceTree = "<group>";
+		};
+		D0E3ACCB23F6615B00526999 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D0E3ACCC23F6615B00526999 /* EventLoopFuture.swift */,
+				D0E3ACCD23F6615B00526999 /* Data.swift */,
+				D0E3ACCE23F6615B00526999 /* FileManager.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D3A8074223E8251000BD50FB = {
 			isa = PBXGroup;
 			children = (
+				D0E3ACB723F660BF00526999 /* Kit */,
 				D3A8074D23E8251000BD50FB /* LightningWallet */,
 				D3A8074C23E8251000BD50FB /* Products */,
 				D438B4583A9E356DBD1E0BAE /* Pods */,
@@ -316,6 +424,9 @@
 			dependencies = (
 			);
 			name = LightningWallet;
+			packageProductDependencies = (
+				D0E3ACB523F6606F00526999 /* GRPC */,
+			);
 			productName = LightningWallet;
 			productReference = D3A8074B23E8251000BD50FB /* Lightning Wallet.app */;
 			productType = "com.apple.product-type.application";
@@ -351,6 +462,9 @@
 				tr,
 			);
 			mainGroup = D3A8074223E8251000BD50FB;
+			packageReferences = (
+				D0E3ACB423F6606F00526999 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+			);
 			productRefGroup = D3A8074C23E8251000BD50FB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -424,23 +538,35 @@
 				D3A8077023E8384100BD50FB /* LaunchPresenter.swift in Sources */,
 				D3A8077723E8384100BD50FB /* WelcomeScreenInteractor.swift in Sources */,
 				D3A8077423E8384100BD50FB /* WelcomeScreenRouter.swift in Sources */,
+				D0E3ACD123F6615B00526999 /* WalletUnlocker.swift in Sources */,
 				D3A8077E23E8391A00BD50FB /* LocalStorage.swift in Sources */,
+				D0E3ACD823F6615B00526999 /* RpcCredentials.swift in Sources */,
 				D3A8078023E8391A00BD50FB /* App.swift in Sources */,
 				D3F0071E23EC211F00AB7250 /* MainRouter.swift in Sources */,
+				D0E3ACDA23F6615B00526999 /* LndMobileCallbackError.swift in Sources */,
+				D0E3ACDD23F6615B00526999 /* NodeStatus.swift in Sources */,
+				D0E3ACCF23F6615B00526999 /* ILndNode.swift in Sources */,
 				D3A8078323E8397B00BD50FB /* AppManager.swift in Sources */,
 				D3F0072923EC235500AB7250 /* MainSettingsModule.swift in Sources */,
 				D3F0072D23EC235500AB7250 /* MainSettingsFooter.swift in Sources */,
 				D3A8077323E8384100BD50FB /* LaunchModule.swift in Sources */,
+				D0E3ACD723F6615B00526999 /* rpc.grpc.swift in Sources */,
 				D3F0071B23EC211F00AB7250 /* MainViewController.swift in Sources */,
 				D3A8077823E8384100BD50FB /* WelcomeScreenPresenter.swift in Sources */,
+				D0E3ACD623F6615B00526999 /* rpc.pb.swift in Sources */,
 				D3F0072C23EC235500AB7250 /* MainSettingsRouter.swift in Sources */,
 				D3A8077223E8384100BD50FB /* LaunchRouter.swift in Sources */,
+				D0E3ACD023F6615B00526999 /* RemoteLnd.swift in Sources */,
 				D3A8077623E8384100BD50FB /* WelcomeScreenViewController.swift in Sources */,
+				D0E3ACD323F6615B00526999 /* ConnectivityStateManager.swift in Sources */,
+				D0E3ACD423F6615B00526999 /* Kit.swift in Sources */,
+				D0E3ACDF23F6615B00526999 /* Data.swift in Sources */,
 				D3A8077F23E8391A00BD50FB /* Protocols.swift in Sources */,
 				D3A8074F23E8251000BD50FB /* AppDelegate.swift in Sources */,
 				D3F0072A23EC235500AB7250 /* MainSettingsViewController.swift in Sources */,
 				D3F0072B23EC235500AB7250 /* MainSettingsInteractor.swift in Sources */,
 				D3A8077523E8384100BD50FB /* WelcomeScreenModule.swift in Sources */,
+				D0E3ACDC23F6615B00526999 /* LocalLnd.swift in Sources */,
 				D3F0072823EC235500AB7250 /* MainSettingsPresenter.swift in Sources */,
 				D3A8077123E8384100BD50FB /* LaunchInteractor.swift in Sources */,
 				D3A8078723E83BF300BD50FB /* LanguageManager.swift in Sources */,
@@ -449,15 +575,21 @@
 				58AAAE4CD23170E9F413A321 /* SecuritySettingsModule.swift in Sources */,
 				58AAA8C1A3ECE3D267C09C6A /* SecuritySettingsPresenter.swift in Sources */,
 				58AAAAAD09F046AFF9C60AAB /* SecuritySettingsRouter.swift in Sources */,
+				D0E3ACE023F6615B00526999 /* FileManager.swift in Sources */,
 				58AAA46F6C541658E2352CE2 /* SecuritySettingsViewController.swift in Sources */,
 				58AAA3A9C06B7142C3467E7A /* PinKitDelegate.swift in Sources */,
 				58AAAF9B51F8863C844B8B81 /* LockScreenModule.swift in Sources */,
+				D0E3ACD523F6615B00526999 /* LocalNodeCredentials.swift in Sources */,
 				58AAAA7D317C4D4D18A89743 /* LockScreenPresenter.swift in Sources */,
+				D0E3ACD923F6615B00526999 /* MessageResponseCallback.swift in Sources */,
 				58AAA448589681EF01120EF7 /* LockScreenRouter.swift in Sources */,
 				1A5644133D6B175582CABE71 /* MainModule.swift in Sources */,
+				D0E3ACDE23F6615B00526999 /* EventLoopFuture.swift in Sources */,
 				1A5644D113C1C0105D2EF6C6 /* MainViewFactory.swift in Sources */,
 				1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */,
+				D0E3ACD223F6615B00526999 /* LndNioConnection.swift in Sources */,
 				1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */,
+				D0E3ACDB23F6615B00526999 /* VoidResponseCallback.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +752,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HC4MCAXJ66;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LightningWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -642,6 +778,10 @@
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = HC4MCAXJ66;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = LightningWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -678,6 +818,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D0E3ACB423F6606F00526999 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:grpc/grpc-swift.git";
+			requirement = {
+				branch = nio;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D0E3ACB523F6606F00526999 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0E3ACB423F6606F00526999 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D3A8074323E8251000BD50FB /* Project object */;
 }
