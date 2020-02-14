@@ -43,3 +43,9 @@
 "settings_security.touch_id" = "Touch ID";
 "settings_security.face_id" = "Face ID";
 "security_settings.delete_alert_button" = "Delete from Phone";
+
+// Access Camera
+
+"access_camera.message" = "Access to your camera for this app was denied, you can go to settings and allow access";
+"access_camera.not_supported" = "Your device does not support scanning a code from an item. Please use a device with a camera.";
+"access_camera.settings" = "Go To Settings";
