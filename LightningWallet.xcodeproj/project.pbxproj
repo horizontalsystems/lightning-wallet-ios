@@ -12,14 +12,19 @@
 		1A5644133D6B175582CABE71 /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564925F4176E6330B59F29 /* MainModule.swift */; };
 		1A5644D113C1C0105D2EF6C6 /* MainViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */; };
 		1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564F92D5FD4DF85F029682 /* MainInteractor.swift */; };
+		58AAA075D1662E5564A6025B /* PermissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */; };
 		58AAA3A9C06B7142C3467E7A /* PinKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAB65C063B54DC2266CFA /* PinKitDelegate.swift */; };
 		58AAA448589681EF01120EF7 /* LockScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAAF9D51AAE55EB7E014C /* LockScreenRouter.swift */; };
 		58AAA46F6C541658E2352CE2 /* SecuritySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAF81437191FA362D0CCF /* SecuritySettingsViewController.swift */; };
+		58AAA62164234BDC92AA2912 /* ScanQRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA9D5F4AF0B6FA6A0F122 /* ScanQRController.swift */; };
+		58AAA6F33FC8959981B16954 /* ScanQRBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA93BA4F3A60F25C820CA /* ScanQRBlurView.swift */; };
+		58AAA7C6C8A6D05D04415D2D /* ScanQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAD298F918485CA0EBE70 /* ScanQRView.swift */; };
 		58AAA8C1A3ECE3D267C09C6A /* SecuritySettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA8BED4F9D86E461BF20F /* SecuritySettingsPresenter.swift */; };
 		58AAAA7D317C4D4D18A89743 /* LockScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */; };
 		58AAAAAD09F046AFF9C60AAB /* SecuritySettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */; };
 		58AAABE2600CA0FD6573A38B /* SecuritySettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAB978F51AD0B8C254AEE /* SecuritySettingsInteractor.swift */; };
 		58AAAE4CD23170E9F413A321 /* SecuritySettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA9B8C44AB28A278F3DF8 /* SecuritySettingsModule.swift */; };
+		58AAAEC4B2AE87C29BC20A37 /* ScanQrAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAAF8D09A89F8F88BB61F /* ScanQrAlertView.swift */; };
 		58AAAF9B51F8863C844B8B81 /* LockScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA74FA4E281B7206273AB /* LockScreenModule.swift */; };
 		D3A733D223FA86FB005DAC30 /* LightningKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A733CB23FA80B2005DAC30 /* LightningKit.framework */; };
 		D3A733D323FA86FB005DAC30 /* LightningKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3A733CB23FA80B2005DAC30 /* LightningKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -73,13 +78,18 @@
 		1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewFactory.swift; sourceTree = "<group>"; };
 		1A564F92D5FD4DF85F029682 /* MainInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionHelper.swift; sourceTree = "<group>"; };
 		58AAA74FA4E281B7206273AB /* LockScreenModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenModule.swift; sourceTree = "<group>"; };
 		58AAA8BED4F9D86E461BF20F /* SecuritySettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsPresenter.swift; sourceTree = "<group>"; };
+		58AAA93BA4F3A60F25C820CA /* ScanQRBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRBlurView.swift; sourceTree = "<group>"; };
 		58AAA9B8C44AB28A278F3DF8 /* SecuritySettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsModule.swift; sourceTree = "<group>"; };
+		58AAA9D5F4AF0B6FA6A0F122 /* ScanQRController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRController.swift; sourceTree = "<group>"; };
+		58AAAAF8D09A89F8F88BB61F /* ScanQrAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQrAlertView.swift; sourceTree = "<group>"; };
 		58AAAAF9D51AAE55EB7E014C /* LockScreenRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenRouter.swift; sourceTree = "<group>"; };
 		58AAAB65C063B54DC2266CFA /* PinKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinKitDelegate.swift; sourceTree = "<group>"; };
 		58AAAB978F51AD0B8C254AEE /* SecuritySettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsInteractor.swift; sourceTree = "<group>"; };
 		58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenPresenter.swift; sourceTree = "<group>"; };
+		58AAAD298F918485CA0EBE70 /* ScanQRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRView.swift; sourceTree = "<group>"; };
 		58AAAF81437191FA362D0CCF /* SecuritySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsViewController.swift; sourceTree = "<group>"; };
 		58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsRouter.swift; sourceTree = "<group>"; };
 		CB3E0FA35CCCB9EEA7C8943F /* Pods-LightningWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningWallet.release.xcconfig"; path = "Target Support Files/Pods-LightningWallet/Pods-LightningWallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +175,25 @@
 			path = Security;
 			sourceTree = "<group>";
 		};
+		58AAA1F72EF4D32DE41EE7EE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				58AAA7D3876FD3FB8B723960 /* ScanQR */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		58AAA7D3876FD3FB8B723960 /* ScanQR */ = {
+			isa = PBXGroup;
+			children = (
+				58AAA93BA4F3A60F25C820CA /* ScanQRBlurView.swift */,
+				58AAAAF8D09A89F8F88BB61F /* ScanQrAlertView.swift */,
+				58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */,
+				58AAAD298F918485CA0EBE70 /* ScanQRView.swift */,
+			);
+			path = ScanQR;
+			sourceTree = "<group>";
+		};
 		58AAADC4308B7119C5E36D54 /* LockScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +202,14 @@
 				58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */,
 			);
 			path = LockScreen;
+			sourceTree = "<group>";
+		};
+		58AAAF4BEA4F1C0F305D324F /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				58AAA9D5F4AF0B6FA6A0F122 /* ScanQRController.swift */,
+			);
+			path = Scan;
 			sourceTree = "<group>";
 		};
 		D3A8074223E8251000BD50FB = {
@@ -204,6 +241,7 @@
 				D3A8079D23E83EC500BD50FB /* Info.plist */,
 				D3A807A323E83F6700BD50FB /* InfoPlist.strings */,
 				D3A8078E23E83DD100BD50FB /* Localizable.strings */,
+				58AAA1F72EF4D32DE41EE7EE /* UI */,
 			);
 			path = LightningWallet;
 			sourceTree = "<group>";
@@ -216,6 +254,7 @@
 				D3F0071523EC211F00AB7250 /* Main */,
 				D3F0072023EC235500AB7250 /* Settings */,
 				58AAADC4308B7119C5E36D54 /* LockScreen */,
+				58AAAF4BEA4F1C0F305D324F /* Scan */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -478,6 +517,11 @@
 				1A5644D113C1C0105D2EF6C6 /* MainViewFactory.swift in Sources */,
 				1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */,
 				1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */,
+				58AAA6F33FC8959981B16954 /* ScanQRBlurView.swift in Sources */,
+				58AAAEC4B2AE87C29BC20A37 /* ScanQrAlertView.swift in Sources */,
+				58AAA075D1662E5564A6025B /* PermissionHelper.swift in Sources */,
+				58AAA7C6C8A6D05D04415D2D /* ScanQRView.swift in Sources */,
+				58AAA62164234BDC92AA2912 /* ScanQRController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
