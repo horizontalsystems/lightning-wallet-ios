@@ -27,8 +27,8 @@
 		58AAA58F1F128929109B56D6 /* NodeCredentialsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAA3F706B08CCB7C48C97 /* NodeCredentialsModule.swift */; };
 		58AAA60DBA06E5750E42C9E4 /* TransparentNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA213C62BB3C5DCEAE890 /* TransparentNavigationBar.swift */; };
 		58AAA6A2AC8CEA3311D15C56 /* NodeCredentialsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA615962C96F8EA42A37F /* NodeCredentialsInteractor.swift */; };
-		58AAA6F33FC8959981B16954 /* ScanQrBlurViewTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA93BA4F3A60F25C820CA /* ScanQrBlurViewTemp.swift */; };
-		58AAA7C6C8A6D05D04415D2D /* ScanQrViewTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAD298F918485CA0EBE70 /* ScanQrViewTemp.swift */; };
+		58AAA6F33FC8959981B16954 /* ScanQrBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA93BA4F3A60F25C820CA /* ScanQrBlurView.swift */; };
+		58AAA7C6C8A6D05D04415D2D /* ScanQrView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAD298F918485CA0EBE70 /* ScanQrView.swift */; };
 		58AAA8C1A3ECE3D267C09C6A /* SecuritySettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA8BED4F9D86E461BF20F /* SecuritySettingsPresenter.swift */; };
 		58AAA8D820AE03AB5A828556 /* NodeConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAABF864391EC664811C2 /* NodeConnectViewController.swift */; };
 		58AAAA7D317C4D4D18A89743 /* LockScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */; };
@@ -110,7 +110,7 @@
 		58AAA77C6C365F8A5E120E90 /* NodeConnectRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeConnectRouter.swift; sourceTree = "<group>"; };
 		58AAA7A75C4FC655D55DC500 /* NodeCredentialsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCredentialsPresenter.swift; sourceTree = "<group>"; };
 		58AAA8BED4F9D86E461BF20F /* SecuritySettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsPresenter.swift; sourceTree = "<group>"; };
-		58AAA93BA4F3A60F25C820CA /* ScanQrBlurViewTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQrBlurViewTemp.swift; sourceTree = "<group>"; };
+		58AAA93BA4F3A60F25C820CA /* ScanQrBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQrBlurView.swift; sourceTree = "<group>"; };
 		58AAA9B8C44AB28A278F3DF8 /* SecuritySettingsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsModule.swift; sourceTree = "<group>"; };
 		58AAAA3F706B08CCB7C48C97 /* NodeCredentialsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeCredentialsModule.swift; sourceTree = "<group>"; };
 		58AAAABF864391EC664811C2 /* NodeConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeConnectViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		58AAAB978F51AD0B8C254AEE /* SecuritySettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsInteractor.swift; sourceTree = "<group>"; };
 		58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenPresenter.swift; sourceTree = "<group>"; };
 		58AAAC0C07E69F70129D20F6 /* NodeConnectModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeConnectModule.swift; sourceTree = "<group>"; };
-		58AAAD298F918485CA0EBE70 /* ScanQrViewTemp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQrViewTemp.swift; sourceTree = "<group>"; };
+		58AAAD298F918485CA0EBE70 /* ScanQrView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQrView.swift; sourceTree = "<group>"; };
 		58AAAF81437191FA362D0CCF /* SecuritySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsViewController.swift; sourceTree = "<group>"; };
 		58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsRouter.swift; sourceTree = "<group>"; };
 		CB3E0FA35CCCB9EEA7C8943F /* Pods-LightningWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningWallet.release.xcconfig"; path = "Target Support Files/Pods-LightningWallet/Pods-LightningWallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -240,10 +240,10 @@
 		58AAA7D3876FD3FB8B723960 /* ScanQr */ = {
 			isa = PBXGroup;
 			children = (
-				58AAA93BA4F3A60F25C820CA /* ScanQrBlurViewTemp.swift */,
+				58AAA93BA4F3A60F25C820CA /* ScanQrBlurView.swift */,
 				58AAAAF8D09A89F8F88BB61F /* ScanQrAlertView.swift */,
 				58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */,
-				58AAAD298F918485CA0EBE70 /* ScanQrViewTemp.swift */,
+				58AAAD298F918485CA0EBE70 /* ScanQrView.swift */,
 			);
 			path = ScanQr;
 			sourceTree = "<group>";
@@ -596,10 +596,10 @@
 				1A5644133D6B175582CABE71 /* MainModule.swift in Sources */,
 				1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */,
 				1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */,
-				58AAA6F33FC8959981B16954 /* ScanQrBlurViewTemp.swift in Sources */,
+				58AAA6F33FC8959981B16954 /* ScanQrBlurView.swift in Sources */,
 				58AAAEC4B2AE87C29BC20A37 /* ScanQrAlertView.swift in Sources */,
 				58AAA075D1662E5564A6025B /* PermissionHelper.swift in Sources */,
-				58AAA7C6C8A6D05D04415D2D /* ScanQrViewTemp.swift in Sources */,
+				58AAA7C6C8A6D05D04415D2D /* ScanQrView.swift in Sources */,
 				58AAA58F1F128929109B56D6 /* NodeCredentialsModule.swift in Sources */,
 				58AAACD040FF8040E34BF4FB /* NodeCredentialsViewController.swift in Sources */,
 				58AAAE034A5A3A29B80DF27A /* NodeCredentialsPresenter.swift in Sources */,
