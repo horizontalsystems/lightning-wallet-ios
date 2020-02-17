@@ -26,11 +26,6 @@ protocol IMainInteractor {
     var currency: Currency { get }
 }
 
-protocol IMainViewFactory {
-    func currencyValue(balance: Decimal?, rate: Decimal?, currency: Currency) -> String?
-    func coinBalance(balance: Decimal?) -> String?
-}
-
 enum MainState {
     case sync
     case done

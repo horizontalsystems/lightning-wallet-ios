@@ -1,4 +1,5 @@
 import RxSwift
+import CurrencyKit
 
 protocol IAppManager {
     var didBecomeActiveObservable: Observable<()> { get }
@@ -6,4 +7,9 @@ protocol IAppManager {
 }
 
 protocol ILocalStorage: class {
+}
+
+protocol IValueFormatterFactory {
+    func currencyValue(balance: Decimal?, rate: Decimal?, currency: Currency) -> String?
+    func coinBalance(balance: Decimal?) -> String?
 }

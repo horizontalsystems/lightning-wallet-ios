@@ -7,9 +7,9 @@ class MainPresenter {
     private let interactor: IMainInteractor
     private let router: IMainRouter
 
-    private let viewFactory: IMainViewFactory
+    private let viewFactory: IValueFormatterFactory
 
-    init(interactor: IMainInteractor, router: IMainRouter, viewFactory: IMainViewFactory) {
+    init(interactor: IMainInteractor, router: IMainRouter, viewFactory: IValueFormatterFactory) {
         self.viewFactory = viewFactory
         self.interactor = interactor
         self.router = router
