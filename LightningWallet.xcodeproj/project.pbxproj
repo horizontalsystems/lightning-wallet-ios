@@ -231,13 +231,13 @@
 		58AAA1F72EF4D32DE41EE7EE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				58AAA7D3876FD3FB8B723960 /* ScanQR */,
+				58AAA7D3876FD3FB8B723960 /* ScanQrTemp */,
 				58AAA213C62BB3C5DCEAE890 /* TransparentNavigationBar.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		58AAA7D3876FD3FB8B723960 /* ScanQR */ = {
+		58AAA7D3876FD3FB8B723960 /* ScanQrTemp */ = {
 			isa = PBXGroup;
 			children = (
 				58AAA93BA4F3A60F25C820CA /* ScanQRBlurView.swift */,
@@ -245,7 +245,7 @@
 				58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */,
 				58AAAD298F918485CA0EBE70 /* ScanQRView.swift */,
 			);
-			path = ScanQR;
+			path = ScanQrTemp;
 			sourceTree = "<group>";
 		};
 		58AAAB6AB0311881BC1EE43C /* NodeConnect */ = {
