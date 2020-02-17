@@ -2,7 +2,7 @@ import UIKit
 import AVFoundation
 import UIExtensions
 
-class ScanQRView: UIView {
+class ScanQrView: UIView {
     private static let sideMargin: CGFloat = CGFloat.margin6x
 
     weak var delegate: IScanQrCodeDelegate?
@@ -11,7 +11,7 @@ class ScanQRView: UIView {
     private var metadataOutput: AVCaptureMetadataOutput?
     private let previewLayer: AVCaptureVideoPreviewLayer
 
-    private let blurView = ScanQRBlurView(sideMargin: ScanQRView.sideMargin)
+    private let blurView = ScanQrBlurView(sideMargin: ScanQrView.sideMargin)
     private let alertView = ScanQrAlertView()
 
     private var initiallySetUp = false
@@ -86,8 +86,8 @@ class ScanQRView: UIView {
             return
         }
 
-        let left = ScanQRView.sideMargin / width
-        let rectWidth = width - 2 * ScanQRView.sideMargin
+        let left = ScanQrView.sideMargin / width
+        let rectWidth = width - 2 * ScanQrView.sideMargin
         let top = ((height - rectWidth) / 2) / height
 
         metadataOutput?.rectOfInterest = CGRect(x: top, y: left, width: rectWidth / height, height: rectWidth / width)
@@ -133,7 +133,7 @@ class ScanQRView: UIView {
 
 }
 
-extension ScanQRView: AVCaptureMetadataOutputObjectsDelegate {
+extension ScanQrView: AVCaptureMetadataOutputObjectsDelegate {
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         captureSession.stopRunning()
