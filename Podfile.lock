@@ -96,7 +96,7 @@ CHECKOUT OPTIONS:
     :commit: 08eb226900bebfb9be174754532d65c02175cefd
     :git: https://github.com/horizontalsystems/component-kit-ios/
   UIExtensions.swift:
-    :commit: 037a537bbc19b596a32635c4e9146d0e28bb1074
+    :commit: 0a1cc8f0ec54fdf82de9a30de5a65f5146513990
     :git: https://github.com/horizontalsystems/gui-kit/
 
 SPEC CHECKSUMS:

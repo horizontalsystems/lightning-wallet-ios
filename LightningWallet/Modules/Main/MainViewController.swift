@@ -122,7 +122,7 @@ class MainViewController: ThemeViewController {
         transactionsButton.setImage(UIImage(named: "Arrow Up"), for: .normal)
         transactionsButton.addTarget(self, action: #selector(onTapTransactions), for: .touchUpInside)
 
-        delegate.didLoad()
+        delegate.onLoad()
     }
 
     @objc private func onTapChannels() {

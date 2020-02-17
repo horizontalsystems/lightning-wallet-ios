@@ -14,7 +14,7 @@ protocol IMainView: class {
 }
 
 protocol IMainViewDelegate {
-    func didLoad()
+    func onLoad()
     func onDeposit()
     func onSend()
     func onChannels()

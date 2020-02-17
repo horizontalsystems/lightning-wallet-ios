@@ -11,8 +11,14 @@
 		1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */; };
 		1A5644133D6B175582CABE71 /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564925F4176E6330B59F29 /* MainModule.swift */; };
 		1A5644D113C1C0105D2EF6C6 /* MainViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */; };
+		1A5646B3882025CA7EEFCA70 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564407D57445B9B570FAA1 /* TransactionCell.swift */; };
+		1A5646F0F9724D3A2111CF05 /* TransactionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */; };
+		1A5646FD23C9601541DF4EA8 /* TransactionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */; };
+		1A56483DEB8342F6F46BB06D /* TransactionsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564E72C5C4792F6B7F31EE /* TransactionsModule.swift */; };
+		1A564A33548A52C44CC4424C /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564EE4D6A6DEC2EC9E7F72 /* TransactionsViewController.swift */; };
 		1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564F92D5FD4DF85F029682 /* MainInteractor.swift */; };
 		58AAA075D1662E5564A6025B /* PermissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */; };
+		1A564BEEA6BBECDEDE8553E4 /* TransactionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564F91907D93E32AE25239 /* TransactionsRouter.swift */; };
 		58AAA3A9C06B7142C3467E7A /* PinKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAB65C063B54DC2266CFA /* PinKitDelegate.swift */; };
 		58AAA448589681EF01120EF7 /* LockScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAAF9D51AAE55EB7E014C /* LockScreenRouter.swift */; };
 		58AAA46F6C541658E2352CE2 /* SecuritySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAF81437191FA362D0CCF /* SecuritySettingsViewController.swift */; };
@@ -74,9 +80,15 @@
 
 /* Begin PBXFileReference section */
 		11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainKitDelegate.swift; sourceTree = "<group>"; };
+		1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewItem.swift; sourceTree = "<group>"; };
+		1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsPresenter.swift; sourceTree = "<group>"; };
+		1A564407D57445B9B570FAA1 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		1A564925F4176E6330B59F29 /* MainModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
 		1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewFactory.swift; sourceTree = "<group>"; };
+		1A564E72C5C4792F6B7F31EE /* TransactionsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsModule.swift; sourceTree = "<group>"; };
+		1A564EE4D6A6DEC2EC9E7F72 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		1A564F91907D93E32AE25239 /* TransactionsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsRouter.swift; sourceTree = "<group>"; };
 		1A564F92D5FD4DF85F029682 /* MainInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionHelper.swift; sourceTree = "<group>"; };
 		58AAA74FA4E281B7206273AB /* LockScreenModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenModule.swift; sourceTree = "<group>"; };
@@ -161,6 +173,19 @@
 				F9AFE860EDCA0925867C0F90 /* Pods_LightningWallet.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1A564F9557C289528B905A6A /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				1A564E72C5C4792F6B7F31EE /* TransactionsModule.swift */,
+				1A564F91907D93E32AE25239 /* TransactionsRouter.swift */,
+				1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */,
+				1A564EE4D6A6DEC2EC9E7F72 /* TransactionsViewController.swift */,
+				1A564407D57445B9B570FAA1 /* TransactionCell.swift */,
+				1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */,
+			);
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		58AAA0D9FBCC0E564DDDB01C /* Security */ = {
@@ -255,6 +280,7 @@
 				D3F0072023EC235500AB7250 /* Settings */,
 				58AAADC4308B7119C5E36D54 /* LockScreen */,
 				58AAAF4BEA4F1C0F305D324F /* Scan */,
+				1A564F9557C289528B905A6A /* Transactions */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -522,6 +548,12 @@
 				58AAA075D1662E5564A6025B /* PermissionHelper.swift in Sources */,
 				58AAA7C6C8A6D05D04415D2D /* ScanQRView.swift in Sources */,
 				58AAA62164234BDC92AA2912 /* ScanQRController.swift in Sources */,
+				1A56483DEB8342F6F46BB06D /* TransactionsModule.swift in Sources */,
+				1A564BEEA6BBECDEDE8553E4 /* TransactionsRouter.swift in Sources */,
+				1A5646FD23C9601541DF4EA8 /* TransactionsPresenter.swift in Sources */,
+				1A564A33548A52C44CC4424C /* TransactionsViewController.swift in Sources */,
+				1A5646B3882025CA7EEFCA70 /* TransactionCell.swift in Sources */,
+				1A5646F0F9724D3A2111CF05 /* TransactionViewItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

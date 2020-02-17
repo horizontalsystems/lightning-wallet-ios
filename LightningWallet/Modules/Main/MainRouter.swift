@@ -12,6 +12,7 @@ extension MainRouter: IMainRouter {
     }
 
     func openTransactions() {
+        viewController?.present(ThemeNavigationController(rootViewController: TransactionsRouter.module()), animated: true)
     }
 
 }

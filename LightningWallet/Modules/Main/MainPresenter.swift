@@ -19,7 +19,7 @@ class MainPresenter {
 
 extension MainPresenter: IMainViewDelegate {
 
-    func didLoad() {
+    func onLoad() {
         let balance = Decimal(string: "99.631")
         let rate = Decimal(string: "0.631")
         let currency = interactor.currency
@@ -49,7 +49,7 @@ extension MainPresenter: IMainViewDelegate {
     }
 
     func onTransactions() {
-        print("onTransactions")
+        router.openTransactions()
     }
 
 }
