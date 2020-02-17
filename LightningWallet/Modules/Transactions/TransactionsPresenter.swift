@@ -3,9 +3,9 @@ class TransactionsPresenter {
 
     private let router: ITransactionsRouter
 
-    private let factory: IMainViewFactory
+    private let factory: IValueFormatterFactory
 
-    init(router: ITransactionsRouter, factory: IMainViewFactory) {
+    init(router: ITransactionsRouter, factory: IValueFormatterFactory) {
         self.router = router
         self.factory = factory
     }

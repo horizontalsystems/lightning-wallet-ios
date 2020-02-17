@@ -16,7 +16,7 @@ extension TransactionsRouter {
 
     static func module() -> UIViewController {
         let router = TransactionsRouter()
-        let presenter = TransactionsPresenter(router: router, factory: MainViewFactory())
+        let presenter = TransactionsPresenter(router: router, factory: ValueFormatterFactory())
         let viewController = TransactionsViewController(delegate: presenter)
 
         router.viewController = viewController

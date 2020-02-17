@@ -1,7 +1,7 @@
 import Foundation
 import CurrencyKit
 
-class MainViewFactory {
+class ValueFormatterFactory {
 
     private let currencyFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -11,7 +11,7 @@ class MainViewFactory {
 
 }
 
-extension MainViewFactory: IMainViewFactory {
+extension ValueFormatterFactory: IValueFormatterFactory {
 
     func currencyValue(balance: Decimal?, rate: Decimal?, currency: Currency) -> String? {
         guard let balance = balance, let rate = rate else {

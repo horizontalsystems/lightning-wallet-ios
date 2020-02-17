@@ -22,7 +22,7 @@ extension MainRouter {
     static func module() -> UIViewController {
         let router = MainRouter()
         let interactor = MainInteractor(currencyKit: App.shared.currencyKit)
-        let presenter = MainPresenter(interactor: interactor, router: router, viewFactory: MainViewFactory())
+        let presenter = MainPresenter(interactor: interactor, router: router, viewFactory: ValueFormatterFactory())
         let viewController = MainViewController(delegate: presenter)
 
         presenter.view = viewController

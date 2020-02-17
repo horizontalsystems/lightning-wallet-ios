@@ -10,11 +10,11 @@
 		11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */; };
 		1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */; };
 		1A5644133D6B175582CABE71 /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564925F4176E6330B59F29 /* MainModule.swift */; };
-		1A5644D113C1C0105D2EF6C6 /* MainViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */; };
 		1A5646B3882025CA7EEFCA70 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564407D57445B9B570FAA1 /* TransactionCell.swift */; };
 		1A5646F0F9724D3A2111CF05 /* TransactionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */; };
 		1A5646FD23C9601541DF4EA8 /* TransactionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */; };
 		1A56483DEB8342F6F46BB06D /* TransactionsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564E72C5C4792F6B7F31EE /* TransactionsModule.swift */; };
+		1A564928845586EB57FC2E6B /* ValueFormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564624F9A28A5D0FC88A9F /* ValueFormatterFactory.swift */; };
 		1A564A33548A52C44CC4424C /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564EE4D6A6DEC2EC9E7F72 /* TransactionsViewController.swift */; };
 		1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564F92D5FD4DF85F029682 /* MainInteractor.swift */; };
 		58AAA075D1662E5564A6025B /* PermissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */; };
@@ -83,9 +83,9 @@
 		1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewItem.swift; sourceTree = "<group>"; };
 		1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsPresenter.swift; sourceTree = "<group>"; };
 		1A564407D57445B9B570FAA1 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		1A564624F9A28A5D0FC88A9F /* ValueFormatterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueFormatterFactory.swift; sourceTree = "<group>"; };
 		1A564925F4176E6330B59F29 /* MainModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
 		1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
-		1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewFactory.swift; sourceTree = "<group>"; };
 		1A564E72C5C4792F6B7F31EE /* TransactionsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsModule.swift; sourceTree = "<group>"; };
 		1A564EE4D6A6DEC2EC9E7F72 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		1A564F91907D93E32AE25239 /* TransactionsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsRouter.swift; sourceTree = "<group>"; };
@@ -175,6 +175,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1A56478CBC905713AB7B70D2 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				1A564624F9A28A5D0FC88A9F /* ValueFormatterFactory.swift */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
 		1A564F9557C289528B905A6A /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +268,7 @@
 			children = (
 				D3A8077923E8391A00BD50FB /* Core */,
 				D3A8076423E8384100BD50FB /* Modules */,
+				1A56478CBC905713AB7B70D2 /* UserInterface */,
 				D3A8074E23E8251000BD50FB /* AppDelegate.swift */,
 				D3A8075723E8251100BD50FB /* Assets.xcassets */,
 				D3A8076223E82B4500BD50FB /* LaunchScreen.xib */,
@@ -346,7 +355,6 @@
 				1A564F92D5FD4DF85F029682 /* MainInteractor.swift */,
 				1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */,
 				D3F0071623EC211F00AB7250 /* MainViewController.swift */,
-				1A564E35E7FBA0906555D6ED /* MainViewFactory.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -540,7 +548,6 @@
 				58AAAA7D317C4D4D18A89743 /* LockScreenPresenter.swift in Sources */,
 				58AAA448589681EF01120EF7 /* LockScreenRouter.swift in Sources */,
 				1A5644133D6B175582CABE71 /* MainModule.swift in Sources */,
-				1A5644D113C1C0105D2EF6C6 /* MainViewFactory.swift in Sources */,
 				1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */,
 				1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */,
 				58AAA6F33FC8959981B16954 /* ScanQRBlurView.swift in Sources */,
@@ -554,6 +561,7 @@
 				1A564A33548A52C44CC4424C /* TransactionsViewController.swift in Sources */,
 				1A5646B3882025CA7EEFCA70 /* TransactionCell.swift in Sources */,
 				1A5646F0F9724D3A2111CF05 /* TransactionViewItem.swift in Sources */,
+				1A564928845586EB57FC2E6B /* ValueFormatterFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
