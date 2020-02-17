@@ -15,8 +15,9 @@ extension WelcomeScreenRouter: IWelcomeScreenRouter {
     }
 
     func showConnectToRemoteNode() {
-        try? App.shared.keychainKit.secureStorage.set(value: true, for: "logged_in")
-        UIApplication.shared.keyWindow?.set(newRootController: MainRouter.module())
+        viewController?.navigationController?.pushViewController(NodeCredentialsRouter.module(), animated: true)
+//        try? App.shared.keychainKit.secureStorage.set(value: true, for: "logged_in")
+//        UIApplication.shared.keyWindow?.set(newRootController: MainRouter.module())
     }
 
 }

@@ -1,7 +1,7 @@
 import UIKit
 import UIExtensions
 
-class ScanQRBlurView: CustomIntensityVisualEffectView {
+class ScanQrBlurView: CustomIntensityVisualEffectView {
     private let sideMargin: CGFloat
     private let maskLayer = CAShapeLayer()
 
