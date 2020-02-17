@@ -5,6 +5,9 @@
       location = "group:LightningWallet.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:LightningKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

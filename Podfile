@@ -1,11 +1,13 @@
 platform :ios, '11'
-use_modular_headers!
+use_frameworks!
 
 inhibit_all_warnings!
 
-project 'LightningWallet'
+workspace 'LightningWallet'
 
-def appPods
+target 'LightningWallet' do
+  project 'LightningWallet'
+
   pod 'UIExtensions.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
   # pod 'UIExtensions.swift', path: '../gui-kit/'
   pod 'ThemeKit.swift', git: 'https://github.com/horizontalsystems/component-kit-ios/'
@@ -31,6 +33,8 @@ def appPods
   pod 'SnapKit'
 end
 
-target 'LightningWallet' do
-  appPods
+target 'LightningKit' do
+  project 'LightningKit'
+
+  pod 'RxSwift'
 end
