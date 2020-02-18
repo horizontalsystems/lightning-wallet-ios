@@ -24,7 +24,7 @@ public struct RpcCredentials {
             let queryParameters = lndConnectUrl.queryParameters,
             let host = lndConnectUrl.host,
             let port = lndConnectUrl.port,
-            let macaroonString = queryParameters["macaroon"]?.base64UrlToBase64(),
+            let macaroonString = queryParameters["macaroon"]?.base64UrlToBase64().base64ToHex(),
             let certificateString = queryParameters["cert"]?.base64UrlToBase64()
             else { return nil }
 
@@ -50,6 +50,14 @@ fileprivate extension String {
             .map { Array(Array(self)[$0..<min($0 + every, count)]) }
             .joined(separator: separator)
         return String(result)
+    }
+
+    func base64ToHex() -> String? {
+        guard let data = Data(base64Encoded: self) else {
+            return nil
+        }
+        
+        return data.hex
     }
 
     func base64UrlToBase64() -> String {
