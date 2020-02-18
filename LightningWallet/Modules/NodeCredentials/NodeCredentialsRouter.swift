@@ -1,5 +1,6 @@
 import UIKit
 import ThemeKit
+import LightningKit
 
 class NodeCredentialsRouter {
     weak var viewController: UIViewController?
@@ -7,8 +8,8 @@ class NodeCredentialsRouter {
 
 extension NodeCredentialsRouter: INodeCredentialsRouter {
 
-    func openConnectNode(someData: String) {
-        viewController?.navigationController?.pushViewController(NodeConnectRouter.module(), animated: true)
+    func openConnectNode(credentials: RpcCredentials) {
+        viewController?.navigationController?.pushViewController(NodeConnectRouter.module(credentials: credentials), animated: true)
     }
 
 }

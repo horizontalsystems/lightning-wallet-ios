@@ -136,7 +136,8 @@ class ScanQrView: UIView {
 extension ScanQrView: AVCaptureMetadataOutputObjectsDelegate {
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        captureSession.stopRunning()
+        // TODO: capture session should not be stopper after founding incorrect url string, needs better implementation
+//        captureSession.stopRunning()
 
         if let metadataObject = metadataObjects.first,
            let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,

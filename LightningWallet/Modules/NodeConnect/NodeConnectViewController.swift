@@ -32,7 +32,6 @@ class NodeConnectViewController: ThemeViewController {
         }
         addressLabel.textColor = .themeGray
         addressLabel.font = .subhead1
-        addressLabel.text = "Address"
 
         view.addSubview(connectButton)
         connectButton.snp.makeConstraints { maker in
@@ -48,10 +47,15 @@ class NodeConnectViewController: ThemeViewController {
     }
 
     @objc func onConnect() {
-//        delegate.onPaste()
+        delegate.onTapConnect()
     }
 
 }
 
 extension NodeConnectViewController: INodeConnectView {
+
+    func show(address: String) {
+        addressLabel.text = address
+    }
+
 }

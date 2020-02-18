@@ -222,14 +222,15 @@ class RemoteLnd: ILndNode {
     private func fetchStatus() -> Single<NodeStatus> {
         return getInfo()
             .map { $0.syncedToGraph ? .running : .syncing }
-            .catchError { [weak self] error in
+            .catchError { error in
+                print("GET INFO ERROR: \(error) --- \(error.localizedDescription)")
                 var status: NodeStatus
 
                 if let grpcStatusError = error as? GRPCStatus {
                             if grpcStatusError.code == .unimplemented {
                                 status = .locked
-                            } else if let walletUnlocker = self?.walletUnlocker,
-                                grpcStatusError.code == .unavailable && walletUnlocker.isUnlocking() {
+                            } else if
+                                grpcStatusError.code == .unavailable && self.walletUnlocker.isUnlocking() {
                                 status = .unlocking
                             } else {
                                 status = .error(error: grpcStatusError)
