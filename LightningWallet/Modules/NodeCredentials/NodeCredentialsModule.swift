@@ -1,7 +1,7 @@
-import Foundation
+import LightningKit
 
 protocol INodeCredentialsRouter {
-    func openConnectNode(someData: String)
+    func openConnectNode(credentials: RpcCredentials)
 }
 
 protocol INodeCredentialsView: class {
@@ -18,7 +18,7 @@ protocol INodeCredentialsViewDelegate {
 
 protocol INodeCredentialsInteractor {
     var pasteboard: String? { get }
-    func parse(code: String?) throws -> String
+    func credentials(urlString: String) -> RpcCredentials?
 }
 
 protocol INodeCredentialsInteractorDelegate: class {

@@ -63,7 +63,12 @@ class NodeCredentialsViewController: ThemeViewController {
 
         pasteButton.setTitle("Paste", for: .normal)
         pasteButton.addTarget(self, action: #selector(onPaste), for: .touchUpInside)
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // TODO: onLoad() had been called from viewDidLoad(), needs refactoring
         delegate.onLoad()
     }
 

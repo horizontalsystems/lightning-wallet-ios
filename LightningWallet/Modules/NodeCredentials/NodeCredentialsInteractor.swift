@@ -1,4 +1,5 @@
 import UIKit
+import LightningKit
 
 class NodeCredentialsInteractor {
     weak var delegate: INodeCredentialsInteractorDelegate?
@@ -14,12 +15,8 @@ extension NodeCredentialsInteractor: INodeCredentialsInteractor {
         UIPasteboard.general.string
     }
 
-    func parse(code: String?) throws -> String {
-        guard let code = code else {
-            throw NodeCredentialsParsing.emptyData
-        }
-        return code
-//        throw NodeCredentialsParsing.wrongData
+    func credentials(urlString: String) -> RpcCredentials? {
+        RpcCredentials(lndConnectUrlString: urlString)
     }
 
 }

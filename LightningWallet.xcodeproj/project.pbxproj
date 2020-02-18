@@ -364,10 +364,10 @@
 		D3DEAECA23FBD652005462FE /* NodeConnect */ = {
 			isa = PBXGroup;
 			children = (
+				D3DEAECE23FBD652005462FE /* NodeConnectModule.swift */,
+				D3DEAECD23FBD652005462FE /* NodeConnectRouter.swift */,
 				D3DEAECB23FBD652005462FE /* NodeConnectInteractor.swift */,
 				D3DEAECC23FBD652005462FE /* NodeConnectPresenter.swift */,
-				D3DEAECD23FBD652005462FE /* NodeConnectRouter.swift */,
-				D3DEAECE23FBD652005462FE /* NodeConnectModule.swift */,
 				D3DEAECF23FBD652005462FE /* NodeConnectViewController.swift */,
 			);
 			path = NodeConnect;
@@ -378,8 +378,8 @@
 			children = (
 				D3DEAED123FBD652005462FE /* NodeCredentialsModule.swift */,
 				D3DEAED223FBD652005462FE /* NodeCredentialsRouter.swift */,
-				D3DEAED323FBD652005462FE /* NodeCredentialsPresenter.swift */,
 				D3DEAED423FBD652005462FE /* NodeCredentialsInteractor.swift */,
+				D3DEAED323FBD652005462FE /* NodeCredentialsPresenter.swift */,
 				D3DEAED523FBD652005462FE /* NodeCredentialsViewController.swift */,
 			);
 			path = NodeCredentials;
