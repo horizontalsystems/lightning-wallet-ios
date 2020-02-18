@@ -4,6 +4,7 @@ import CurrencyKit
 protocol IMainRouter {
     func openSettings()
     func openTransactions()
+    func openChannels()
 }
 
 protocol IMainView: class {

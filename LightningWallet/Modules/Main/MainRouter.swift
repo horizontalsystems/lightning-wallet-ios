@@ -15,6 +15,10 @@ extension MainRouter: IMainRouter {
         viewController?.present(ThemeNavigationController(rootViewController: TransactionsRouter.module()), animated: true)
     }
 
+    func openChannels() {
+        viewController?.present(ThemeNavigationController(rootViewController: ChannelsRouter.module()), animated: true)
+    }
+
 }
 
 extension MainRouter {

@@ -1,6 +1,8 @@
 "channels" = "Channels";
 "receive" = "Receive";
 "send" = "Send";
+"backup" = "Backup";
+"close" = "Close";
 
 // Welcome
 
@@ -43,6 +45,8 @@
 "settings_security.touch_id" = "Touch ID";
 "settings_security.face_id" = "Face ID";
 "security_settings.delete_alert_button" = "Delete from Phone";
+
+"channels.new_channel" = "New Channel";
 
 // Access Camera
 
