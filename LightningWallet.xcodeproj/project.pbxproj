@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */; };
 		1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */; };
+		1A564134A2FD92B7E701F2CD /* ChannelsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564C3A195D3FEC236F1FE8 /* ChannelsModule.swift */; };
+		1A56435C0BAF49254EC66D56 /* ChannelsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564BF99757F8D9D2058245 /* ChannelsRouter.swift */; };
 		1A5644133D6B175582CABE71 /* MainModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564925F4176E6330B59F29 /* MainModule.swift */; };
 		1A5646B3882025CA7EEFCA70 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564407D57445B9B570FAA1 /* TransactionCell.swift */; };
 		1A5646F0F9724D3A2111CF05 /* TransactionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */; };
@@ -18,6 +20,8 @@
 		1A564A33548A52C44CC4424C /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564EE4D6A6DEC2EC9E7F72 /* TransactionsViewController.swift */; };
 		1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564F92D5FD4DF85F029682 /* MainInteractor.swift */; };
 		1A564BEEA6BBECDEDE8553E4 /* TransactionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564F91907D93E32AE25239 /* TransactionsRouter.swift */; };
+		1A564C6FDE28BE4E1BC92624 /* ChannelsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564B3F703F66A44C402F39 /* ChannelsPresenter.swift */; };
+		1A564D631B791BD8783C679C /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5646241B24EC10CB36A4F5 /* ChannelsViewController.swift */; };
 		58AAA075D1662E5564A6025B /* PermissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */; };
 		58AAA3A9C06B7142C3467E7A /* PinKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAB65C063B54DC2266CFA /* PinKitDelegate.swift */; };
 		58AAA448589681EF01120EF7 /* LockScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAAF9D51AAE55EB7E014C /* LockScreenRouter.swift */; };
@@ -93,8 +97,12 @@
 		1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewItem.swift; sourceTree = "<group>"; };
 		1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsPresenter.swift; sourceTree = "<group>"; };
 		1A564407D57445B9B570FAA1 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		1A5646241B24EC10CB36A4F5 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		1A564624F9A28A5D0FC88A9F /* ValueFormatterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueFormatterFactory.swift; sourceTree = "<group>"; };
 		1A564925F4176E6330B59F29 /* MainModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
+		1A564B3F703F66A44C402F39 /* ChannelsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsPresenter.swift; sourceTree = "<group>"; };
+		1A564BF99757F8D9D2058245 /* ChannelsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsRouter.swift; sourceTree = "<group>"; };
+		1A564C3A195D3FEC236F1FE8 /* ChannelsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsModule.swift; sourceTree = "<group>"; };
 		1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		1A564E72C5C4792F6B7F31EE /* TransactionsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsModule.swift; sourceTree = "<group>"; };
 		1A564EE4D6A6DEC2EC9E7F72 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +224,17 @@
 			path = Transactions;
 			sourceTree = "<group>";
 		};
+		1A564FECD23B04CF4909666C /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				1A564C3A195D3FEC236F1FE8 /* ChannelsModule.swift */,
+				1A564BF99757F8D9D2058245 /* ChannelsRouter.swift */,
+				1A564B3F703F66A44C402F39 /* ChannelsPresenter.swift */,
+				1A5646241B24EC10CB36A4F5 /* ChannelsViewController.swift */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
 		58AAA0D9FBCC0E564DDDB01C /* Security */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +323,7 @@
 				D3F0072023EC235500AB7250 /* Settings */,
 				58AAADC4308B7119C5E36D54 /* LockScreen */,
 				1A564F9557C289528B905A6A /* Transactions */,
+				1A564FECD23B04CF4909666C /* Channels */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -610,6 +630,10 @@
 				1A5646B3882025CA7EEFCA70 /* TransactionCell.swift in Sources */,
 				1A5646F0F9724D3A2111CF05 /* TransactionViewItem.swift in Sources */,
 				1A564928845586EB57FC2E6B /* ValueFormatterFactory.swift in Sources */,
+				1A56435C0BAF49254EC66D56 /* ChannelsRouter.swift in Sources */,
+				1A564D631B791BD8783C679C /* ChannelsViewController.swift in Sources */,
+				1A564134A2FD92B7E701F2CD /* ChannelsModule.swift in Sources */,
+				1A564C6FDE28BE4E1BC92624 /* ChannelsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

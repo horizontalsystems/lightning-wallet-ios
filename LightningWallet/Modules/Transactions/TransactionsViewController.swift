@@ -9,7 +9,7 @@ class TransactionsViewController: ThemeViewController {
     private let sendButton: UIButton = .appYellow
 
     private let mainButton = UIButton()
-    private let transactionsButtonWrapper = GradientView(gradientHeight: .heightButton / 2, fromColor: .clear, toColor: UIColor.themeDark.withAlphaComponent(0.9))
+    private let mainButtonWrapper = GradientView(gradientHeight: .heightButton / 2, fromColor: .clear, toColor: UIColor.themeDark.withAlphaComponent(0.9))
 
     private let tableView = UITableView(frame: .zero, style: .plain)
 
@@ -36,8 +36,8 @@ class TransactionsViewController: ThemeViewController {
         view.addSubview(depositButton)
         view.addSubview(sendButton)
         view.addSubview(tableView)
-        view.addSubview(transactionsButtonWrapper)
-        transactionsButtonWrapper.addSubview(mainButton)
+        view.addSubview(mainButtonWrapper)
+        mainButtonWrapper.addSubview(mainButton)
 
         depositButton.snp.makeConstraints { maker in
             maker.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(CGFloat.margin4x)
@@ -57,13 +57,12 @@ class TransactionsViewController: ThemeViewController {
             maker.leading.trailing.bottom.equalToSuperview()
         }
 
-        transactionsButtonWrapper.snp.makeConstraints { maker in
+        mainButtonWrapper.snp.makeConstraints { maker in
             maker.leading.trailing.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
-
         mainButton.snp.makeConstraints { maker in
-            maker.top.equalTo(transactionsButtonWrapper.snp.top)
+            maker.top.equalTo(mainButtonWrapper.snp.top)
             maker.leading.trailing.equalToSuperview()
             maker.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             maker.height.equalTo(CGFloat.heightButton)
@@ -85,7 +84,6 @@ class TransactionsViewController: ThemeViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.tableFooterView = UIView(frame: .zero)
-        tableView.registerCell(forClass: TransactionCell.self)
         tableView.estimatedRowHeight = 0
         tableView.delaysContentTouches = false
 

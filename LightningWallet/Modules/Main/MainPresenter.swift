@@ -41,7 +41,7 @@ extension MainPresenter: IMainViewDelegate {
     }
 
     func onChannels() {
-        print("onChannels")
+        router.openChannels()
     }
 
     func onSettings() {

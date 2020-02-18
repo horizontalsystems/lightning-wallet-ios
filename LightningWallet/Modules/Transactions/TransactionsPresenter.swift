@@ -1,6 +1,5 @@
 class TransactionsPresenter {
     weak var view: ITransactionsView?
-
     private let router: ITransactionsRouter
 
     private let factory: IValueFormatterFactory
