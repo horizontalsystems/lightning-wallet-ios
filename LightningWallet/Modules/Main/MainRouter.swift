@@ -1,5 +1,6 @@
 import UIKit
 import ThemeKit
+import LightningKit
 
 class MainRouter {
     weak var viewController: UIViewController?
@@ -24,8 +25,13 @@ extension MainRouter: IMainRouter {
 extension MainRouter {
 
     static func module() -> UIViewController {
+        guard let lightningKit = App.shared.lightningKitManager.currentKit else {
+            // TODO: show empty view controller with message
+            fatalError()
+        }
+
         let router = MainRouter()
-        let interactor = MainInteractor(currencyKit: App.shared.currencyKit)
+        let interactor = MainInteractor(lightningKit: lightningKit, currencyKit: App.shared.currencyKit)
         let presenter = MainPresenter(interactor: interactor, router: router, viewFactory: ValueFormatterFactory())
         let viewController = MainViewController(delegate: presenter)
 

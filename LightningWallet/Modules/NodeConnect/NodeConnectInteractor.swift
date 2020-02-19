@@ -6,6 +6,12 @@ class NodeConnectInteractor {
     weak var delegate: INodeConnectInteractorDelegate?
 
     private let disposeBag = DisposeBag()
+    private let walletManager: WalletManager
+
+    init(walletManager: WalletManager) {
+        self.walletManager = walletManager
+    }
+
 }
 
 extension NodeConnectInteractor: INodeConnectInteractor {
@@ -20,6 +26,10 @@ extension NodeConnectInteractor: INodeConnectInteractor {
                     self?.delegate?.didFailToValidateCredentials(error: error)
                 })
                 .disposed(by: disposeBag)
+    }
+
+    func saveWallet(credentials: RpcCredentials) {
+        walletManager.saveAndBootstrapRemoteWallet(credentials: credentials)
     }
 
 }

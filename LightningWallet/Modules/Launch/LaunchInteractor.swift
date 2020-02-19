@@ -4,10 +4,12 @@ import PinKit
 class LaunchInteractor {
     private let keychainKit: IKeychainKit
     private let pinKit: IPinKit
+    private let walletManager: WalletManager
 
-    init(keychainKit: IKeychainKit, pinKit: IPinKit) {
+    init(keychainKit: IKeychainKit, pinKit: IPinKit, walletManager: WalletManager) {
         self.keychainKit = keychainKit
         self.pinKit = pinKit
+        self.walletManager = walletManager
     }
 
 }
@@ -22,8 +24,8 @@ extension LaunchInteractor: ILaunchInteractor {
         pinKit.isPinSet
     }
 
-    var loggedIn: Bool {
-        keychainKit.secureStorage.value(for: "logged_in") ?? false
+    var hasStoredWallet: Bool {
+        walletManager.hasStoredWallet
     }
 
 }

@@ -47,7 +47,6 @@ extension MainSettingsRouter: IMainSettingsRouter {
     }
 
     func showWelcome() {
-        try? App.shared.keychainKit.secureStorage.set(value: false, for: "logged_in")
         UIApplication.shared.keyWindow?.set(newRootController: WelcomeScreenRouter.module())
     }
 
@@ -58,6 +57,7 @@ extension MainSettingsRouter {
     static func module() -> UIViewController {
         let router = MainSettingsRouter()
         let interactor = MainSettingsInteractor(
+                walletManager: App.shared.walletManager,
                 themeManager: ThemeManager.shared,
                 currencyKit: App.shared.currencyKit
         )

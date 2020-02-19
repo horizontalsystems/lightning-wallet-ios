@@ -29,6 +29,7 @@ protocol IMainSettingsInteractor: AnyObject {
     var baseCurrency: Currency { get }
     var lightMode: Bool { get set }
     var appVersion: String { get }
+    func removeStoredWallet()
 }
 
 protocol IMainSettingsInteractorDelegate: class {

@@ -31,7 +31,7 @@ extension NodeConnectPresenter: INodeConnectViewDelegate {
 extension NodeConnectPresenter: INodeConnectInteractorDelegate {
 
     func didValidateCredentials() {
-        // save credentials
+        interactor.saveWallet(credentials: credentials)
         router.showMain()
     }
 

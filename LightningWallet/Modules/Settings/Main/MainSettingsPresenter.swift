@@ -58,6 +58,7 @@ extension MainSettingsPresenter: IMainSettingsViewDelegate {
     }
 
     func didTapLogOut() {
+        interactor.removeStoredWallet()
         router.showWelcome()
     }
 
