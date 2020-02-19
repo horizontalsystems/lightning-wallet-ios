@@ -8,10 +8,12 @@ class MainSettingsInteractor {
 
     weak var delegate: IMainSettingsInteractorDelegate?
 
+    private let walletManager: WalletManager
     private let themeManager: ThemeManager
     private let currencyKit: ICurrencyKit
 
-    init(themeManager: ThemeManager, currencyKit: ICurrencyKit) {
+    init(walletManager: WalletManager, themeManager: ThemeManager, currencyKit: ICurrencyKit) {
+        self.walletManager = walletManager
         self.themeManager = themeManager
         self.currencyKit = currencyKit
 
@@ -55,6 +57,10 @@ extension MainSettingsInteractor: IMainSettingsInteractor {
 
     var appVersion: String {
         "0.1"
+    }
+
+    func removeStoredWallet() {
+        walletManager.removeStoredWallet()
     }
 
 }

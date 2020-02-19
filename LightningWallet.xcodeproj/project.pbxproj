@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11B354E4DC19B8DE6D3CC60C /* LightningKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3526153DCFD79445635FF /* LightningKitManager.swift */; };
+		11B3559BE9692AA8E2CF2E02 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3503363C680E524222463 /* WalletManager.swift */; };
+		11B3572B6548AD2B3CAEBF35 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35D5AD19EEEB6AD76D086 /* WalletStorage.swift */; };
 		11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */; };
+		11B35C1B600F9D1C84621799 /* LightningConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350954D6814C2AF78F05A /* LightningConnection.swift */; };
+		11B35C69E03CA63329DE2B54 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35B7F6D03B2E09A50BDF2 /* Wallet.swift */; };
 		1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */; };
 		1A564134A2FD92B7E701F2CD /* ChannelsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564C3A195D3FEC236F1FE8 /* ChannelsModule.swift */; };
 		1A56435C0BAF49254EC66D56 /* ChannelsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564BF99757F8D9D2058245 /* ChannelsRouter.swift */; };
@@ -93,7 +98,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		11B3503363C680E524222463 /* WalletManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
+		11B350954D6814C2AF78F05A /* LightningConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningConnection.swift; sourceTree = "<group>"; };
 		11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainKitDelegate.swift; sourceTree = "<group>"; };
+		11B3526153DCFD79445635FF /* LightningKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningKitManager.swift; sourceTree = "<group>"; };
+		11B35B7F6D03B2E09A50BDF2 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		11B35D5AD19EEEB6AD76D086 /* WalletStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletStorage.swift; sourceTree = "<group>"; };
 		1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewItem.swift; sourceTree = "<group>"; };
 		1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsPresenter.swift; sourceTree = "<group>"; };
 		1A564407D57445B9B570FAA1 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
@@ -194,6 +204,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11B35700569459CC8760F1D4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11B35B7F6D03B2E09A50BDF2 /* Wallet.swift */,
+				11B350954D6814C2AF78F05A /* LightningConnection.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1210009A400EF1D5DFA68809 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +377,7 @@
 				D3A8077A23E8391A00BD50FB /* Storage */,
 				D3A8077C23E8391A00BD50FB /* Protocols.swift */,
 				D3A8077D23E8391A00BD50FB /* App.swift */,
+				11B35700569459CC8760F1D4 /* Models */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -367,6 +387,7 @@
 			children = (
 				D3A8077B23E8391A00BD50FB /* LocalStorage.swift */,
 				11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */,
+				11B35D5AD19EEEB6AD76D086 /* WalletStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -377,6 +398,8 @@
 				D3A8078623E83BF300BD50FB /* LanguageManager.swift */,
 				D3A8078223E8397B00BD50FB /* AppManager.swift */,
 				58AAAB65C063B54DC2266CFA /* PinKitDelegate.swift */,
+				11B3526153DCFD79445635FF /* LightningKitManager.swift */,
+				11B3503363C680E524222463 /* WalletManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -634,6 +657,11 @@
 				1A564D631B791BD8783C679C /* ChannelsViewController.swift in Sources */,
 				1A564134A2FD92B7E701F2CD /* ChannelsModule.swift in Sources */,
 				1A564C6FDE28BE4E1BC92624 /* ChannelsPresenter.swift in Sources */,
+				11B3572B6548AD2B3CAEBF35 /* WalletStorage.swift in Sources */,
+				11B35C69E03CA63329DE2B54 /* Wallet.swift in Sources */,
+				11B35C1B600F9D1C84621799 /* LightningConnection.swift in Sources */,
+				11B354E4DC19B8DE6D3CC60C /* LightningKitManager.swift in Sources */,
+				11B3559BE9692AA8E2CF2E02 /* WalletManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

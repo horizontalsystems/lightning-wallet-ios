@@ -4,7 +4,7 @@ import StorageKit
 class LaunchRouter {
 
     static func module() -> UIViewController {
-        let interactor: ILaunchInteractor = LaunchInteractor(keychainKit: App.shared.keychainKit, pinKit: App.shared.pinKit)
+        let interactor: ILaunchInteractor = LaunchInteractor(keychainKit: App.shared.keychainKit, pinKit: App.shared.pinKit, walletManager: App.shared.walletManager)
         let presenter: ILaunchPresenter = LaunchPresenter(interactor: interactor)
 
         switch presenter.launchMode {

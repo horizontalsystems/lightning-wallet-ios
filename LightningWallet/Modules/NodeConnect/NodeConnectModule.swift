@@ -15,6 +15,7 @@ protocol INodeConnectViewDelegate {
 
 protocol INodeConnectInteractor {
     func validate(credentials: RpcCredentials)
+    func saveWallet(credentials: RpcCredentials)
 }
 
 protocol INodeConnectInteractorDelegate: AnyObject {

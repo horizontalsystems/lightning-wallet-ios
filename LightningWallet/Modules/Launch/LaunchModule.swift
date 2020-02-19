@@ -1,7 +1,9 @@
+import LightningKit
+
 protocol ILaunchInteractor {
     var passcodeLocked: Bool { get }
     var isPinSet: Bool { get }
-    var loggedIn: Bool { get }
+    var hasStoredWallet: Bool { get }
 }
 
 protocol ILaunchPresenter {

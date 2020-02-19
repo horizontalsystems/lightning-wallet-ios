@@ -1,3 +1,5 @@
+import LightningKit
+
 class LaunchPresenter {
     private let interactor: ILaunchInteractor
 
@@ -14,10 +16,10 @@ extension LaunchPresenter: ILaunchPresenter {
             return .noPasscode
         } else if interactor.isPinSet {
             return .unlock
-        } else if !interactor.loggedIn {
-            return .welcome
-        } else {
+        } else if interactor.hasStoredWallet {
             return .main
+        } else {
+            return .welcome
         }
     }
 

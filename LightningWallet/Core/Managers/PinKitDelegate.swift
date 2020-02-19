@@ -2,7 +2,7 @@ import UIKit
 import PinKit
 
 class PinKitDelegate {
-    var viewController: UIViewController?
+    weak var viewController: UIViewController?
 }
 
 extension PinKitDelegate: IPinKitDelegate {
