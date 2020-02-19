@@ -19,10 +19,12 @@ extension NodeCredentialsRouter {
     static func module() -> UIViewController {
         let router = NodeCredentialsRouter()
         let interactor = NodeCredentialsInteractor()
-        let presenter = NodeCredentialsPresenter(interactor: interactor, router: router)
+        let notificationTimer = NotificationTimer()
+        let presenter = NodeCredentialsPresenter(interactor: interactor, router: router, notificationTimer: notificationTimer)
         let viewController = NodeCredentialsViewController(delegate: presenter)
 
         presenter.view = viewController
+        notificationTimer.delegate = presenter
         router.viewController = viewController
 
         return viewController

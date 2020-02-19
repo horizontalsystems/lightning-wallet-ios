@@ -3,6 +3,7 @@ import AVFoundation
 import UIExtensions
 
 class ScanQrView: UIView {
+    private let scanQueue = DispatchQueue(label: "io.horizontalsystems.lightning.scan_view", qos: .default)
     private static let sideMargin: CGFloat = CGFloat.margin6x
 
     weak var delegate: IScanQrCodeDelegate?
@@ -52,32 +53,34 @@ class ScanQrView: UIView {
     }
 
     private func initialSetup() {
-        do {
-            guard let videoCaptureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
-                failed()
-                return
-            }
-            let videoInput: AVCaptureDeviceInput
+        scanQueue.async { () -> Void in
+            do {
+                guard let videoCaptureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
+                    self.failed()
+                    return
+                }
+                let videoInput: AVCaptureDeviceInput
 
-            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
-            guard captureSession.canAddInput(videoInput) else {
-                failed()
-                return
-            }
-            captureSession.addInput(videoInput)
+                videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
+                guard self.captureSession.canAddInput(videoInput) else {
+                    self.failed()
+                    return
+                }
+                self.captureSession.addInput(videoInput)
 
-            let metadataOutput = AVCaptureMetadataOutput()
-            self.metadataOutput = metadataOutput
-            if (captureSession.canAddOutput(metadataOutput)) {
-                captureSession.addOutput(metadataOutput)
+                let metadataOutput = AVCaptureMetadataOutput()
+                self.metadataOutput = metadataOutput
+                if (self.captureSession.canAddOutput(metadataOutput)) {
+                    self.captureSession.addOutput(metadataOutput)
 
-                metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-                metadataOutput.metadataObjectTypes = [.qr]
-                updateRectOfInterest()
-            } else {
-                failed()
+                    metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+                    metadataOutput.metadataObjectTypes = [.qr]
+                    self.updateRectOfInterest()
+                } else {
+                    self.failed()
+                }
+            } catch {
             }
-        } catch {
         }
     }
 
@@ -104,20 +107,24 @@ class ScanQrView: UIView {
     }
 
     func start() {
-        if let captureSession = captureSession, !captureSession.isRunning {
-            captureSession.startRunning()
-        }
+        scanQueue.async {
+            if let captureSession = self.captureSession, !captureSession.isRunning {
+                DispatchQueue.main.async {
+                    captureSession.startRunning()
+                }
+            }
 
-        if !initiallySetUp {
-            initiallySetUp = true
+            if !self.initiallySetUp {
+                self.initiallySetUp = true
 
-            PermissionsHelper.performWithCameraPermission { [weak self] success in
-                if success {
-                    self?.initialSetup()
-                } else {
-                    self?.showAlert(title: "access_camera.message".localized, actionText: "access_camera.settings".localized) {
-                        if let url = URL(string: UIApplication.openSettingsURLString) {
-                            UIApplication.shared.open(url)
+                PermissionsHelper.performWithCameraPermission { [weak self] success in
+                    if success {
+                        self?.initialSetup()
+                    } else {
+                        self?.showAlert(title: "access_camera.message".localized, actionText: "access_camera.settings".localized) {
+                            if let url = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(url)
+                            }
                         }
                     }
                 }
@@ -136,14 +143,10 @@ class ScanQrView: UIView {
 extension ScanQrView: AVCaptureMetadataOutputObjectsDelegate {
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        // TODO: capture session should not be stopper after founding incorrect url string, needs better implementation
-//        captureSession.stopRunning()
-
         if let metadataObject = metadataObjects.first,
            let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject,
            let stringValue = readableObject.stringValue {
 
-            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             delegate?.didScan(string: stringValue)
         }
     }

@@ -6,7 +6,10 @@ protocol INodeCredentialsRouter {
 
 protocol INodeCredentialsView: class {
     func showDescription()
+    func showEmptyPasteboard()
     func showError()
+    func notifyScan()
+    func stopScan()
 }
 
 protocol INodeCredentialsViewDelegate {
@@ -22,6 +25,14 @@ protocol INodeCredentialsInteractor {
 }
 
 protocol INodeCredentialsInteractorDelegate: class {
+}
+
+protocol INotificationTimer {
+    func start(interval: TimeInterval)
+}
+
+protocol INotificationTimerDelegate: class {
+    func onFire()
 }
 
 enum NodeCredentialsParsing: Error {
