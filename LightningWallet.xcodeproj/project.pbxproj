@@ -37,6 +37,7 @@
 		58AAAA7D317C4D4D18A89743 /* LockScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */; };
 		58AAAAAD09F046AFF9C60AAB /* SecuritySettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */; };
 		58AAABE2600CA0FD6573A38B /* SecuritySettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAB978F51AD0B8C254AEE /* SecuritySettingsInteractor.swift */; };
+		58AAAC96BBB7D680B68FE6CB /* NotificationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAE2EC180C180029C0A3A /* NotificationTimer.swift */; };
 		58AAAE4CD23170E9F413A321 /* SecuritySettingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA9B8C44AB28A278F3DF8 /* SecuritySettingsModule.swift */; };
 		58AAAEC4B2AE87C29BC20A37 /* ScanQrAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAAAF8D09A89F8F88BB61F /* ScanQrAlertView.swift */; };
 		58AAAF9B51F8863C844B8B81 /* LockScreenModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA74FA4E281B7206273AB /* LockScreenModule.swift */; };
@@ -129,6 +130,7 @@
 		58AAAB978F51AD0B8C254AEE /* SecuritySettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsInteractor.swift; sourceTree = "<group>"; };
 		58AAAC0A1B2AE2DA98EE64D0 /* LockScreenPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockScreenPresenter.swift; sourceTree = "<group>"; };
 		58AAAD298F918485CA0EBE70 /* ScanQrView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQrView.swift; sourceTree = "<group>"; };
+		58AAAE2EC180C180029C0A3A /* NotificationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTimer.swift; sourceTree = "<group>"; };
 		58AAAF81437191FA362D0CCF /* SecuritySettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsViewController.swift; sourceTree = "<group>"; };
 		58AAAF898A74705416B6FC39 /* SecuritySettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecuritySettingsRouter.swift; sourceTree = "<group>"; };
 		CB3E0FA35CCCB9EEA7C8943F /* Pods-LightningWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningWallet.release.xcconfig"; path = "Target Support Files/Pods-LightningWallet/Pods-LightningWallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				D3DEAED423FBD652005462FE /* NodeCredentialsInteractor.swift */,
 				D3DEAED323FBD652005462FE /* NodeCredentialsPresenter.swift */,
 				D3DEAED523FBD652005462FE /* NodeCredentialsViewController.swift */,
+				58AAAE2EC180C180029C0A3A /* NotificationTimer.swift */,
 			);
 			path = NodeCredentials;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				11B35C1B600F9D1C84621799 /* LightningConnection.swift in Sources */,
 				11B354E4DC19B8DE6D3CC60C /* LightningKitManager.swift in Sources */,
 				11B3559BE9692AA8E2CF2E02 /* WalletManager.swift in Sources */,
+				58AAAC96BBB7D680B68FE6CB /* NotificationTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,8 @@ target 'LightningWallet' do
 
   pod 'UIExtensions.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
   # pod 'UIExtensions.swift', path: '../gui-kit/'
+  pod 'HUD.swift', git: 'https://github.com/horizontalsystems/gui-kit/'
+  # pod 'HUD.swift', path: '../gui-kit/'
   pod 'ThemeKit.swift', git: 'https://github.com/horizontalsystems/component-kit-ios/'
   # pod 'ThemeKit.swift', path: '../component-kit-ios/'
   pod 'LanguageKit.swift', git: 'https://github.com/horizontalsystems/component-kit-ios/'
