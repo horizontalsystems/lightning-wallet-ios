@@ -75,7 +75,9 @@ class ScanQrView: UIView {
 
                     metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
                     metadataOutput.metadataObjectTypes = [.qr]
-                    self.updateRectOfInterest()
+                    DispatchQueue.main.async {
+                        self.updateRectOfInterest()
+                    }
                 } else {
                     self.failed()
                 }

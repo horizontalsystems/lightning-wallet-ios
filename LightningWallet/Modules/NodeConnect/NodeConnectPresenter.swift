@@ -1,4 +1,5 @@
 import LightningKit
+import RxSwift
 
 class NodeConnectPresenter {
     weak var view: INodeConnectView?
@@ -23,6 +24,7 @@ extension NodeConnectPresenter: INodeConnectViewDelegate {
     }
 
     func onTapConnect() {
+        view?.showConnecting()
         interactor.validate(credentials: credentials)
     }
 
@@ -31,12 +33,14 @@ extension NodeConnectPresenter: INodeConnectViewDelegate {
 extension NodeConnectPresenter: INodeConnectInteractorDelegate {
 
     func didValidateCredentials() {
+        view?.hideConnecting()
+
         interactor.saveWallet(credentials: credentials)
         router.showMain()
     }
 
     func didFailToValidateCredentials(error: Error) {
-        print("DID FAIL TO VALIDATE: \(error)")
+        view?.showError(error: error)
     }
 
 }
