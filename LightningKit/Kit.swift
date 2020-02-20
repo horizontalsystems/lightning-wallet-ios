@@ -17,6 +17,24 @@ public class Kit {
     public var channelsObservable: Observable<Lnrpc_ChannelEventUpdate> {
         retryWhenStatusIsSyncingOrRunning(lndNode.channelsObservable())
     }
+    public var transactionsObservable: Observable<Lnrpc_Transaction> {
+        retryWhenStatusIsSyncingOrRunning(lndNode.transactionsObservable())
+    }
+    public var walletBalanceObservable: Observable<Lnrpc_WalletBalanceResponse> {
+        transactionsObservable.flatMap { [weak self] _ in
+            self?.getWalletBalance().asObservable() ?? Observable.empty()
+        }
+    }
+    public var channelBalanceObservable: Observable<Lnrpc_ChannelBalanceResponse> {
+        Observable
+            .merge([
+                paymentsObservable,
+                invoicesObservable.filter { $0.state == .settled }.map { _ in Void() }
+            ])
+            .flatMap { [weak self] _ in
+                self?.getChannelBalance().asObservable() ?? Observable.empty()
+            }
+    }
 
     private let paymentsUpdatedSubject = PublishSubject<Void>()
     
