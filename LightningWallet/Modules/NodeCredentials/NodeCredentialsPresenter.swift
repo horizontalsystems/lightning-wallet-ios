@@ -33,6 +33,7 @@ class NodeCredentialsPresenter {
         } else {
             view?.showError()
 
+            lastScannedCode = string
             notificationTimer.start(interval: NodeCredentialsPresenter.validationInterval)
         }
     }
