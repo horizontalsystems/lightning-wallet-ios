@@ -33,7 +33,6 @@ class MainPresenter {
 extension MainPresenter: IMainViewDelegate {
 
     func onLoad() {
-        view?.showConnectingStatus() // todo: remove this by getting status via single when implemented in kit
         interactor.subscribeToStatus()
 
         interactor.fetchWalletBalance()
