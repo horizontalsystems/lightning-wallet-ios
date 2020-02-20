@@ -34,7 +34,7 @@ extension MainInteractor: IMainInteractor {
     }
 
     func fetchWalletBalance() {
-        lightningKit.getWalletBalance()
+        lightningKit.walletBalanceSingle
                 .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
                 .observeOn(MainScheduler.instance)
                 .subscribe(onSuccess: { [weak self] balance in
@@ -44,7 +44,7 @@ extension MainInteractor: IMainInteractor {
     }
 
     func fetchChannelBalance() {
-        lightningKit.getChannelBalance()
+        lightningKit.channelBalanceSingle
                 .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
                 .observeOn(MainScheduler.instance)
                 .subscribe(onSuccess: { [weak self] balance in

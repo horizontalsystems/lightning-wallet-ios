@@ -9,12 +9,18 @@ class VoidResponseCallback: NSObject, LndmobileCallbackProtocol {
     }
     
     func onError(_ error: Error?) {
+<<<<<<< HEAD
 //        print("VoidResponseCallback error :\(error)")
+=======
+>>>>>>> Rename(or make parameter) methods to comply code convention
         emitter(.error(error ?? LndMobileCallbackError.unknownError))
     }
     
     func onResponse(_ response: Data?) {
+<<<<<<< HEAD
 //        print("VoidResponseCallback response :\(response)")
+=======
+>>>>>>> Rename(or make parameter) methods to comply code convention
         emitter(.success(Void()))
     }
 }
