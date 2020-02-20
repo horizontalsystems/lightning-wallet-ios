@@ -4,25 +4,26 @@ import RxSwift
 
 public class Kit {
     private let lndNode: ILndNode
-    
+    private let paymentsUpdatedSubject = PublishSubject<Void>()
+
     public var statusObservable: Observable<NodeStatus> {
         lndNode.statusObservable
+    }
+    public var invoicesObservable: Observable<Lnrpc_Invoice> {
+        retryWhenStatusIsSyncingOrRunning(lndNode.invoicesObservable)
     }
     public var paymentsObservable: Observable<Void> {
         paymentsUpdatedSubject.asObservable()
     }
-    public var invoicesObservable: Observable<Lnrpc_Invoice> {
-        retryWhenStatusIsSyncingOrRunning(lndNode.invoicesObservable())
-    }
     public var channelsObservable: Observable<Lnrpc_ChannelEventUpdate> {
-        retryWhenStatusIsSyncingOrRunning(lndNode.channelsObservable())
+        retryWhenStatusIsSyncingOrRunning(lndNode.channelsObservable)
     }
     public var transactionsObservable: Observable<Lnrpc_Transaction> {
-        retryWhenStatusIsSyncingOrRunning(lndNode.transactionsObservable())
+        retryWhenStatusIsSyncingOrRunning(lndNode.transactionsObservable)
     }
     public var walletBalanceObservable: Observable<Lnrpc_WalletBalanceResponse> {
         transactionsObservable.flatMap { [weak self] _ in
-            self?.getWalletBalance().asObservable() ?? Observable.empty()
+            self?.walletBalanceSingle.asObservable() ?? Observable.empty()
         }
     }
     public var channelBalanceObservable: Observable<Lnrpc_ChannelBalanceResponse> {
@@ -32,46 +33,48 @@ public class Kit {
                 invoicesObservable.filter { $0.state == .settled }.map { _ in Void() }
             ])
             .flatMap { [weak self] _ in
-                self?.getChannelBalance().asObservable() ?? Observable.empty()
+                self?.channelBalanceSingle.asObservable() ?? Observable.empty()
             }
     }
-
-    private let paymentsUpdatedSubject = PublishSubject<Void>()
     
     fileprivate init(lndNode: ILndNode) {
         self.lndNode = lndNode
     }
     
-    public func getWalletBalance() -> Single<Lnrpc_WalletBalanceResponse> {
-        lndNode.getWalletBalance()
+    public var walletBalanceSingle: Single<Lnrpc_WalletBalanceResponse> {
+        lndNode.walletBalanceSingle
     }
 
-    public func getChannelBalance() -> Single<Lnrpc_ChannelBalanceResponse> {
-        lndNode.getChannelBalance()
+    public var channelBalanceSingle: Single<Lnrpc_ChannelBalanceResponse> {
+        lndNode.channelBalanceSingle
     }
 
-    public func getOnChainAddress() -> Single<Lnrpc_NewAddressResponse> {
-        lndNode.getOnChainAddress()
+    public var onChainAddressSingle: Single<Lnrpc_NewAddressResponse> {
+        lndNode.onChainAddressSingle
     }
 
-    public func listChannels() -> Single<Lnrpc_ListChannelsResponse> {
-        lndNode.listChannels()
+    public var channelsSingle: Single<Lnrpc_ListChannelsResponse> {
+        lndNode.channelsSingle
     }
 
-    public func listClosedChannels() -> Single<Lnrpc_ClosedChannelsResponse> {
-        lndNode.listClosedChannels()
+    public var closedChannelsSingle: Single<Lnrpc_ClosedChannelsResponse> {
+        lndNode.closedChannelsSingle
     }
 
-    public func listPendingChannels() -> Single<Lnrpc_PendingChannelsResponse> {
-        lndNode.listPendingChannels()
+    public var pendingChannelsSingle: Single<Lnrpc_PendingChannelsResponse> {
+        lndNode.pendingChannelsSingle
+    }
+    
+    public var paymentsSingle: Single<Lnrpc_ListPaymentsResponse> {
+        lndNode.paymentsSingle
     }
 
-    public func decodePayReq(req: String) -> Single<Lnrpc_PayReq> {
-        lndNode.decodePayReq(req: req)
+    public func invoicesSingle(pending_only: Bool = false, offset: UInt64 = 0, limit: UInt64 = 1000, reversed: Bool = false) -> Single<Lnrpc_ListInvoiceResponse> {
+        lndNode.invoicesSingle(pendingOnly: pending_only, offset: offset, limit: limit, reversed: reversed)
     }
-
-    public func payInvoice(invoice: String) -> Single<Lnrpc_SendResponse> {
-        return lndNode.payInvoice(invoice: invoice)
+    
+    public func paySingle(invoice: String) -> Single<Lnrpc_SendResponse> {
+        return lndNode.paySingle(invoice: invoice)
             .do(onSuccess: { [weak self] in
                 if $0.paymentError.isEmpty {
                     self?.paymentsUpdatedSubject.onNext(Void())
@@ -79,24 +82,20 @@ public class Kit {
             })
     }
 
-    public func addInvoice(amount: Int64, memo: String) -> Single<Lnrpc_AddInvoiceResponse> {
-        lndNode.addInvoice(amount: amount, memo: memo)
+    public func addInvoiceSingle(amount: Int64, memo: String) -> Single<Lnrpc_AddInvoiceResponse> {
+        lndNode.addInvoiceSingle(amount: amount, memo: memo)
     }
 
-    public func listPayments() -> Single<Lnrpc_ListPaymentsResponse> {
-        lndNode.listPayments()
+    public func unlockWalletSingle(password: Data) -> Single<Void> {
+        lndNode.unlockWalletSingle(password: password)
+    }
+    
+    public func decodeSingle(paymentRequest: String) -> Single<Lnrpc_PayReq> {
+        lndNode.decodeSingle(paymentRequest: paymentRequest)
     }
 
-    public func listInvoices(pending_only: Bool = false, offset: UInt64 = 0, limit: UInt64 = 1000, reversed: Bool = false) -> Single<Lnrpc_ListInvoiceResponse> {
-        lndNode.listInvoices(pendingOnly: pending_only, offset: offset, limit: limit, reversed: reversed)
-    }
-
-    public func unlockWallet(password: Data) -> Single<Void> {
-        lndNode.unlockWallet(password: password)
-    }
-
-    public func openChannel(nodePubKey: Data, amount: Int64, nodeAddress: String) -> Observable<Lnrpc_OpenStatusUpdate> {
-        lndNode.connect(nodeAddress: nodeAddress, nodePubKey: nodePubKey.hex)
+    public func openChannelSingle(nodePubKey: Data, amount: Int64, nodeAddress: String) -> Observable<Lnrpc_OpenStatusUpdate> {
+        lndNode.connectSingle(nodeAddress: nodeAddress, nodePubKey: nodePubKey.hex)
             .map { _ in Void() }
             .catchError { error -> Single<Void> in
                 if let grpcStatus = error as? GRPC.GRPCStatus, let message = grpcStatus.message,
@@ -112,12 +111,12 @@ public class Kit {
                     return Observable.empty()
                 }
                 
-                return kit.lndNode.openChannel(nodePubKey: nodePubKey, amount: amount)
+                return kit.lndNode.openChannelSingle(nodePubKey: nodePubKey, amount: amount)
             }
     }
 
-    public func closeChannel(channelPoint: String, forceClose: Bool) throws -> Observable<Lnrpc_CloseStatusUpdate> {
-        try lndNode.closeChannel(channelPoint: channelPoint, forceClose: forceClose)
+    public func closeChannelSingle(channelPoint: String, forceClose: Bool) throws -> Observable<Lnrpc_CloseStatusUpdate> {
+        try lndNode.closeChannelSingle(channelPoint: channelPoint, forceClose: forceClose)
     }
 
     private func retryWhenStatusIsSyncingOrRunning<T>(_ observable: Observable<T>) -> Observable<T> {
