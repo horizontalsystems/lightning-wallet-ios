@@ -8,7 +8,7 @@ class LocalLnd: ILndNode {
     private let credentials: LocalNodeCredentials
     private let disposeBag = DisposeBag()
     
-    private let statusSubject = PublishSubject<NodeStatus>()
+    private let statusSubject = BehaviorSubject<NodeStatus>(value: .connecting)
     var statusObservable: Observable<NodeStatus> { statusSubject.asObservable() }
     private(set) var status: NodeStatus = .connecting {
         didSet {
@@ -89,6 +89,10 @@ class LocalLnd: ILndNode {
     }
     
     func channelsObservable() -> Observable<Lnrpc_ChannelEventUpdate> {
+        Observable.error(WalletUnlocker.UnlockingException())
+    }
+
+    func transactionsObservable() -> Observable<Lnrpc_Transaction> {
         Observable.error(WalletUnlocker.UnlockingException())
     }
     

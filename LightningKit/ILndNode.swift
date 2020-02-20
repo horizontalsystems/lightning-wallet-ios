@@ -14,6 +14,7 @@ protocol ILndNode {
     func listInvoices(pendingOnly: Bool, offset: UInt64, limit: UInt64, reversed: Bool) -> Single<Lnrpc_ListInvoiceResponse>
     func invoicesObservable() -> Observable<Lnrpc_Invoice>
     func channelsObservable() -> Observable<Lnrpc_ChannelEventUpdate>
+    func transactionsObservable() -> Observable<Lnrpc_Transaction>
 
     func payInvoice(invoice: String) -> Single<Lnrpc_SendResponse>
     func addInvoice(amount: Int64, memo: String) -> Single<Lnrpc_AddInvoiceResponse>

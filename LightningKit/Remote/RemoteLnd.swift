@@ -15,7 +15,7 @@ class RemoteLnd: ILndNode {
     private let walletUnlocker: WalletUnlocker
     private let disposeBag = DisposeBag()
     
-    private let statusSubject = PublishSubject<NodeStatus>()
+    private let statusSubject = BehaviorSubject<NodeStatus>(value: .connecting)
     var statusObservable: Observable<NodeStatus> { statusSubject.asObservable() }
     private(set) var status: NodeStatus = .connecting {
         didSet {
@@ -156,6 +156,14 @@ class RemoteLnd: ILndNode {
         }
     }
 
+    func transactionsObservable() -> Observable<Lnrpc_Transaction> {
+        connection.serverStreamCall() { client, handler -> ServerStreamingCall<Lnrpc_GetTransactionsRequest, Lnrpc_Transaction> in
+            let request = Lnrpc_GetTransactionsRequest()
+            
+            return client.subscribeTransactions(request, handler: handler)
+        }
+    }
+    
     func openChannel(nodePubKey: Data, amount: Int64) -> Observable<Lnrpc_OpenStatusUpdate> {
         connection.serverStreamCall() { client, handler -> ServerStreamingCall<Lnrpc_OpenChannelRequest, Lnrpc_OpenStatusUpdate> in
             var request = Lnrpc_OpenChannelRequest()
