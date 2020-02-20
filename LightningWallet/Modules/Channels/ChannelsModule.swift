@@ -9,4 +9,6 @@ protocol IChannelsViewDelegate {
     func onLoad()
     func onClose()
     func onNewChannel()
+    func onSelectOpen()
+    func onSelectClosed()
 }

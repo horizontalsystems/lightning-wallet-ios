@@ -22,4 +22,12 @@ extension ChannelsPresenter: IChannelsViewDelegate {
         print("onNewChannel")
     }
 
+    func onSelectOpen() {
+        print("onSelectOpen")
+    }
+
+    func onSelectClosed() {
+        print("onSelectClosed")
+    }
+
 }

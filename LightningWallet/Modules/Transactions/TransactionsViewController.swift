@@ -9,7 +9,7 @@ class TransactionsViewController: ThemeViewController {
     private let sendButton: UIButton = .appYellow
 
     private let mainButton = UIButton()
-    private let mainButtonWrapper = GradientView(gradientHeight: .heightButton / 2, fromColor: .clear, toColor: UIColor.themeDark.withAlphaComponent(0.9))
+    private let mainButtonWrapper = GradientView(gradientHeight: .heightButton / 2, fromColor: UIColor.themeCassandra.withAlphaComponent(0), toColor: UIColor.themeCassandra.withAlphaComponent(0.9))
 
     private let tableView = UITableView(frame: .zero, style: .plain)
 

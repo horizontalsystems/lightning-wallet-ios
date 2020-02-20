@@ -3,6 +3,8 @@
 "send" = "Send";
 "backup" = "Backup";
 "close" = "Close";
+"open" = "Open";
+"closed" = "Closed";
 
 // Welcome
 
