@@ -32,6 +32,8 @@ protocol IMainInteractor {
     func subscribeToStatus()
     func fetchWalletBalance()
     func fetchChannelBalance()
+    func subscribeToWalletBalance()
+    func subscribeToChannelBalance()
 }
 
 protocol IMainInteractorDelegate: AnyObject {

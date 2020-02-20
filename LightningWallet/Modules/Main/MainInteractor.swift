@@ -53,4 +53,24 @@ extension MainInteractor: IMainInteractor {
                 .disposed(by: disposeBag)
     }
 
+    func subscribeToWalletBalance() {
+        lightningKit.walletBalanceObservable
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { [weak self] balance in
+                    self?.delegate?.didUpdate(walletBalance: Int(balance.totalBalance))
+                })
+                .disposed(by: disposeBag)
+    }
+
+    func subscribeToChannelBalance() {
+        lightningKit.channelBalanceObservable
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { [weak self] balance in
+                    self?.delegate?.didUpdate(channelBalance: Int(balance.balance))
+                })
+                .disposed(by: disposeBag)
+    }
+
 }
