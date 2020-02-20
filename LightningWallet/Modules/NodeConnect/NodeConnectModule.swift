@@ -6,6 +6,9 @@ protocol INodeConnectRouter {
 
 protocol INodeConnectView: class {
     func show(address: String)
+    func showConnecting()
+    func hideConnecting()
+    func showError(error: Error)
 }
 
 protocol INodeConnectViewDelegate {
