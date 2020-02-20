@@ -40,10 +40,12 @@ class MainViewController: ThemeViewController {
 
         view.addSubview(syncLabel)
         syncLabel.snp.makeConstraints { maker in
-            maker.centerX.equalToSuperview()
+            maker.leading.trailing.equalToSuperview().inset(CGFloat.margin4x)
             maker.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(CGFloat.margin3x)
         }
 
+        syncLabel.numberOfLines = 0
+        syncLabel.textAlignment = .center
         syncLabel.font = .subhead2
         syncLabel.textColor = .themeLeah
 
@@ -149,33 +151,27 @@ class MainViewController: ThemeViewController {
 
 extension MainViewController: IMainView {
 
-    func set(state: MainState) {
-        switch state {
-        case .sync:
-            syncLabel.isHidden = false
-
-            balanceTitleLabel.textColor = .themeGray50
-            coinLabel.textColor = .themeGray50
-            currencyLabel.textColor = .themeGray50
-        case .done:
-            syncLabel.isHidden = true
-
-            balanceTitleLabel.textColor = .themeLeah
-            coinLabel.textColor = .themeOz
-            currencyLabel.textColor = .themeGray
-        }
+    func showConnectingStatus() {
+        syncLabel.text = "Connecting..."
+        syncLabel.isHidden = false
     }
 
-    func set(progress: Double) {
-        syncLabel.text = "main_controller.sync_text".localized("\(Int(progress * 100))")
+    func showSyncingStatus() {
+        syncLabel.text = "Synchronizing..."
+        syncLabel.isHidden = false
     }
 
-    func set(coinBalance: String?) {
-        coinLabel.text = coinBalance
+    func showErrorStatus(error: Error) {
+        syncLabel.text = error.localizedDescription
+        syncLabel.isHidden = false
     }
 
-    func set(fiatBalance: String?) {
-        currencyLabel.text = fiatBalance
+    func hideStatus() {
+        syncLabel.isHidden = true
+    }
+
+    func show(totalBalance: Int) {
+        coinLabel.text = "\(totalBalance) sat"
     }
 
 }
