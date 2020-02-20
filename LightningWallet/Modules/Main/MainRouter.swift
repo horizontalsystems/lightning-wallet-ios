@@ -36,6 +36,7 @@ extension MainRouter {
         let viewController = MainViewController(delegate: presenter)
 
         presenter.view = viewController
+        interactor.delegate = presenter
         router.viewController = viewController
 
         App.shared.pinKitDelegate.viewController = viewController

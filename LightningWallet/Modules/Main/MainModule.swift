@@ -1,5 +1,6 @@
 import Foundation
 import CurrencyKit
+import LightningKit
 
 protocol IMainRouter {
     func openSettings()
@@ -8,10 +9,12 @@ protocol IMainRouter {
 }
 
 protocol IMainView: class {
-    func set(state: MainState)
-    func set(progress: Double)
-    func set(coinBalance: String?)
-    func set(fiatBalance: String?)
+    func showConnectingStatus()
+    func showSyncingStatus()
+    func showErrorStatus(error: Error)
+    func hideStatus()
+
+    func show(totalBalance: Int)
 }
 
 protocol IMainViewDelegate {
@@ -25,6 +28,16 @@ protocol IMainViewDelegate {
 
 protocol IMainInteractor {
     var currency: Currency { get }
+
+    func subscribeToStatus()
+    func fetchWalletBalance()
+    func fetchChannelBalance()
+}
+
+protocol IMainInteractorDelegate: AnyObject {
+    func didUpdate(status: NodeStatus)
+    func didUpdate(walletBalance: Int)
+    func didUpdate(channelBalance: Int)
 }
 
 enum MainState {
