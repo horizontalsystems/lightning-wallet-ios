@@ -22,9 +22,11 @@
 		1A5646FD23C9601541DF4EA8 /* TransactionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */; };
 		1A56483DEB8342F6F46BB06D /* TransactionsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564E72C5C4792F6B7F31EE /* TransactionsModule.swift */; };
 		1A564928845586EB57FC2E6B /* ValueFormatterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564624F9A28A5D0FC88A9F /* ValueFormatterFactory.swift */; };
+		1A56493B30F05EFE23CA3D69 /* ChannelsFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564D065EB1ECC873C00873 /* ChannelsFilterCell.swift */; };
 		1A564A33548A52C44CC4424C /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564EE4D6A6DEC2EC9E7F72 /* TransactionsViewController.swift */; };
 		1A564AC058CB854697D842B2 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564F92D5FD4DF85F029682 /* MainInteractor.swift */; };
 		1A564BEEA6BBECDEDE8553E4 /* TransactionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564F91907D93E32AE25239 /* TransactionsRouter.swift */; };
+		1A564C10B62D7D29F8005CC5 /* ChannelsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5647E5328329AA68E1BEF5 /* ChannelsHeaderView.swift */; };
 		1A564C6FDE28BE4E1BC92624 /* ChannelsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564B3F703F66A44C402F39 /* ChannelsPresenter.swift */; };
 		1A564D631B791BD8783C679C /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5646241B24EC10CB36A4F5 /* ChannelsViewController.swift */; };
 		58AAA075D1662E5564A6025B /* PermissionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AAA6606CE7AA1357BCF502 /* PermissionHelper.swift */; };
@@ -110,11 +112,13 @@
 		1A564407D57445B9B570FAA1 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		1A5646241B24EC10CB36A4F5 /* ChannelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		1A564624F9A28A5D0FC88A9F /* ValueFormatterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueFormatterFactory.swift; sourceTree = "<group>"; };
+		1A5647E5328329AA68E1BEF5 /* ChannelsHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsHeaderView.swift; sourceTree = "<group>"; };
 		1A564925F4176E6330B59F29 /* MainModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModule.swift; sourceTree = "<group>"; };
 		1A564B3F703F66A44C402F39 /* ChannelsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsPresenter.swift; sourceTree = "<group>"; };
 		1A564BF99757F8D9D2058245 /* ChannelsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsRouter.swift; sourceTree = "<group>"; };
 		1A564C3A195D3FEC236F1FE8 /* ChannelsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsModule.swift; sourceTree = "<group>"; };
 		1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		1A564D065EB1ECC873C00873 /* ChannelsFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsFilterCell.swift; sourceTree = "<group>"; };
 		1A564E72C5C4792F6B7F31EE /* TransactionsModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsModule.swift; sourceTree = "<group>"; };
 		1A564EE4D6A6DEC2EC9E7F72 /* TransactionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
 		1A564F91907D93E32AE25239 /* TransactionsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsRouter.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 				1A564BF99757F8D9D2058245 /* ChannelsRouter.swift */,
 				1A564B3F703F66A44C402F39 /* ChannelsPresenter.swift */,
 				1A5646241B24EC10CB36A4F5 /* ChannelsViewController.swift */,
+				1A5647E5328329AA68E1BEF5 /* ChannelsHeaderView.swift */,
+				1A564D065EB1ECC873C00873 /* ChannelsFilterCell.swift */,
 			);
 			path = Channels;
 			sourceTree = "<group>";
@@ -666,6 +672,8 @@
 				11B354E4DC19B8DE6D3CC60C /* LightningKitManager.swift in Sources */,
 				11B3559BE9692AA8E2CF2E02 /* WalletManager.swift in Sources */,
 				58AAAC96BBB7D680B68FE6CB /* NotificationTimer.swift in Sources */,
+				1A564C10B62D7D29F8005CC5 /* ChannelsHeaderView.swift in Sources */,
+				1A56493B30F05EFE23CA3D69 /* ChannelsFilterCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

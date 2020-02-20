@@ -6,15 +6,21 @@ import SnapKit
 class ChannelsViewController: ThemeViewController {
     private let delegate: IChannelsViewDelegate
 
-    private let tableView = UITableView(frame: .zero, style: .plain)
+    private var channelsHeaderView: ChannelsHeaderView?
+    private let tableView = UITableView()
 
     private let newChannelButton: UIButton = .appGray
-    private let newChannelButtonWrapper = GradientView(gradientHeight: .margin4x, fromColor: .clear, toColor: UIColor.themeDark.withAlphaComponent(0.9))
+    private let newChannelButtonWrapper = GradientView(gradientHeight: .margin4x, fromColor: UIColor.themeCassandra.withAlphaComponent(0), toColor: UIColor.themeCassandra.withAlphaComponent(0.9))
 
     init(delegate: IChannelsViewDelegate) {
         self.delegate = delegate
 
         super.init()
+
+        channelsHeaderView = ChannelsHeaderView(filters: [
+            ("open".localized.uppercased(), onSelectOpen), 
+            ("closed".localized.uppercased(), onSelectClosed)
+        ])
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -76,6 +82,14 @@ class ChannelsViewController: ThemeViewController {
         delegate.onNewChannel()
     }
 
+    func onSelectOpen() {
+        delegate.onSelectOpen()
+    }
+
+    func onSelectClosed() {
+        delegate.onSelectClosed()
+    }
+
 }
 
 extension ChannelsViewController: IChannelsView {
@@ -90,6 +104,14 @@ extension ChannelsViewController: UITableViewDataSource, UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         UITableViewCell()
+    }
+
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        channelsHeaderView
+    }
+
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        ChannelsHeaderView.headerHeight
     }
 
 }
