@@ -21,7 +21,7 @@ class ChannelCell: UITableViewCell {
     }
 
     func bind(viewItem: ChannelViewItem) {
-        label.text = "Remote PubKey: \(viewItem.remotePubKey)\nLocalBalance: \(viewItem.localBalance)\nRemote Balance: \(viewItem.remoteBalance)"
+        label.text = "State: \(viewItem.state)\nRemote PubKey: \(viewItem.remotePubKey)\nLocalBalance: \(viewItem.localBalance)\nRemote Balance: \(viewItem.remoteBalance)"
     }
 
 }
