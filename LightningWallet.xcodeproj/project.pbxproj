@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		11B354E4DC19B8DE6D3CC60C /* LightningKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3526153DCFD79445635FF /* LightningKitManager.swift */; };
 		11B3559BE9692AA8E2CF2E02 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3503363C680E524222463 /* WalletManager.swift */; };
+		11B3567690C34D551ED17F3E /* ChannelsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3569E8DB04902BB82E20D /* ChannelsInteractor.swift */; };
 		11B3572B6548AD2B3CAEBF35 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35D5AD19EEEB6AD76D086 /* WalletStorage.swift */; };
 		11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */; };
 		11B35C1B600F9D1C84621799 /* LightningConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350954D6814C2AF78F05A /* LightningConnection.swift */; };
 		11B35C69E03CA63329DE2B54 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35B7F6D03B2E09A50BDF2 /* Wallet.swift */; };
+		11B35D787EBE3BE258AA71CC /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35F643A41FEAF8BE7349A /* ChannelCell.swift */; };
 		1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */; };
 		1A564134A2FD92B7E701F2CD /* ChannelsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564C3A195D3FEC236F1FE8 /* ChannelsModule.swift */; };
 		1A56435C0BAF49254EC66D56 /* ChannelsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564BF99757F8D9D2058245 /* ChannelsRouter.swift */; };
@@ -105,8 +107,10 @@
 		11B350954D6814C2AF78F05A /* LightningConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningConnection.swift; sourceTree = "<group>"; };
 		11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainKitDelegate.swift; sourceTree = "<group>"; };
 		11B3526153DCFD79445635FF /* LightningKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningKitManager.swift; sourceTree = "<group>"; };
+		11B3569E8DB04902BB82E20D /* ChannelsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsInteractor.swift; sourceTree = "<group>"; };
 		11B35B7F6D03B2E09A50BDF2 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		11B35D5AD19EEEB6AD76D086 /* WalletStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletStorage.swift; sourceTree = "<group>"; };
+		11B35F643A41FEAF8BE7349A /* ChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
 		1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewItem.swift; sourceTree = "<group>"; };
 		1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsPresenter.swift; sourceTree = "<group>"; };
 		1A564407D57445B9B570FAA1 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
@@ -256,10 +260,12 @@
 			children = (
 				1A564C3A195D3FEC236F1FE8 /* ChannelsModule.swift */,
 				1A564BF99757F8D9D2058245 /* ChannelsRouter.swift */,
+				11B3569E8DB04902BB82E20D /* ChannelsInteractor.swift */,
 				1A564B3F703F66A44C402F39 /* ChannelsPresenter.swift */,
 				1A5646241B24EC10CB36A4F5 /* ChannelsViewController.swift */,
 				1A5647E5328329AA68E1BEF5 /* ChannelsHeaderView.swift */,
 				1A564D065EB1ECC873C00873 /* ChannelsFilterCell.swift */,
+				11B35F643A41FEAF8BE7349A /* ChannelCell.swift */,
 			);
 			path = Channels;
 			sourceTree = "<group>";
@@ -666,6 +672,8 @@
 				58AAAE4D2FDB178A00ED6343 /* PermissionHelper.swift in Sources */,
 				58AAA346FABAA2811195C43F /* ScanQrView.swift in Sources */,
 				58AAA8F9415503EEE4E5554D /* TransparentNavigationBar.swift in Sources */,
+				11B3567690C34D551ED17F3E /* ChannelsInteractor.swift in Sources */,
+				11B35D787EBE3BE258AA71CC /* ChannelCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
