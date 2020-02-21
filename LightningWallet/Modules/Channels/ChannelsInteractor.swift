@@ -26,4 +26,14 @@ extension ChannelsInteractor: IChannelsInteractor {
                 .disposed(by: disposeBag)
     }
 
+    func fetchPendingChannels() {
+        lightningKit.pendingChannelsSingle
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
+                .observeOn(MainScheduler.instance)
+                .subscribe(onSuccess: { [weak self] response in
+                    self?.delegate?.didUpdatePendingChannels(response: response)
+                })
+                .disposed(by: disposeBag)
+    }
+
 }
