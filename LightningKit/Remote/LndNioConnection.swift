@@ -2,12 +2,11 @@ import GRPC
 import NIO
 import NIOSSL
 import NIOHPACK
-import Logging
 import RxSwift
 
 class LndNioConnection {
-    private var available: Bool? = nil
-
+    private var connectivityManager: ConnectivityManager
+    
     deinit {
         group.shutdownGracefully({_ in})
     }
@@ -29,12 +28,12 @@ class LndNioConnection {
             customMetadata: HPACKHeaders([("macaroon", rpcCredentials.macaroon)])
         )
 
-        let connectivityStateManager = ConnectivityStateManager()
+        connectivityManager = ConnectivityManager()
 
         let config = ClientConnection.Configuration(
             target: .hostAndPort(rpcCredentials.host, rpcCredentials.port),
             eventLoopGroup: group,
-            connectivityStateDelegate: connectivityStateManager,
+            connectivityStateDelegate: connectivityManager,
             tls: tlsConfig
         )
 
@@ -42,28 +41,22 @@ class LndNioConnection {
 
         lightningClient = Lnrpc_LightningServiceClient(connection: connection, defaultCallOptions: callOptions)
         walletUnlockClient = Lnrpc_WalletUnlockerServiceClient(connection: connection, defaultCallOptions: callOptions)
-        
-        connectivityStateManager.listener = self
     }
     
-    func walletUnlockerUnaryCall<T>(_ callFunction: (Lnrpc_WalletUnlockerServiceClient) -> EventLoopFuture<T>) -> Single<T> {
-        if let available = self.available, !available {
-            return Single.error(GRPCStatus(code: .unavailable, message: "Not connected to remote node"))
+    func walletUnlockerUnaryCall<T>(_ callFunction: @escaping (Lnrpc_WalletUnlockerServiceClient) -> EventLoopFuture<T>) -> Single<T> {
+        connectivityManager.runIfConnected {
+            callFunction(self.walletUnlockClient).toSingle()
         }
-
-        return callFunction(walletUnlockClient).toSingle()
     }
 
-    func unaryCall<T>(_ callFunction: (Lnrpc_LightningServiceClient) -> EventLoopFuture<T>) -> Single<T> {
-        if let available = self.available, !available {
-            return Single.error(GRPCStatus(code: .unavailable, message: "Not connected to remote node"))
+    func unaryCall<T>(_ callFunction: @escaping (Lnrpc_LightningServiceClient) -> EventLoopFuture<T>) -> Single<T> {
+        connectivityManager.runIfConnected {
+            callFunction(self.lightningClient).toSingle()
         }
-
-        return callFunction(lightningClient).toSingle()
     }
     
     func serverStreamCall<A, T>(_ callFunction: @escaping (Lnrpc_LightningServiceClient, @escaping (T) -> Void) -> ServerStreamingCall<A, T>) -> Observable<T> {
-        if let available = self.available, !available {
+        guard connectivityManager.isConnected else {
             return Observable.error(GRPCStatus(code: .unavailable, message: "Not connected to remote node"))
         }
 
@@ -87,16 +80,6 @@ class LndNioConnection {
             call.status.whenComplete({ _ in emitter.onCompleted() })
             
             return Disposables.create()
-        }
-    }
-}
-
-extension LndNioConnection: ConnectivityStateListener {
-    func connectivityStateDidChange(to newState: ConnectivityState) {
-        if newState == .ready {
-            available = true
-        } else if newState == .transientFailure {
-            available = false
         }
     }
 }

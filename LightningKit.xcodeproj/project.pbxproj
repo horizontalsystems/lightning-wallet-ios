@@ -11,7 +11,7 @@
 		D3A733B123FA7E98005DAC30 /* RemoteLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339B23FA7E98005DAC30 /* RemoteLnd.swift */; };
 		D3A733B223FA7E98005DAC30 /* WalletUnlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339C23FA7E98005DAC30 /* WalletUnlocker.swift */; };
 		D3A733B323FA7E98005DAC30 /* LndNioConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339D23FA7E98005DAC30 /* LndNioConnection.swift */; };
-		D3A733B423FA7E98005DAC30 /* ConnectivityStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339E23FA7E98005DAC30 /* ConnectivityStateManager.swift */; };
+		D3A733B423FA7E98005DAC30 /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339E23FA7E98005DAC30 /* ConnectivityManager.swift */; };
 		D3A733B523FA7E98005DAC30 /* LocalNodeCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339F23FA7E98005DAC30 /* LocalNodeCredentials.swift */; };
 		D3A733B623FA7E98005DAC30 /* NodeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A733A023FA7E98005DAC30 /* NodeStatus.swift */; };
 		D3A733B723FA7E98005DAC30 /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A733A223FA7E98005DAC30 /* rpc.pb.swift */; };
@@ -26,7 +26,7 @@
 		D3A733C023FA7E98005DAC30 /* LndMobileCallbackError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A733AE23FA7E98005DAC30 /* LndMobileCallbackError.swift */; };
 		D3A733C123FA7E98005DAC30 /* VoidResponseCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A733AF23FA7E98005DAC30 /* VoidResponseCallback.swift */; };
 		D3A733C223FA7E98005DAC30 /* LocalLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A733B023FA7E98005DAC30 /* LocalLnd.swift */; };
-		D3A733CA23FA80A2005DAC30 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D3A733C923FA80A2005DAC30 /* SwiftPackageProductDependency */; };
+		D3A733CA23FA80A2005DAC30 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = D3A733C923FA80A2005DAC30 /* GRPC */; };
 		D3A733CF23FA863C005DAC30 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A733C323FA7F2F005DAC30 /* Lndmobile.framework */; };
 		E989B9E19F21A2518A31A210 /* Pods_LightningKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05C723F70B6969736B4E735 /* Pods_LightningKit.framework */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,7 @@
 		D3A7339B23FA7E98005DAC30 /* RemoteLnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteLnd.swift; sourceTree = "<group>"; };
 		D3A7339C23FA7E98005DAC30 /* WalletUnlocker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletUnlocker.swift; sourceTree = "<group>"; };
 		D3A7339D23FA7E98005DAC30 /* LndNioConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LndNioConnection.swift; sourceTree = "<group>"; };
-		D3A7339E23FA7E98005DAC30 /* ConnectivityStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityStateManager.swift; sourceTree = "<group>"; };
+		D3A7339E23FA7E98005DAC30 /* ConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		D3A7339F23FA7E98005DAC30 /* LocalNodeCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNodeCredentials.swift; sourceTree = "<group>"; };
 		D3A733A023FA7E98005DAC30 /* NodeStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeStatus.swift; sourceTree = "<group>"; };
 		D3A733A223FA7E98005DAC30 /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3A733CA23FA80A2005DAC30 /* BuildFile in Frameworks */,
+				D3A733CA23FA80A2005DAC30 /* GRPC in Frameworks */,
 				D3A733CF23FA863C005DAC30 /* Lndmobile.framework in Frameworks */,
 				E989B9E19F21A2518A31A210 /* Pods_LightningKit.framework in Frameworks */,
 			);
@@ -125,7 +125,7 @@
 				D3A7339B23FA7E98005DAC30 /* RemoteLnd.swift */,
 				D3A7339C23FA7E98005DAC30 /* WalletUnlocker.swift */,
 				D3A7339D23FA7E98005DAC30 /* LndNioConnection.swift */,
-				D3A7339E23FA7E98005DAC30 /* ConnectivityStateManager.swift */,
+				D3A7339E23FA7E98005DAC30 /* ConnectivityManager.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -206,7 +206,7 @@
 			);
 			name = LightningKit;
 			packageProductDependencies = (
-				D3A733C923FA80A2005DAC30 /* SwiftPackageProductDependency */,
+				D3A733C923FA80A2005DAC30 /* GRPC */,
 			);
 			productName = LightningKit;
 			productReference = D3A7338F23FA7D94005DAC30 /* LightningKit.framework */;
@@ -237,7 +237,7 @@
 			);
 			mainGroup = D3A7338523FA7D94005DAC30;
 			packageReferences = (
-				D3A733C523FA7FD1005DAC30 /* RemoteSwiftPackageReference */,
+				D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference "grpc-swift" */,
 			);
 			productRefGroup = D3A7339023FA7D94005DAC30 /* Products */;
 			projectDirPath = "";
@@ -290,7 +290,7 @@
 			files = (
 				D3A733B823FA7E98005DAC30 /* rpc.grpc.swift in Sources */,
 				D3A733B723FA7E98005DAC30 /* rpc.pb.swift in Sources */,
-				D3A733B423FA7E98005DAC30 /* ConnectivityStateManager.swift in Sources */,
+				D3A733B423FA7E98005DAC30 /* ConnectivityManager.swift in Sources */,
 				D3A733BC23FA7E98005DAC30 /* FileManager.swift in Sources */,
 				D3A733C023FA7E98005DAC30 /* LndMobileCallbackError.swift in Sources */,
 				D3A733B923FA7E98005DAC30 /* RpcCredentials.swift in Sources */,
@@ -521,7 +521,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D3A733C523FA7FD1005DAC30 /* RemoteSwiftPackageReference */ = {
+		D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:grpc/grpc-swift.git";
 			requirement = {
@@ -532,9 +532,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D3A733C923FA80A2005DAC30 /* SwiftPackageProductDependency */ = {
+		D3A733C923FA80A2005DAC30 /* GRPC */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D3A733C523FA7FD1005DAC30 /* RemoteSwiftPackageReference */;
+			package = D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference "grpc-swift" */;
 			productName = GRPC;
 		};
 /* End XCSwiftPackageProductDependency section */
