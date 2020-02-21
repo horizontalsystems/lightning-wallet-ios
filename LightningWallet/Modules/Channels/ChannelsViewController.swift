@@ -6,21 +6,23 @@ import SnapKit
 class ChannelsViewController: ThemeViewController {
     private let delegate: IChannelsViewDelegate
 
-    private var channelsHeaderView: ChannelsHeaderView?
+//    private var channelsHeaderView: ChannelsHeaderView?
     private let tableView = UITableView()
 
     private let newChannelButton: UIButton = .appGray
     private let newChannelButtonWrapper = GradientView(gradientHeight: .margin4x, fromColor: UIColor.themeCassandra.withAlphaComponent(0), toColor: UIColor.themeCassandra.withAlphaComponent(0.9))
+
+    private var viewItems: [ChannelViewItem] = []
 
     init(delegate: IChannelsViewDelegate) {
         self.delegate = delegate
 
         super.init()
 
-        channelsHeaderView = ChannelsHeaderView(filters: [
-            ("open".localized.uppercased(), onSelectOpen), 
-            ("closed".localized.uppercased(), onSelectClosed)
-        ])
+//        channelsHeaderView = ChannelsHeaderView(filters: [
+//            ("open".localized.uppercased(), onSelectOpen),
+//            ("closed".localized.uppercased(), onSelectClosed)
+//        ])
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -64,6 +66,8 @@ class ChannelsViewController: ThemeViewController {
         tableView.estimatedRowHeight = 0
         tableView.delaysContentTouches = false
 
+        tableView.registerCell(forClass: ChannelCell.self)
+
         newChannelButton.setTitle("channels.new_channel".localized, for: .normal)
         newChannelButton.addTarget(self, action: #selector(onNewChannel), for: .touchUpInside)
 
@@ -82,36 +86,51 @@ class ChannelsViewController: ThemeViewController {
         delegate.onNewChannel()
     }
 
-    func onSelectOpen() {
-        delegate.onSelectOpen()
-    }
-
-    func onSelectClosed() {
-        delegate.onSelectClosed()
-    }
+//    func onSelectOpen() {
+//        delegate.onSelectOpen()
+//    }
+//
+//    func onSelectClosed() {
+//        delegate.onSelectClosed()
+//    }
 
 }
 
 extension ChannelsViewController: IChannelsView {
+
+    func show(viewItems: [ChannelViewItem]) {
+        self.viewItems = viewItems
+        tableView.reloadData()
+    }
 
 }
 
 extension ChannelsViewController: UITableViewDataSource, UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        viewItems.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        tableView.dequeueReusableCell(withIdentifier: String(describing: ChannelCell.self), for: indexPath)
     }
 
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        channelsHeaderView
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? ChannelCell {
+            cell.bind(viewItem: viewItems[indexPath.row])
+        }
     }
 
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        ChannelsHeaderView.headerHeight
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        100
     }
+
+    //    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        channelsHeaderView
+//    }
+//
+//    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        ChannelsHeaderView.headerHeight
+//    }
 
 }

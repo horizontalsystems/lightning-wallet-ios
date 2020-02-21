@@ -15,12 +15,19 @@ extension ChannelsRouter: IChannelsRouter {
 extension ChannelsRouter {
 
     static func module() -> UIViewController {
+        guard let lightningKit = App.shared.lightningKitManager.currentKit else {
+            // TODO: show empty view controller with message
+            fatalError()
+        }
+
         let router = ChannelsRouter()
-        let presenter = ChannelsPresenter(router: router)
+        let interactor = ChannelsInteractor(lightningKit: lightningKit)
+        let presenter = ChannelsPresenter(interactor: interactor, router: router)
         let viewController = ChannelsViewController(delegate: presenter)
 
-        presenter.view = viewController
         router.viewController = viewController
+        interactor.delegate = presenter
+        presenter.view = viewController
 
         return viewController
     }

@@ -1,8 +1,13 @@
+import LightningKit
+
 class ChannelsPresenter {
     weak var view: IChannelsView?
-    var router: IChannelsRouter
 
-    init(router: IChannelsRouter) {
+    private let interactor: IChannelsInteractor
+    private let router: IChannelsRouter
+
+    init(interactor: IChannelsInteractor, router: IChannelsRouter) {
+        self.interactor = interactor
         self.router = router
     }
 
@@ -11,7 +16,7 @@ class ChannelsPresenter {
 extension ChannelsPresenter: IChannelsViewDelegate {
 
     func onLoad() {
-        print("onLoad")
+        interactor.fetchOpenChannels()
     }
 
     func onClose() {
@@ -28,6 +33,30 @@ extension ChannelsPresenter: IChannelsViewDelegate {
 
     func onSelectClosed() {
         print("onSelectClosed")
+    }
+
+}
+
+extension ChannelsPresenter: IChannelsInteractorDelegate {
+
+    func didUpdate(openChannels: [Lnrpc_Channel]) {
+        let factory = ChannelsViewItemFactory()
+        let viewItems = openChannels.map {
+            factory.viewItem(channel: $0)
+        }
+        view?.show(viewItems: viewItems)
+    }
+
+}
+
+class ChannelsViewItemFactory {
+
+    func viewItem(channel: Lnrpc_Channel) -> ChannelViewItem {
+        ChannelViewItem(
+                remotePubKey: channel.remotePubkey,
+                localBalance: Int(channel.localBalance),
+                remoteBalance: Int(channel.remoteBalance)
+        )
     }
 
 }
