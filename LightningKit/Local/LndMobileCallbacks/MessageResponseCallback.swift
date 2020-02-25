@@ -2,7 +2,7 @@ import RxSwift
 import Lndmobile
 import SwiftProtobuf
 
-class MessageResponseCallback<T:Message>: NSObject, LndmobileCallbackProtocol {    
+class MessageResponseCallback<T:Message>: NSObject, LndmobileCallbackProtocol {
     private let emitter: (SingleEvent<T>) -> Void
     
     init(emitter: @escaping (SingleEvent<T>) -> Void) {
@@ -14,7 +14,12 @@ class MessageResponseCallback<T:Message>: NSObject, LndmobileCallbackProtocol {
     }
     
     func onResponse(_ response: Data?) {
-        guard let responseData = response, let responseMessage = try? T(serializedData: responseData) else {
+        guard let responseData = response else {
+            emitter(.success(T()))
+            return
+        }
+        
+        guard let responseMessage = try? T(serializedData: responseData) else {
             emitter(.error(LndMobileCallbackError.responseCannotBeDecoded))
             return
         }

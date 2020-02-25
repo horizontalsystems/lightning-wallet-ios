@@ -14,12 +14,9 @@ class WalletUnlocker {
         self.connection = connection
     }
 
-    func startUnlock(password: Data) -> Single<Void> {
+    func startUnlock(request: Lnrpc_UnlockWalletRequest) -> Single<Void> {
         connection.walletUnlockerUnaryCall() { (client) -> EventLoopFuture<Lnrpc_UnlockWalletResponse> in
-            var request = Lnrpc_UnlockWalletRequest()
-            request.walletPassword = password
-
-            return client.unlockWallet(request).response
+            client.unlockWallet(request).response
         }
         .map { _ in Void() }
         .do(

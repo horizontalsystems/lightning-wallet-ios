@@ -5,7 +5,7 @@ import SwiftProtobuf
 class LocalLnd: ILndNode {
     class NodeNotRetained: Error {}
 
-    private let credentials: LocalNodeCredentials
+    private let filesDir: String
     private let disposeBag = DisposeBag()
 
     private let statusSubject = BehaviorSubject<NodeStatus>(value: .connecting)
@@ -17,173 +17,261 @@ class LocalLnd: ILndNode {
         }
     }
 
-    var statusObservable: Observable<NodeStatus> { statusSubject.asObservable() }
+    var statusObservable: Observable<NodeStatus> {
+        statusSubject.asObservable()
+    }
 
     var invoicesObservable: Observable<Lnrpc_Invoice> {
-        Observable.error(WalletUnlocker.UnlockingException())
+        Observable.create { emitter in
+            LndmobileSubscribeInvoices(try! Lnrpc_InvoiceSubscription().serializedData(), MessageResponseStream(emitter: emitter))
+            
+            return Disposables.create()
+        }
     }
 
     var channelsObservable: Observable<Lnrpc_ChannelEventUpdate> {
-        Observable.error(WalletUnlocker.UnlockingException())
+        Observable.create { emitter in
+            LndmobileSubscribeChannelEvents(try! Lnrpc_ChannelEventSubscription().serializedData(), MessageResponseStream(emitter: emitter))
+            
+            return Disposables.create()
+        }
     }
 
     var transactionsObservable: Observable<Lnrpc_Transaction> {
-        Observable.error(WalletUnlocker.UnlockingException())
+        Observable.create { emitter in
+            LndmobileSubscribeTransactions(try! Lnrpc_GetTransactionsRequest().serializedData(), MessageResponseStream(emitter: emitter))
+            
+            return Disposables.create()
+        }
     }
 
     var infoSingle: Single<Lnrpc_GetInfoResponse> {
         Single<Lnrpc_GetInfoResponse>.create { emitter in
-            let msg = try! Lnrpc_GetInfoRequest().serializedData()
-
-            LndmobileGetInfo(msg, MessageResponseCallback(emitter: emitter))
+            LndmobileGetInfo(try! Lnrpc_GetInfoRequest().serializedData(), MessageResponseCallback(emitter: emitter))
 
             return Disposables.create()
         }
     }
 
     var walletBalanceSingle: Single<Lnrpc_WalletBalanceResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
+        Single.create { emitter in
+            LndmobileWalletBalance(try! Lnrpc_WalletBalanceRequest().serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
     }
 
     var channelBalanceSingle: Single<Lnrpc_ChannelBalanceResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
+        Single.create { emitter in
+            LndmobileChannelBalance(try! Lnrpc_ChannelBalanceRequest().serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
     }
 
     var onChainAddressSingle: Single<Lnrpc_NewAddressResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
+        Single.create { emitter in
+            LndmobileNewAddress(try! Lnrpc_NewAddressRequest().serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
     }
 
     var channelsSingle: Single<Lnrpc_ListChannelsResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
+        Single.create { emitter in
+            LndmobileListChannels(try! Lnrpc_ListChannelsRequest().serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
     }
 
     var closedChannelsSingle: Single<Lnrpc_ClosedChannelsResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
+        Single.create { emitter in
+            LndmobileClosedChannels(try! Lnrpc_ClosedChannelsRequest().serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
     }
 
     var pendingChannelsSingle: Single<Lnrpc_PendingChannelsResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
+        Single.create { emitter in
+            LndmobilePendingChannels(try! Lnrpc_PendingChannelsRequest().serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
     }
 
     var paymentsSingle: Single<Lnrpc_ListPaymentsResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
-    }
-
-    private var genSeed: Single<Lnrpc_GenSeedResponse> {
         Single.create { emitter in
-            let msg = try! Lnrpc_GenSeedRequest().serializedData()
-            
-            LndmobileGenSeed(msg, MessageResponseCallback(emitter: emitter))
+            LndmobileListPayments(try! Lnrpc_ListPaymentsRequest().serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
+    }
+    
+    var transactionsSingle: Single<Lnrpc_TransactionDetails> {
+        Single.create { emitter in
+            LndmobileGetTransactions(try! Lnrpc_GetTransactionsRequest().serializedData(), MessageResponseCallback(emitter: emitter))
             
             return Disposables.create()
         }
     }
 
-    init(credentials: LocalNodeCredentials) {
-        self.credentials = credentials
+    init(filesDir: String) {
+        self.filesDir = filesDir
+    }
+
+    private func genSeedSingle() -> Single<Lnrpc_GenSeedResponse> {
+        Single.create { emitter in
+            LndmobileGenSeed(try! Lnrpc_GenSeedRequest().serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
     }
 
     func scheduleStatusUpdates() {
         Observable<Int>.interval(.seconds(3), scheduler: SerialDispatchQueueScheduler(qos: .background))
-            .flatMap { [weak self] _ -> Observable<NodeStatus> in
-                guard let node = self else {
-                    return .empty()
+                .flatMap { [weak self] _ -> Observable<NodeStatus> in
+                    guard let node = self else {
+                        return .empty()
+                    }
+
+                    return node.fetchStatusSingle().asObservable()
                 }
-
-                return node.fetchStatusSingle().asObservable()
-            }
-            .subscribe(onNext: { [weak self] in self?.status = $0 })
-            .disposed(by: disposeBag)
+                .subscribe(onNext: { [weak self] in self?.status = $0 })
+                .disposed(by: disposeBag)
     }
 
-    func invoicesSingle(pendingOnly: Bool, offset: UInt64, limit: UInt64, reversed: Bool) -> Single<Lnrpc_ListInvoiceResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
-    }
+    func invoicesSingle(request: Lnrpc_ListInvoiceRequest) -> Single<Lnrpc_ListInvoiceResponse> {
+        Single.create { emitter in
+            LndmobileListInvoices(try! request.serializedData(), MessageResponseCallback(emitter: emitter))
 
-    func paySingle(invoice: String) -> Single<Lnrpc_SendResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
-    }
-
-    func addInvoiceSingle(amount: Int64, memo: String) -> Single<Lnrpc_AddInvoiceResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
-    }
-
-    func unlockWalletSingle(password: Data) -> Single<Void> {
-        Single.error(WalletUnlocker.UnlockingException())
-    }
-
-    func decodeSingle(paymentRequest: String) -> Single<Lnrpc_PayReq> {
-        Single.error(WalletUnlocker.UnlockingException())
-    }
-
-    func openChannelSingle(nodePubKey: Data, amount: Int64) -> Observable<Lnrpc_OpenStatusUpdate> {
-        Observable.error(WalletUnlocker.UnlockingException())
-    }
-
-    func closeChannelSingle(channelPoint: String, forceClose: Bool) throws -> Observable<Lnrpc_CloseStatusUpdate> {
-        Observable.error(WalletUnlocker.UnlockingException())
-    }
-
-    func connectSingle(nodeAddress: String, nodePubKey: String) -> Single<Lnrpc_ConnectPeerResponse> {
-        Single.error(WalletUnlocker.UnlockingException())
-    }
-
-    func start() -> Single<Void> {
-        let args = "--lnddir=\(credentials.lndDirPath) --bitcoin.active --bitcoin.mainnet --debuglevel=warn --no-macaroons --nolisten --norest --bitcoin.node=neutrino --routing.assumechanvalid"
-
-        return Single<Void>.create { emitter in
-            let unlockerCallback = VoidResponseCallback(emitter: emitter)
-            
-            LndmobileStart(args, unlockerCallback, nil)
             return Disposables.create()
         }
     }
 
-    func createWallet(password: String) -> Single<[String]> {
-        genSeed
-            .flatMap { [weak self] genSeedResponse in
-                guard let node = self else {
-                    return Single<[String]>.error(NodeNotRetained())
-                }
-                
-                return node.initWallet(mnemonicWords: genSeedResponse.cipherSeedMnemonic, password: password)
-                    .do(onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() })
-                    .map { _ in genSeedResponse.cipherSeedMnemonic }
-            }
+    func paySingle(request: Lnrpc_SendRequest) -> Single<Lnrpc_SendResponse> {
+        Single.create { emitter in
+            LndmobileSendPaymentSync(try! request.serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
     }
 
-    func initWallet(mnemonicWords: [String], password: String) -> Single<Void> {
+    func addInvoiceSingle(invoice: Lnrpc_Invoice) -> Single<Lnrpc_AddInvoiceResponse> {
+        Single.create { emitter in
+            LndmobileAddInvoice(try! invoice.serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
+    }
+
+    func unlockWalletSingle(request: Lnrpc_UnlockWalletRequest) -> Single<Void> {
+        Single<Void>.create { emitter in
+            LndmobileUnlockWallet(try! request.serializedData(), VoidResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
+    }
+
+    func decodeSingle(paymentRequest: Lnrpc_PayReqString) -> Single<Lnrpc_PayReq> {
+        Single.create { emitter in
+            LndmobileDecodePayReq(try! paymentRequest.serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
+    }
+
+    func openChannelSingle(request: Lnrpc_OpenChannelRequest) -> Observable<Lnrpc_OpenStatusUpdate> {
+        Observable.create { emitter in
+            LndmobileOpenChannel(try! request.serializedData(), MessageResponseStream(emitter: emitter))
+
+            return Disposables.create()
+        }
+    }
+
+    func closeChannelSingle(request: Lnrpc_CloseChannelRequest) throws -> Observable<Lnrpc_CloseStatusUpdate> {
+        Observable.create { emitter in
+            LndmobileCloseChannel(try! request.serializedData(), MessageResponseStream(emitter: emitter))
+            
+            return Disposables.create()
+        }
+    }
+
+    func connectSingle(request: Lnrpc_ConnectPeerRequest) -> Single<Lnrpc_ConnectPeerResponse> {
+        Single.create { emitter in
+            LndmobileConnectPeer(try! request.serializedData(), MessageResponseCallback(emitter: emitter))
+
+            return Disposables.create()
+        }
+    }
+
+    func start() -> Single<Void> {
+        let args = "--lnddir=\(filesDir) --bitcoin.active --bitcoin.mainnet --debuglevel=warn --no-macaroons --nolisten --norest --bitcoin.node=neutrino --routing.assumechanvalid --debuglevel=info"
+
+        return Single<Void>.create { emitter in
+            LndmobileStart(args, VoidResponseCallback(emitter: emitter), VoidResponseCallback(emitter: nil))
+
+            return Disposables.create()
+        }
+    }
+
+    func startAndUnlock(password: String) {
+        start()
+                .flatMap { [weak self] _ in
+                    var request = Lnrpc_UnlockWalletRequest()
+                    request.walletPassword = Data(Array(password.utf8))
+
+                    return self?.unlockWalletSingle(request: request) ?? Single.error(NodeNotRetained())
+                }
+                .subscribe(
+                        onSuccess: { [weak self] in
+                            self?.scheduleStatusUpdates()
+                        },
+                        onError: { [weak self] in self?.status = .error($0) }
+                )
+                .disposed(by: disposeBag)
+    }
+
+    func createWalletSingle(password: String) -> Single<[String]> {
+        genSeedSingle()
+                .flatMap { [weak self] genSeedResponse in
+                    guard let node = self else {
+                        return Single<[String]>.error(NodeNotRetained())
+                    }
+
+                    return node.initWalletSingle(mnemonicWords: genSeedResponse.cipherSeedMnemonic, password: password)
+                            .do(onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() })
+                            .map { _ in
+                                genSeedResponse.cipherSeedMnemonic
+                            }
+                }
+    }
+
+    func restoreWalletSingle(words: [String], password: String) -> Single<Void> {
+        initWalletSingle(mnemonicWords: words, password: password)
+                .do(onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() })
+    }
+
+    func initWalletSingle(mnemonicWords: [String], password: String) -> Single<Void> {
         Single.create { emitter in
             var msg = Lnrpc_InitWalletRequest()
             msg.cipherSeedMnemonic = mnemonicWords
             msg.walletPassword = Data(Array(password.utf8))
-            
+
             LndmobileInitWallet(try! msg.serializedData(), VoidResponseCallback(emitter: emitter))
-            
+
             return Disposables.create()
         }
     }
-      
+
     private func fetchStatusSingle() -> Single<NodeStatus> {
-        return infoSingle
-            .map { $0.syncedToGraph ? .running : .syncing }
-            .catchError { error in
-                var status: NodeStatus
-
-//                if let grpcStatusError = error as? GRPCStatus {
-//                            if grpcStatusError.code == .unimplemented {
-//                                status = .locked
-////                            } else if let walletUnlocker = self?.walletUnlocker,
-////                                grpcStatusError.code == .unavailable && walletUnlocker.isUnlocking() {
-////                                status = .unlocking
-//                            } else {
-//                                status = .error(error: grpcStatusError)
-//                            }
-//                } else {
-                    status = .error(error: error)
-//                }
-
-                return Single.just(status)
-            }
+        infoSingle
+                .map {
+                    $0.syncedToGraph ? .running : .syncing
+                }
+                .catchError { error in
+                    Single.just(.error(error))
+                }
     }
 }
