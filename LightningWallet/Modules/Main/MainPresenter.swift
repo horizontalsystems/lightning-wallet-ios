@@ -12,6 +12,7 @@ class MainPresenter {
 
     private var walletBalance: Int?
     private var channelBalance: Int?
+    private var status: NodeStatus = .connecting
 
     init(interactor: IMainInteractor, router: IMainRouter, viewFactory: IValueFormatterFactory) {
         self.viewFactory = viewFactory
@@ -20,50 +21,23 @@ class MainPresenter {
     }
 
     private func syncBalanceView() {
-        if let walletBalance = walletBalance, let channelBalance = channelBalance {
+        if (status == .syncing || status == .running), let walletBalance = walletBalance, let channelBalance = channelBalance {
             let totalBalance = walletBalance + channelBalance
             view?.show(totalBalance: totalBalance)
         } else {
-            // todo
+            view?.hideTotalBalance()
         }
     }
 
-}
-
-extension MainPresenter: IMainViewDelegate {
-
-    func onLoad() {
-        interactor.subscribeToStatus()
-
-        interactor.fetchWalletBalance()
-        interactor.fetchChannelBalance()
+    private func syncUnlockButton() {
+        view?.setUnlockButton(visible: status == .locked)
     }
 
-    func onDeposit() {
-        print("onDeposit")
+    private func syncLightningButtons() {
+        view?.setLightningButtons(enabled: status == .syncing || status == .running)
     }
 
-    func onSend() {
-        print("onSend")
-    }
-
-    func onChannels() {
-        router.openChannels()
-    }
-
-    func onSettings() {
-        router.openSettings()
-    }
-
-    func onTransactions() {
-        router.openTransactions()
-    }
-
-}
-
-extension MainPresenter: IMainInteractorDelegate {
-
-    func didUpdate(status: NodeStatus) {
+    private func syncControls() {
         switch status {
         case .connecting:
             view?.showConnectingStatus()
@@ -73,9 +47,64 @@ extension MainPresenter: IMainInteractorDelegate {
             view?.showErrorStatus(error: error)
         case .running:
             view?.hideStatus()
-        default:
-            // todo: handle .locked and .unlocking statuses
-            view?.hideStatus()
+        case .unlocking:
+            view?.showUnlockingStatus()
+        case .locked:
+            view?.showLockedStatus()
+        }
+
+        syncBalanceView()
+        syncLightningButtons()
+        syncUnlockButton()
+    }
+
+}
+
+extension MainPresenter: IMainViewDelegate {
+
+    func onLoad() {
+        syncControls()
+
+        interactor.subscribeToStatus()
+        interactor.subscribeToWalletBalance()
+        interactor.subscribeToChannelBalance()
+    }
+
+    func onTapUnlock() {
+        router.showUnlock()
+    }
+
+    func onTapDeposit() {
+        print("onDeposit")
+    }
+
+    func onTapSend() {
+        print("onSend")
+    }
+
+    func onTapChannels() {
+        router.openChannels()
+    }
+
+    func onTapSettings() {
+        router.openSettings()
+    }
+
+    func onTapTransactions() {
+        router.openTransactions()
+    }
+
+}
+
+extension MainPresenter: IMainInteractorDelegate {
+
+    func didUpdate(status: NodeStatus) {
+        self.status = status
+        syncControls()
+
+        if status == .running || status == .syncing {
+            interactor.fetchWalletBalance()
+            interactor.fetchChannelBalance()
         }
     }
 

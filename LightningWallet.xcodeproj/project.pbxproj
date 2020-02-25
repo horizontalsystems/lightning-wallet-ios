@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11B3512C91713EAFE1CD93A7 /* UnlockRemoteWalletInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3517F5046A8D7084A3D38 /* UnlockRemoteWalletInteractor.swift */; };
+		11B352A385C46F9049C0D162 /* UnlockRemoteWalletModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3579E26E352DE2E1DA3C4 /* UnlockRemoteWalletModule.swift */; };
 		11B354E4DC19B8DE6D3CC60C /* LightningKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3526153DCFD79445635FF /* LightningKitManager.swift */; };
 		11B3559BE9692AA8E2CF2E02 /* WalletManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3503363C680E524222463 /* WalletManager.swift */; };
 		11B3567690C34D551ED17F3E /* ChannelsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B3569E8DB04902BB82E20D /* ChannelsInteractor.swift */; };
 		11B3572B6548AD2B3CAEBF35 /* WalletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35D5AD19EEEB6AD76D086 /* WalletStorage.swift */; };
+		11B358EBCC1064B326CDD476 /* UnlockRemoteWalletPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35F7C6336D876A46A7B4E /* UnlockRemoteWalletPresenter.swift */; };
 		11B35BC8B9EDDF3C8F158687 /* KeychainKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */; };
 		11B35C1B600F9D1C84621799 /* LightningConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350954D6814C2AF78F05A /* LightningConnection.swift */; };
 		11B35C69E03CA63329DE2B54 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35B7F6D03B2E09A50BDF2 /* Wallet.swift */; };
+		11B35CB149B637ADE486B1C4 /* UnlockRemoteWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35DB1275B5826DE97F312 /* UnlockRemoteWalletViewController.swift */; };
 		11B35D787EBE3BE258AA71CC /* ChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B35F643A41FEAF8BE7349A /* ChannelCell.swift */; };
+		11B35EAC42994082E5716260 /* UnlockRemoteWalletRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B350E2AA22B72F2B3F973D /* UnlockRemoteWalletRouter.swift */; };
 		1A5640E30DA915800F420D29 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564CD0EBF3E1EE5DD4FEAA /* MainPresenter.swift */; };
 		1A564134A2FD92B7E701F2CD /* ChannelsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564C3A195D3FEC236F1FE8 /* ChannelsModule.swift */; };
 		1A56435C0BAF49254EC66D56 /* ChannelsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A564BF99757F8D9D2058245 /* ChannelsRouter.swift */; };
@@ -106,11 +111,16 @@
 		11B3503363C680E524222463 /* WalletManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletManager.swift; sourceTree = "<group>"; };
 		11B350954D6814C2AF78F05A /* LightningConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningConnection.swift; sourceTree = "<group>"; };
 		11B350CF6EBC2880C8A58C3E /* KeychainKitDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainKitDelegate.swift; sourceTree = "<group>"; };
+		11B350E2AA22B72F2B3F973D /* UnlockRemoteWalletRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlockRemoteWalletRouter.swift; sourceTree = "<group>"; };
+		11B3517F5046A8D7084A3D38 /* UnlockRemoteWalletInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlockRemoteWalletInteractor.swift; sourceTree = "<group>"; };
 		11B3526153DCFD79445635FF /* LightningKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightningKitManager.swift; sourceTree = "<group>"; };
 		11B3569E8DB04902BB82E20D /* ChannelsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsInteractor.swift; sourceTree = "<group>"; };
+		11B3579E26E352DE2E1DA3C4 /* UnlockRemoteWalletModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlockRemoteWalletModule.swift; sourceTree = "<group>"; };
 		11B35B7F6D03B2E09A50BDF2 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		11B35D5AD19EEEB6AD76D086 /* WalletStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletStorage.swift; sourceTree = "<group>"; };
+		11B35DB1275B5826DE97F312 /* UnlockRemoteWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlockRemoteWalletViewController.swift; sourceTree = "<group>"; };
 		11B35F643A41FEAF8BE7349A /* ChannelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelCell.swift; sourceTree = "<group>"; };
+		11B35F7C6336D876A46A7B4E /* UnlockRemoteWalletPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnlockRemoteWalletPresenter.swift; sourceTree = "<group>"; };
 		1A564035CC3574B56BBC1708 /* TransactionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewItem.swift; sourceTree = "<group>"; };
 		1A56422F697A9DEEB7DC12A5 /* TransactionsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsPresenter.swift; sourceTree = "<group>"; };
 		1A564407D57445B9B570FAA1 /* TransactionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
@@ -214,6 +224,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11B352A823EFB37CA718C197 /* UnlockRemoteWallet */ = {
+			isa = PBXGroup;
+			children = (
+				11B3579E26E352DE2E1DA3C4 /* UnlockRemoteWalletModule.swift */,
+				11B350E2AA22B72F2B3F973D /* UnlockRemoteWalletRouter.swift */,
+				11B3517F5046A8D7084A3D38 /* UnlockRemoteWalletInteractor.swift */,
+				11B35F7C6336D876A46A7B4E /* UnlockRemoteWalletPresenter.swift */,
+				11B35DB1275B5826DE97F312 /* UnlockRemoteWalletViewController.swift */,
+			);
+			path = UnlockRemoteWallet;
+			sourceTree = "<group>";
+		};
 		11B35700569459CC8760F1D4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +371,7 @@
 				58AAADC4308B7119C5E36D54 /* LockScreen */,
 				1A564F9557C289528B905A6A /* Transactions */,
 				1A564FECD23B04CF4909666C /* Channels */,
+				11B352A823EFB37CA718C197 /* UnlockRemoteWallet */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -674,6 +697,11 @@
 				58AAA8F9415503EEE4E5554D /* TransparentNavigationBar.swift in Sources */,
 				11B3567690C34D551ED17F3E /* ChannelsInteractor.swift in Sources */,
 				11B35D787EBE3BE258AA71CC /* ChannelCell.swift in Sources */,
+				11B35EAC42994082E5716260 /* UnlockRemoteWalletRouter.swift in Sources */,
+				11B352A385C46F9049C0D162 /* UnlockRemoteWalletModule.swift in Sources */,
+				11B358EBCC1064B326CDD476 /* UnlockRemoteWalletPresenter.swift in Sources */,
+				11B3512C91713EAFE1CD93A7 /* UnlockRemoteWalletInteractor.swift in Sources */,
+				11B35CB149B637ADE486B1C4 /* UnlockRemoteWalletViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,10 @@ extension MainRouter: IMainRouter {
         viewController?.present(ThemeNavigationController(rootViewController: ChannelsRouter.module()), animated: true)
     }
 
+    func showUnlock() {
+        viewController?.present(UnlockRemoteWalletRouter.module(), animated: true)
+    }
+
 }
 
 extension MainRouter {
