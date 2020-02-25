@@ -3,6 +3,10 @@ import GRPC
 import RxSwift
 
 public class Kit {
+    enum ArgumentError: Error {
+        case wrongChannelPoint
+    }
+
     private let lndNode: ILndNode
     private let paymentsUpdatedSubject = PublishSubject<Void>()
 
@@ -28,19 +32,23 @@ public class Kit {
     }
     public var channelBalanceObservable: Observable<Lnrpc_ChannelBalanceResponse> {
         Observable
-            .merge([
-                paymentsObservable,
-                invoicesObservable.filter { $0.state == .settled }.map { _ in Void() }
-            ])
-            .flatMap { [weak self] _ in
-                self?.channelBalanceSingle.asObservable() ?? Observable.empty()
-            }
+                .merge([
+                    paymentsObservable,
+                    invoicesObservable.filter {
+                        $0.state == .settled
+                    }.map { _ in
+                        Void()
+                    }
+                ])
+                .flatMap { [weak self] _ in
+                    self?.channelBalanceSingle.asObservable() ?? Observable.empty()
+                }
     }
-    
+
     fileprivate init(lndNode: ILndNode) {
         self.lndNode = lndNode
     }
-    
+
     public var walletBalanceSingle: Single<Lnrpc_WalletBalanceResponse> {
         lndNode.walletBalanceSingle
     }
@@ -64,59 +72,111 @@ public class Kit {
     public var pendingChannelsSingle: Single<Lnrpc_PendingChannelsResponse> {
         lndNode.pendingChannelsSingle
     }
-    
+
     public var paymentsSingle: Single<Lnrpc_ListPaymentsResponse> {
         lndNode.paymentsSingle
     }
-
-    public func invoicesSingle(pending_only: Bool = false, offset: UInt64 = 0, limit: UInt64 = 1000, reversed: Bool = false) -> Single<Lnrpc_ListInvoiceResponse> {
-        lndNode.invoicesSingle(pendingOnly: pending_only, offset: offset, limit: limit, reversed: reversed)
-    }
     
+    public var transactionsSingle: Single<Lnrpc_TransactionDetails> {
+        lndNode.transactionsSingle
+    }
+
+    public func invoicesSingle(pendingOnly: Bool = false, offset: UInt64 = 0, limit: UInt64 = 1000, reversed: Bool = false) -> Single<Lnrpc_ListInvoiceResponse> {
+        var request = Lnrpc_ListInvoiceRequest()
+        request.pendingOnly = pendingOnly
+        request.indexOffset = offset
+        request.numMaxInvoices = limit
+        request.reversed = reversed
+
+        return lndNode.invoicesSingle(request: request)
+    }
+
     public func paySingle(invoice: String) -> Single<Lnrpc_SendResponse> {
-        return lndNode.paySingle(invoice: invoice)
-            .do(onSuccess: { [weak self] in
-                if $0.paymentError.isEmpty {
-                    self?.paymentsUpdatedSubject.onNext(Void())
-                }
-            })
+        var request = Lnrpc_SendRequest()
+        request.paymentRequest = invoice
+
+        return lndNode.paySingle(request: request)
+                .do(onSuccess: { [weak self] in
+                    if $0.paymentError.isEmpty {
+                        self?.paymentsUpdatedSubject.onNext(Void())
+                    }
+                })
     }
 
     public func addInvoiceSingle(amount: Int64, memo: String) -> Single<Lnrpc_AddInvoiceResponse> {
-        lndNode.addInvoiceSingle(amount: amount, memo: memo)
+        var invoice = Lnrpc_Invoice()
+        invoice.value = amount
+        invoice.memo = memo
+
+        return lndNode.addInvoiceSingle(invoice: invoice)
     }
 
     public func unlockWalletSingle(password: Data) -> Single<Void> {
-        lndNode.unlockWalletSingle(password: password)
+        var request = Lnrpc_UnlockWalletRequest()
+        request.walletPassword = password
+
+        return lndNode.unlockWalletSingle(request: request)
     }
-    
+
     public func decodeSingle(paymentRequest: String) -> Single<Lnrpc_PayReq> {
-        lndNode.decodeSingle(paymentRequest: paymentRequest)
+        var request = Lnrpc_PayReqString()
+        request.payReq = paymentRequest
+
+        return lndNode.decodeSingle(paymentRequest: request)
     }
 
     public func openChannelSingle(nodePubKey: Data, amount: Int64, nodeAddress: String) -> Observable<Lnrpc_OpenStatusUpdate> {
-        lndNode.connectSingle(nodeAddress: nodeAddress, nodePubKey: nodePubKey.hex)
-            .map { _ in Void() }
-            .catchError { error -> Single<Void> in
-                if let grpcStatus = error as? GRPC.GRPCStatus, let message = grpcStatus.message,
-                    message.contains("already connected to peer") {
-                    return Single.just(Void())
-                } else {
-                    return Single.error(error)
+        var openChannelRequest = Lnrpc_OpenChannelRequest()
+        openChannelRequest.nodePubkey = nodePubKey
+        openChannelRequest.satPerByte = 2 // todo: extract as param
+        openChannelRequest.localFundingAmount = amount
+
+        var lightningAddress = Lnrpc_LightningAddress()
+        lightningAddress.pubkey = nodePubKey.hex
+        lightningAddress.host = nodeAddress
+
+        var connectPeersRequest = Lnrpc_ConnectPeerRequest()
+        connectPeersRequest.addr = lightningAddress
+
+        return lndNode.connectSingle(request: connectPeersRequest)
+                .map { _ in
+                    Void()
                 }
-            }
-            .asObservable()
-            .flatMap { [weak self] _ -> Observable<Lnrpc_OpenStatusUpdate> in
-                guard let kit = self else {
-                    return Observable.empty()
+                .catchError { error -> Single<Void> in
+                    if let grpcStatus = error as? GRPC.GRPCStatus, let message = grpcStatus.message,
+                       message.contains("already connected to peer") {
+                        return Single.just(Void())
+                    } else {
+                        return Single.error(error)
+                    }
                 }
-                
-                return kit.lndNode.openChannelSingle(nodePubKey: nodePubKey, amount: amount)
-            }
+                .asObservable()
+                .flatMap { [weak self] _ -> Observable<Lnrpc_OpenStatusUpdate> in
+                    guard let kit = self else {
+                        return Observable.empty()
+                    }
+
+                    return kit.lndNode.openChannelSingle(request: openChannelRequest)
+                }
     }
 
     public func closeChannelSingle(channelPoint: String, forceClose: Bool) throws -> Observable<Lnrpc_CloseStatusUpdate> {
-        try lndNode.closeChannelSingle(channelPoint: channelPoint, forceClose: forceClose)
+        let channelPointParts = channelPoint.split(separator: ":")
+
+        guard channelPointParts.count == 0, let outputIndex = UInt32(String(channelPointParts[1])) else {
+            throw ArgumentError.wrongChannelPoint
+        }
+
+        var channelPoint = Lnrpc_ChannelPoint()
+        channelPoint.fundingTxidStr = String(channelPointParts[0])
+        channelPoint.outputIndex = outputIndex
+
+        var request = Lnrpc_CloseChannelRequest()
+        request.channelPoint = channelPoint
+        request.satPerByte = 2 // todo: extract as param
+        request.force = forceClose
+
+        return try lndNode.closeChannelSingle(request: request)
     }
 
     private func retryWhenStatusIsSyncingOrRunning<T>(_ observable: Observable<T>) -> Observable<T> {
@@ -124,36 +184,63 @@ public class Kit {
             guard let kit = self else {
                 return .empty()
             }
-            
-            return Observable.zip(errorObservable, kit.statusObservable.filter { $0 == .syncing || $0 == .running })
+
+            return Observable.zip(errorObservable, kit.statusObservable.filter {
+                $0 == .syncing || $0 == .running
+            })
         }
     }
 }
 
 public extension Kit {
     static var lightningKitLocalLnd: Kit? = nil
-    
+
     static func validateRemoteConnection(rpcCredentials: RpcCredentials) -> Single<Void> {
         do {
             let remoteLndNode = try RemoteLnd(rpcCredentials: rpcCredentials)
-            
+
             return remoteLndNode.validateAsync()
         } catch {
             return Single.error(error)
         }
     }
 
+    static func local(credentials: LocalNodeCredentials) -> Kit {
+        if let kit = lightningKitLocalLnd {
+            return kit
+        }
+
+        let localLnd = LocalLnd(filesDir: credentials.lndDirPath)
+        localLnd.startAndUnlock(password: credentials.password)
+
+        let kit = Kit(lndNode: localLnd)
+        lightningKitLocalLnd = kit
+
+        return kit
+    }
+
     static func createLocal(credentials: LocalNodeCredentials) -> Single<[String]> {
-        let localLnd = LocalLnd(credentials: credentials)
+        let localLnd = LocalLnd(filesDir: credentials.lndDirPath)
         lightningKitLocalLnd = Kit(lndNode: localLnd)
 
-        return localLnd.start().flatMap { localLnd.createWallet(password: credentials.password) }
+        return localLnd.start().flatMap {
+            localLnd.createWalletSingle(password: credentials.password)
+        }
+    }
+
+    static func restoreLocal(words: [String], credentials: LocalNodeCredentials) -> Single<Void> {
+        let localLnd = LocalLnd(filesDir: credentials.lndDirPath)
+        lightningKitLocalLnd = Kit(lndNode: localLnd)
+
+        return localLnd.start().flatMap {
+            localLnd.restoreWalletSingle(words: words, password: credentials.password)
+        }
     }
 
     static func remote(rpcCredentials: RpcCredentials) throws -> Kit {
         let remoteLndNode = try RemoteLnd(rpcCredentials: rpcCredentials)
         remoteLndNode.scheduleStatusUpdates()
-        
+
         return Kit(lndNode: remoteLndNode)
     }
 }

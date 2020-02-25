@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FA5DC8A66918200D42EA1EE /* MessageResponseStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5D6FACBD18084B3922C1B /* MessageResponseStream.swift */; };
+		D059940C2403C9DE0096AC17 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D059940B2403C9DE0096AC17 /* Lndmobile.framework */; };
 		D3A7339423FA7D94005DAC30 /* LightningKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A7339223FA7D94005DAC30 /* LightningKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3A733B123FA7E98005DAC30 /* RemoteLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339B23FA7E98005DAC30 /* RemoteLnd.swift */; };
 		D3A733B223FA7E98005DAC30 /* WalletUnlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339C23FA7E98005DAC30 /* WalletUnlocker.swift */; };
@@ -26,13 +28,13 @@
 		D3A733C023FA7E98005DAC30 /* LndMobileCallbackError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A733AE23FA7E98005DAC30 /* LndMobileCallbackError.swift */; };
 		D3A733C123FA7E98005DAC30 /* VoidResponseCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A733AF23FA7E98005DAC30 /* VoidResponseCallback.swift */; };
 		D3A733C223FA7E98005DAC30 /* LocalLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A733B023FA7E98005DAC30 /* LocalLnd.swift */; };
-		D3A733CA23FA80A2005DAC30 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = D3A733C923FA80A2005DAC30 /* GRPC */; };
-		D3A733CF23FA863C005DAC30 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3A733C323FA7F2F005DAC30 /* Lndmobile.framework */; };
 		E989B9E19F21A2518A31A210 /* Pods_LightningKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D05C723F70B6969736B4E735 /* Pods_LightningKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1BAB348B97601BA830BE5AB9 /* Pods-LightningKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningKit.debug.xcconfig"; path = "Target Support Files/Pods-LightningKit/Pods-LightningKit.debug.xcconfig"; sourceTree = "<group>"; };
+		2FA5D6FACBD18084B3922C1B /* MessageResponseStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponseStream.swift; sourceTree = "<group>"; };
+		D059940B2403C9DE0096AC17 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Carthage/Build/iOS/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		D05C723F70B6969736B4E735 /* Pods_LightningKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightningKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A7338F23FA7D94005DAC30 /* LightningKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LightningKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A7339223FA7D94005DAC30 /* LightningKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightningKit.h; sourceTree = "<group>"; };
@@ -55,7 +57,6 @@
 		D3A733AE23FA7E98005DAC30 /* LndMobileCallbackError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LndMobileCallbackError.swift; sourceTree = "<group>"; };
 		D3A733AF23FA7E98005DAC30 /* VoidResponseCallback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoidResponseCallback.swift; sourceTree = "<group>"; };
 		D3A733B023FA7E98005DAC30 /* LocalLnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalLnd.swift; sourceTree = "<group>"; };
-		D3A733C323FA7F2F005DAC30 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Carthage/Build/iOS/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		ED5614F3904FD5A9187834D8 /* Pods-LightningKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LightningKit.release.xcconfig"; path = "Target Support Files/Pods-LightningKit/Pods-LightningKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,8 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3A733CA23FA80A2005DAC30 /* GRPC in Frameworks */,
-				D3A733CF23FA863C005DAC30 /* Lndmobile.framework in Frameworks */,
+				D059940C2403C9DE0096AC17 /* Lndmobile.framework in Frameworks */,
 				E989B9E19F21A2518A31A210 /* Pods_LightningKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,7 +103,7 @@
 		D3A7339123FA7D94005DAC30 /* LightningKit */ = {
 			isa = PBXGroup;
 			children = (
-				D3A733C323FA7F2F005DAC30 /* Lndmobile.framework */,
+				D059940B2403C9DE0096AC17 /* Lndmobile.framework */,
 				D3A733A523FA7E98005DAC30 /* Extensions */,
 				D3A733AB23FA7E98005DAC30 /* Local */,
 				D3A733A123FA7E98005DAC30 /* Proto */,
@@ -161,9 +161,10 @@
 		D3A733AC23FA7E98005DAC30 /* LndMobileCallbacks */ = {
 			isa = PBXGroup;
 			children = (
-				D3A733AD23FA7E98005DAC30 /* MessageResponseCallback.swift */,
-				D3A733AE23FA7E98005DAC30 /* LndMobileCallbackError.swift */,
 				D3A733AF23FA7E98005DAC30 /* VoidResponseCallback.swift */,
+				D3A733AD23FA7E98005DAC30 /* MessageResponseCallback.swift */,
+				2FA5D6FACBD18084B3922C1B /* MessageResponseStream.swift */,
+				D3A733AE23FA7E98005DAC30 /* LndMobileCallbackError.swift */,
 			);
 			path = LndMobileCallbacks;
 			sourceTree = "<group>";
@@ -206,7 +207,7 @@
 			);
 			name = LightningKit;
 			packageProductDependencies = (
-				D3A733C923FA80A2005DAC30 /* GRPC */,
+				D3A733C923FA80A2005DAC30 /* XCSwiftPackageProductDependency */,
 			);
 			productName = LightningKit;
 			productReference = D3A7338F23FA7D94005DAC30 /* LightningKit.framework */;
@@ -237,7 +238,7 @@
 			);
 			mainGroup = D3A7338523FA7D94005DAC30;
 			packageReferences = (
-				D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference */,
 			);
 			productRefGroup = D3A7339023FA7D94005DAC30 /* Products */;
 			projectDirPath = "";
@@ -306,6 +307,7 @@
 				D3A733B523FA7E98005DAC30 /* LocalNodeCredentials.swift in Sources */,
 				D3A733B623FA7E98005DAC30 /* NodeStatus.swift in Sources */,
 				D3A733BD23FA7E98005DAC30 /* Kit.swift in Sources */,
+				2FA5DC8A66918200D42EA1EE /* MessageResponseStream.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +523,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+		D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:grpc/grpc-swift.git";
 			requirement = {
@@ -532,9 +534,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D3A733C923FA80A2005DAC30 /* GRPC */ = {
+		D3A733C923FA80A2005DAC30 /* XCSwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			package = D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference */;
 			productName = GRPC;
 		};
 /* End XCSwiftPackageProductDependency section */

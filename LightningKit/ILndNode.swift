@@ -17,13 +17,14 @@ protocol ILndNode {
     var closedChannelsSingle: Single<Lnrpc_ClosedChannelsResponse> { get }
     var pendingChannelsSingle: Single<Lnrpc_PendingChannelsResponse> { get }
     var paymentsSingle: Single<Lnrpc_ListPaymentsResponse> { get }
+    var transactionsSingle: Single<Lnrpc_TransactionDetails> { get }
 
-    func invoicesSingle(pendingOnly: Bool, offset: UInt64, limit: UInt64, reversed: Bool) -> Single<Lnrpc_ListInvoiceResponse>
-    func paySingle(invoice: String) -> Single<Lnrpc_SendResponse>
-    func addInvoiceSingle(amount: Int64, memo: String) -> Single<Lnrpc_AddInvoiceResponse>
-    func unlockWalletSingle(password: Data) -> Single<Void>
-    func decodeSingle(paymentRequest: String) -> Single<Lnrpc_PayReq>
-    func openChannelSingle(nodePubKey: Data, amount: Int64) -> Observable<Lnrpc_OpenStatusUpdate>
-    func closeChannelSingle(channelPoint: String, forceClose: Bool) throws -> Observable<Lnrpc_CloseStatusUpdate>
-    func connectSingle(nodeAddress: String, nodePubKey: String) -> Single<Lnrpc_ConnectPeerResponse>
+    func invoicesSingle(request: Lnrpc_ListInvoiceRequest) -> Single<Lnrpc_ListInvoiceResponse>
+    func paySingle(request: Lnrpc_SendRequest) -> Single<Lnrpc_SendResponse>
+    func addInvoiceSingle(invoice: Lnrpc_Invoice) -> Single<Lnrpc_AddInvoiceResponse>
+    func unlockWalletSingle(request: Lnrpc_UnlockWalletRequest) -> Single<Void>
+    func decodeSingle(paymentRequest: Lnrpc_PayReqString) -> Single<Lnrpc_PayReq>
+    func openChannelSingle(request: Lnrpc_OpenChannelRequest) -> Observable<Lnrpc_OpenStatusUpdate>
+    func closeChannelSingle(request: Lnrpc_CloseChannelRequest) throws -> Observable<Lnrpc_CloseStatusUpdate>
+    func connectSingle(request: Lnrpc_ConnectPeerRequest) -> Single<Lnrpc_ConnectPeerResponse>
 }

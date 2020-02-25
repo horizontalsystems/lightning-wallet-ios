@@ -4,7 +4,7 @@ public enum NodeStatus {
     case unlocking
     case syncing
     case running
-    case error(error: Error)
+    case error(_ error: Error)
 }
 
 extension NodeStatus: Equatable {
