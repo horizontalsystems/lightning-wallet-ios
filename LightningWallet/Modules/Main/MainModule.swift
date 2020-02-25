@@ -6,24 +6,33 @@ protocol IMainRouter {
     func openSettings()
     func openTransactions()
     func openChannels()
+    func showUnlock()
 }
 
 protocol IMainView: class {
     func showConnectingStatus()
     func showSyncingStatus()
+    func showUnlockingStatus()
+    func showLockedStatus()
     func showErrorStatus(error: Error)
     func hideStatus()
 
+    func setUnlockButton(visible: Bool)
+
     func show(totalBalance: Int)
+    func hideTotalBalance()
+
+    func setLightningButtons(enabled: Bool)
 }
 
 protocol IMainViewDelegate {
     func onLoad()
-    func onDeposit()
-    func onSend()
-    func onChannels()
-    func onSettings()
-    func onTransactions()
+    func onTapUnlock()
+    func onTapDeposit()
+    func onTapSend()
+    func onTapChannels()
+    func onTapSettings()
+    func onTapTransactions()
 }
 
 protocol IMainInteractor {
