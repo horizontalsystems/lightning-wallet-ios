@@ -182,12 +182,12 @@ public class Kit {
 
     // LocalLnd methods
 
-    public func start(password: String) -> Single<Void> {
+    public func start(password: String) {
         guard let localNode = lndNode as? LocalLnd else {
-            return Single.just(Void())
+            return
         }
 
-        return localNode.startAndUnlock(password: password)
+        localNode.startAndUnlock(password: password)
     }
 
     public func create(password: String) -> Single<[String]> {
