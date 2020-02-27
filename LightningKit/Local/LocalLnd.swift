@@ -216,7 +216,7 @@ class LocalLnd: ILndNode {
         }
     }
 
-    func startAndUnlock(password: String) {
+    func startAndUnlock(password: String) -> Single<Void> {
         start()
                 .flatMap { [weak self] _ in
                     var request = Lnrpc_UnlockWalletRequest()
@@ -224,13 +224,10 @@ class LocalLnd: ILndNode {
 
                     return self?.unlockWalletSingle(request: request) ?? Single.error(NodeNotRetained())
                 }
-                .subscribe(
-                        onSuccess: { [weak self] in
-                            self?.scheduleStatusUpdates()
-                        },
-                        onError: { [weak self] in self?.status = .error($0) }
+                .do(
+                    onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() },
+                    onError: { [weak self] in self?.status = .error($0) }
                 )
-                .disposed(by: disposeBag)
     }
 
     func createWalletSingle(password: String) -> Single<[String]> {
@@ -240,8 +237,11 @@ class LocalLnd: ILndNode {
                         return Single<[String]>.error(NodeNotRetained())
                     }
 
-                    return node.initWalletSingle(mnemonicWords: genSeedResponse.cipherSeedMnemonic, password: password)
-                            .do(onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() })
+                    return node.initWalletSingle(mnemonicWords: genSeedResponse.cipherSeedMnemonic, password: password, recoveryWindow: 0)
+                            .do(
+                                onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() },
+                                onError: { [weak self] in self?.status = .error($0) }
+                            )
                             .map { _ in
                                 genSeedResponse.cipherSeedMnemonic
                             }
@@ -250,14 +250,18 @@ class LocalLnd: ILndNode {
 
     func restoreWalletSingle(words: [String], password: String) -> Single<Void> {
         initWalletSingle(mnemonicWords: words, password: password)
-                .do(onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() })
+            .do(
+                onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() },
+                onError: { [weak self] in self?.status = .error($0) }
+            )
     }
 
-    func initWalletSingle(mnemonicWords: [String], password: String) -> Single<Void> {
+    func initWalletSingle(mnemonicWords: [String], password: String, recoveryWindow: Int32 = 100) -> Single<Void> {
         Single.create { emitter in
             var msg = Lnrpc_InitWalletRequest()
             msg.cipherSeedMnemonic = mnemonicWords
             msg.walletPassword = Data(Array(password.utf8))
+            msg.recoveryWindow = recoveryWindow
 
             LndmobileInitWallet(try! msg.serializedData(), VoidResponseCallback(emitter: emitter))
 
