@@ -3,8 +3,9 @@ import GRPC
 import RxSwift
 
 public class Kit {
-    enum ArgumentError: Error {
+    public enum KitErrors: Error {
         case wrongChannelPoint
+        case cannotInitRemoteNode
     }
 
     private let lndNode: ILndNode
@@ -164,7 +165,7 @@ public class Kit {
         let channelPointParts = channelPoint.split(separator: ":")
 
         guard channelPointParts.count == 0, let outputIndex = UInt32(String(channelPointParts[1])) else {
-            throw ArgumentError.wrongChannelPoint
+            throw KitErrors.wrongChannelPoint
         }
 
         var channelPoint = Lnrpc_ChannelPoint()
@@ -178,6 +179,38 @@ public class Kit {
 
         return try lndNode.closeChannelSingle(request: request)
     }
+
+    // LocalLnd methods
+
+    public func start(password: String) -> Single<Void> {
+        guard let localNode = lndNode as? LocalLnd else {
+            return Single.just(Void())
+        }
+
+        return localNode.startAndUnlock(password: password)
+    }
+
+    public func create(password: String) -> Single<[String]> {
+        guard let localNode = lndNode as? LocalLnd else {
+            return Single.error(KitErrors.cannotInitRemoteNode)
+        }
+
+        return localNode.start().flatMap {
+            localNode.createWalletSingle(password: password)
+        }
+    }
+
+    public func restore(words: [String], password: String) -> Single<Void> {
+        guard let localNode = lndNode as? LocalLnd else {
+            return Single.error(KitErrors.cannotInitRemoteNode)
+        }
+
+        return localNode.start().flatMap {
+            localNode.restoreWalletSingle(words: words, password: password)
+        }
+    }
+
+    // Private methods
 
     private func retryWhenStatusIsSyncingOrRunning<T>(_ observable: Observable<T>) -> Observable<T> {
         observable.retryWhen { [weak self] errorObservable -> Observable<(Error, NodeStatus)> in
@@ -193,8 +226,6 @@ public class Kit {
 }
 
 public extension Kit {
-    static var lightningKitLocalLnd: Kit? = nil
-
     static func validateRemoteConnection(rpcCredentials: RpcCredentials) -> Single<Void> {
         do {
             let remoteLndNode = try RemoteLnd(rpcCredentials: rpcCredentials)
@@ -205,42 +236,16 @@ public extension Kit {
         }
     }
 
-    static func local(credentials: LocalNodeCredentials) -> Kit {
-        if let kit = lightningKitLocalLnd {
-            return kit
-        }
-
-        let localLnd = LocalLnd(filesDir: credentials.lndDirPath)
-        localLnd.startAndUnlock(password: credentials.password)
-
-        let kit = Kit(lndNode: localLnd)
-        lightningKitLocalLnd = kit
-
-        return kit
-    }
-
-    static func createLocal(credentials: LocalNodeCredentials) -> Single<[String]> {
-        let localLnd = LocalLnd(filesDir: credentials.lndDirPath)
-        lightningKitLocalLnd = Kit(lndNode: localLnd)
-
-        return localLnd.start().flatMap {
-            localLnd.createWalletSingle(password: credentials.password)
-        }
-    }
-
-    static func restoreLocal(words: [String], credentials: LocalNodeCredentials) -> Single<Void> {
-        let localLnd = LocalLnd(filesDir: credentials.lndDirPath)
-        lightningKitLocalLnd = Kit(lndNode: localLnd)
-
-        return localLnd.start().flatMap {
-            localLnd.restoreWalletSingle(words: words, password: credentials.password)
-        }
-    }
-
     static func remote(rpcCredentials: RpcCredentials) throws -> Kit {
         let remoteLndNode = try RemoteLnd(rpcCredentials: rpcCredentials)
         remoteLndNode.scheduleStatusUpdates()
 
         return Kit(lndNode: remoteLndNode)
+    }
+
+    static func local() throws -> Kit {
+        let localLnd = LocalLnd(filesDir: try FileManager.default.walletDirectory().path)
+
+        return Kit(lndNode: localLnd)
     }
 }
