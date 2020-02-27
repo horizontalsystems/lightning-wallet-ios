@@ -5,6 +5,10 @@ import SwiftProtobuf
 class LocalLnd: ILndNode {
     class NodeNotRetained: Error {}
 
+    deinit {
+        LndmobileStopDaemon(try! Lnrpc_StopRequest().serializedData(), VoidResponseCallback(emitter: nil))
+    }
+
     private let filesDir: String
     private let disposeBag = DisposeBag()
 
@@ -216,7 +220,7 @@ class LocalLnd: ILndNode {
         }
     }
 
-    func startAndUnlock(password: String) -> Single<Void> {
+    func startAndUnlock(password: String) {
         start()
                 .flatMap { [weak self] _ in
                     var request = Lnrpc_UnlockWalletRequest()
@@ -224,10 +228,11 @@ class LocalLnd: ILndNode {
 
                     return self?.unlockWalletSingle(request: request) ?? Single.error(NodeNotRetained())
                 }
-                .do(
-                    onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() },
+                .subscribe(
+                    onSuccess: { [weak self] in self?.scheduleStatusUpdates() },
                     onError: { [weak self] in self?.status = .error($0) }
                 )
+                .disposed(by: disposeBag)
     }
 
     func createWalletSingle(password: String) -> Single<[String]> {
