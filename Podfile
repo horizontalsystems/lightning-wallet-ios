@@ -32,6 +32,7 @@ target 'LightningWallet' do
   pod 'KeychainAccess'
 
   pod 'RxSwift'
+  pod 'RxBlocking'
   pod 'SnapKit'
 end
 
@@ -39,4 +40,5 @@ target 'LightningKit' do
   project 'LightningKit'
 
   pod 'RxSwift'
+  pod 'RxBlocking'
 end

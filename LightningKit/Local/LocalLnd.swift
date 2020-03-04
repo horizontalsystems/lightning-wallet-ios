@@ -1,5 +1,6 @@
 import Lndmobile
 import RxSwift
+import RxBlocking
 import SwiftProtobuf
 
 class LocalLnd: ILndNode {
@@ -116,21 +117,30 @@ class LocalLnd: ILndNode {
     var transactionsSingle: Single<Lnrpc_TransactionDetails> {
         Single.create { emitter in
             LndmobileGetTransactions(try! Lnrpc_GetTransactionsRequest().serializedData(), MessageResponseCallback(emitter: emitter))
-            
+
             return Disposables.create()
         }
     }
 
-    init(filesDir: String) {
-        self.filesDir = filesDir
-    }
-
-    private func genSeedSingle() -> Single<Lnrpc_GenSeedResponse> {
+    var newSeedSingle: Single<Lnrpc_GenSeedResponse> {
         Single.create { emitter in
             LndmobileGenSeed(try! Lnrpc_GenSeedRequest().serializedData(), MessageResponseCallback(emitter: emitter))
 
             return Disposables.create()
         }
+    }
+
+    init(filesDir: String) throws {
+        self.filesDir = filesDir
+
+        // start Lndmobile daemon
+        let args = "--lnddir=\(filesDir) --bitcoin.active --bitcoin.mainnet --debuglevel=warn --no-macaroons --nolisten --norest --bitcoin.node=neutrino --routing.assumechanvalid --debuglevel=info"
+
+        _ = try Single<Void>.create { [weak self] emitter in
+            LndmobileStart(args, VoidResponseCallback(emitter: emitter), RpcReadyCallback(self))
+
+            return Disposables.create()
+        }.toBlocking().first()
     }
 
     func scheduleStatusUpdates() {
@@ -197,7 +207,7 @@ class LocalLnd: ILndNode {
     func closeChannelSingle(request: Lnrpc_CloseChannelRequest) throws -> Observable<Lnrpc_CloseStatusUpdate> {
         Observable.create { emitter in
             LndmobileCloseChannel(try! request.serializedData(), MessageResponseStream(emitter: emitter))
-            
+
             return Disposables.create()
         }
     }
@@ -210,65 +220,9 @@ class LocalLnd: ILndNode {
         }
     }
 
-    func start() -> Single<Void> {
-        let args = "--lnddir=\(filesDir) --bitcoin.active --bitcoin.mainnet --debuglevel=warn --no-macaroons --nolisten --norest --bitcoin.node=neutrino --routing.assumechanvalid --debuglevel=info"
-
-        return Single<Void>.create { emitter in
-            LndmobileStart(args, VoidResponseCallback(emitter: emitter), VoidResponseCallback(emitter: nil))
-
-            return Disposables.create()
-        }
-    }
-
-    func startAndUnlock(password: String) {
-        start()
-                .flatMap { [weak self] _ in
-                    var request = Lnrpc_UnlockWalletRequest()
-                    request.walletPassword = Data(Array(password.utf8))
-
-                    return self?.unlockWalletSingle(request: request) ?? Single.error(NodeNotRetained())
-                }
-                .subscribe(
-                    onSuccess: { [weak self] in self?.scheduleStatusUpdates() },
-                    onError: { [weak self] in self?.status = .error($0) }
-                )
-                .disposed(by: disposeBag)
-    }
-
-    func createWalletSingle(password: String) -> Single<[String]> {
-        genSeedSingle()
-                .flatMap { [weak self] genSeedResponse in
-                    guard let node = self else {
-                        return Single<[String]>.error(NodeNotRetained())
-                    }
-
-                    return node.initWalletSingle(mnemonicWords: genSeedResponse.cipherSeedMnemonic, password: password, recoveryWindow: 0)
-                            .do(
-                                onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() },
-                                onError: { [weak self] in self?.status = .error($0) }
-                            )
-                            .map { _ in
-                                genSeedResponse.cipherSeedMnemonic
-                            }
-                }
-    }
-
-    func restoreWalletSingle(words: [String], password: String) -> Single<Void> {
-        initWalletSingle(mnemonicWords: words, password: password)
-            .do(
-                onSuccess: { [weak self] _ in self?.scheduleStatusUpdates() },
-                onError: { [weak self] in self?.status = .error($0) }
-            )
-    }
-
-    func initWalletSingle(mnemonicWords: [String], password: String, recoveryWindow: Int32 = 100) -> Single<Void> {
+    func initWalletSingle(request: Lnrpc_InitWalletRequest) -> Single<Void> {
         Single.create { emitter in
-            var msg = Lnrpc_InitWalletRequest()
-            msg.cipherSeedMnemonic = mnemonicWords
-            msg.walletPassword = Data(Array(password.utf8))
-            msg.recoveryWindow = recoveryWindow
-
-            LndmobileInitWallet(try! msg.serializedData(), VoidResponseCallback(emitter: emitter))
+            LndmobileInitWallet(try! request.serializedData(), VoidResponseCallback(emitter: emitter))
 
             return Disposables.create()
         }
@@ -282,5 +236,15 @@ class LocalLnd: ILndNode {
                 .catchError { error in
                     Single.just(.error(error))
                 }
+    }
+}
+
+extension LocalLnd: RpcReadyCallbackDelegate {
+    func RpcServerStartFailed(error: Error) {
+        status = .error(error)
+    }
+
+    func rpcReady() {
+        scheduleStatusUpdates()
     }
 }

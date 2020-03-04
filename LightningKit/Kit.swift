@@ -82,6 +82,10 @@ public class Kit {
         lndNode.transactionsSingle
     }
 
+    public var newSeedSingle: Single<Lnrpc_GenSeedResponse> {
+        lndNode.newSeedSingle
+    }
+
     public func invoicesSingle(pendingOnly: Bool = false, offset: UInt64 = 0, limit: UInt64 = 1000, reversed: Bool = false) -> Single<Lnrpc_ListInvoiceResponse> {
         var request = Lnrpc_ListInvoiceRequest()
         request.pendingOnly = pendingOnly
@@ -112,13 +116,20 @@ public class Kit {
         return lndNode.addInvoiceSingle(invoice: invoice)
     }
 
-    public func unlockWalletSingle(password: Data) -> Single<Void> {
+    public func unlockWalletSingle(password: String) -> Single<Void> {
         var request = Lnrpc_UnlockWalletRequest()
-        request.walletPassword = password
-
+        request.walletPassword = Data(Array(password.utf8))
+        
         return lndNode.unlockWalletSingle(request: request)
     }
-
+    
+    public func unlockWallet(password: String) throws {
+        var request = Lnrpc_UnlockWalletRequest()
+        request.walletPassword = Data(Array(password.utf8))
+        
+        _ = try lndNode.unlockWalletSingle(request: request).toBlocking().first()
+    }
+    
     public func decodeSingle(paymentRequest: String) -> Single<Lnrpc_PayReq> {
         var request = Lnrpc_PayReqString()
         request.payReq = paymentRequest
@@ -180,34 +191,13 @@ public class Kit {
         return try lndNode.closeChannelSingle(request: request)
     }
 
-    // LocalLnd methods
+    public func initWalletSingle(words: [String], password: String, recoveryWindow: Int32 = 100) -> Single<Void> {
+        var request = Lnrpc_InitWalletRequest()
+        request.cipherSeedMnemonic = words
+        request.walletPassword = Data(Array(password.utf8))
+        request.recoveryWindow = recoveryWindow
 
-    public func start(password: String) {
-        guard let localNode = lndNode as? LocalLnd else {
-            return
-        }
-
-        localNode.startAndUnlock(password: password)
-    }
-
-    public func create(password: String) -> Single<[String]> {
-        guard let localNode = lndNode as? LocalLnd else {
-            return Single.error(KitErrors.cannotInitRemoteNode)
-        }
-
-        return localNode.start().flatMap {
-            localNode.createWalletSingle(password: password)
-        }
-    }
-
-    public func restore(words: [String], password: String) -> Single<Void> {
-        guard let localNode = lndNode as? LocalLnd else {
-            return Single.error(KitErrors.cannotInitRemoteNode)
-        }
-
-        return localNode.start().flatMap {
-            localNode.restoreWalletSingle(words: words, password: password)
-        }
+        return lndNode.initWalletSingle(request: request)
     }
 
     // Private methods
@@ -244,8 +234,15 @@ public extension Kit {
     }
 
     static func local() throws -> Kit {
-        let localLnd = LocalLnd(filesDir: try FileManager.default.walletDirectory().path)
+        let localLnd = try LocalLnd(filesDir: try FileManager.default.walletDirectory().path)
 
         return Kit(lndNode: localLnd)
+    }
+
+    static func clearLocalNodeData() throws {
+        let fileManager = FileManager.default
+        let lndDirectoryPath = try fileManager.walletDirectory().path
+        
+        try fileManager.removeItem(atPath: lndDirectoryPath)
     }
 }

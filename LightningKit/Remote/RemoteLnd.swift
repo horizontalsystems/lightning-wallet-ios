@@ -96,6 +96,12 @@ class RemoteLnd: ILndNode {
         }
     }
 
+    var newSeedSingle: Single<Lnrpc_GenSeedResponse> {
+        connection.walletUnlockerUnaryCall() {
+            $0.genSeed(Lnrpc_GenSeedRequest()).response
+        }
+    }
+
     init(rpcCredentials: RpcCredentials) throws {
         connection = try LndNioConnection(rpcCredentials: rpcCredentials)
         walletUnlocker = WalletUnlocker(connection: connection)
@@ -162,6 +168,12 @@ class RemoteLnd: ILndNode {
         connection.unaryCall() {
             $0.connectPeer(request).response
         }
+    }
+
+    func initWalletSingle(request: Lnrpc_InitWalletRequest) -> Single<Void> {
+        connection.walletUnlockerUnaryCall() {
+            $0.initWallet(request).response
+        }.map { _ in Void() }
     }
 
     func validateAsync() -> Single<Void> {

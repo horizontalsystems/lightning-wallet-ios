@@ -18,6 +18,7 @@ protocol ILndNode {
     var pendingChannelsSingle: Single<Lnrpc_PendingChannelsResponse> { get }
     var paymentsSingle: Single<Lnrpc_ListPaymentsResponse> { get }
     var transactionsSingle: Single<Lnrpc_TransactionDetails> { get }
+    var newSeedSingle: Single<Lnrpc_GenSeedResponse> { get }
 
     func invoicesSingle(request: Lnrpc_ListInvoiceRequest) -> Single<Lnrpc_ListInvoiceResponse>
     func paySingle(request: Lnrpc_SendRequest) -> Single<Lnrpc_SendResponse>
@@ -27,4 +28,6 @@ protocol ILndNode {
     func openChannelSingle(request: Lnrpc_OpenChannelRequest) -> Observable<Lnrpc_OpenStatusUpdate>
     func closeChannelSingle(request: Lnrpc_CloseChannelRequest) throws -> Observable<Lnrpc_CloseStatusUpdate>
     func connectSingle(request: Lnrpc_ConnectPeerRequest) -> Single<Lnrpc_ConnectPeerResponse>
+
+    func initWalletSingle(request: Lnrpc_InitWalletRequest) -> Single<Void>
 }

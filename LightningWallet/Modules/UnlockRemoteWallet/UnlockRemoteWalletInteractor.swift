@@ -17,7 +17,7 @@ class UnlockRemoteWalletInteractor {
 extension UnlockRemoteWalletInteractor: IUnlockRemoteWalletInteractor {
 
     func unlockWallet(password: String) {
-        lightningKit.unlockWalletSingle(password: Data(Array(password.utf8)))
+        lightningKit.unlockWalletSingle(password: password)
                 .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .userInitiated))
                 .observeOn(MainScheduler.instance)
                 .subscribe(onSuccess: { [weak self] in

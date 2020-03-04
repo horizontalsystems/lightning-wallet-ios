@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2FA5DC8A66918200D42EA1EE /* MessageResponseStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA5D6FACBD18084B3922C1B /* MessageResponseStream.swift */; };
 		D059940C2403C9DE0096AC17 /* Lndmobile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D059940B2403C9DE0096AC17 /* Lndmobile.framework */; };
+		D09B6F4F240CD100009A883F /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = D3A733C923FA80A2005DAC30 /* GRPC */; };
+		D09B6F56240D3332009A883F /* RpcReadyCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09B6F55240D3332009A883F /* RpcReadyCallback.swift */; };
 		D3A7339423FA7D94005DAC30 /* LightningKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D3A7339223FA7D94005DAC30 /* LightningKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D3A733B123FA7E98005DAC30 /* RemoteLnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339B23FA7E98005DAC30 /* RemoteLnd.swift */; };
 		D3A733B223FA7E98005DAC30 /* WalletUnlocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7339C23FA7E98005DAC30 /* WalletUnlocker.swift */; };
@@ -36,6 +38,8 @@
 		2FA5D6FACBD18084B3922C1B /* MessageResponseStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageResponseStream.swift; sourceTree = "<group>"; };
 		D059940B2403C9DE0096AC17 /* Lndmobile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Lndmobile.framework; path = Carthage/Build/iOS/Lndmobile.framework; sourceTree = SOURCE_ROOT; };
 		D05C723F70B6969736B4E735 /* Pods_LightningKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LightningKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D09B6F50240CD306009A883F /* RxBlocking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxBlocking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D09B6F55240D3332009A883F /* RpcReadyCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RpcReadyCallback.swift; sourceTree = "<group>"; };
 		D3A7338F23FA7D94005DAC30 /* LightningKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LightningKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3A7339223FA7D94005DAC30 /* LightningKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LightningKit.h; sourceTree = "<group>"; };
 		D3A7339323FA7D94005DAC30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +71,7 @@
 			files = (
 				D059940C2403C9DE0096AC17 /* Lndmobile.framework in Frameworks */,
 				E989B9E19F21A2518A31A210 /* Pods_LightningKit.framework in Frameworks */,
+				D09B6F4F240CD100009A883F /* GRPC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,10 +166,11 @@
 		D3A733AC23FA7E98005DAC30 /* LndMobileCallbacks */ = {
 			isa = PBXGroup;
 			children = (
+				D3A733AE23FA7E98005DAC30 /* LndMobileCallbackError.swift */,
 				D3A733AF23FA7E98005DAC30 /* VoidResponseCallback.swift */,
 				D3A733AD23FA7E98005DAC30 /* MessageResponseCallback.swift */,
 				2FA5D6FACBD18084B3922C1B /* MessageResponseStream.swift */,
-				D3A733AE23FA7E98005DAC30 /* LndMobileCallbackError.swift */,
+				D09B6F55240D3332009A883F /* RpcReadyCallback.swift */,
 			);
 			path = LndMobileCallbacks;
 			sourceTree = "<group>";
@@ -172,6 +178,7 @@
 		D3A733C823FA80A2005DAC30 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D09B6F50240CD306009A883F /* RxBlocking.framework */,
 				D05C723F70B6969736B4E735 /* Pods_LightningKit.framework */,
 			);
 			name = Frameworks;
@@ -207,7 +214,7 @@
 			);
 			name = LightningKit;
 			packageProductDependencies = (
-				D3A733C923FA80A2005DAC30 /* XCSwiftPackageProductDependency */,
+				D3A733C923FA80A2005DAC30 /* GRPC */,
 			);
 			productName = LightningKit;
 			productReference = D3A7338F23FA7D94005DAC30 /* LightningKit.framework */;
@@ -238,7 +245,7 @@
 			);
 			mainGroup = D3A7338523FA7D94005DAC30;
 			packageReferences = (
-				D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference */,
+				D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference "grpc-swift" */,
 			);
 			productRefGroup = D3A7339023FA7D94005DAC30 /* Products */;
 			projectDirPath = "";
@@ -293,6 +300,7 @@
 				D3A733B723FA7E98005DAC30 /* rpc.pb.swift in Sources */,
 				D3A733B423FA7E98005DAC30 /* ConnectivityManager.swift in Sources */,
 				D3A733BC23FA7E98005DAC30 /* FileManager.swift in Sources */,
+				D09B6F56240D3332009A883F /* RpcReadyCallback.swift in Sources */,
 				D3A733C023FA7E98005DAC30 /* LndMobileCallbackError.swift in Sources */,
 				D3A733B923FA7E98005DAC30 /* RpcCredentials.swift in Sources */,
 				D3A733BB23FA7E98005DAC30 /* Data.swift in Sources */,
@@ -451,7 +459,6 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LightningKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,7 +491,6 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = LightningKit/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,7 +529,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference */ = {
+		D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:grpc/grpc-swift.git";
 			requirement = {
@@ -534,9 +540,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D3A733C923FA80A2005DAC30 /* XCSwiftPackageProductDependency */ = {
+		D3A733C923FA80A2005DAC30 /* GRPC */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference */;
+			package = D3A733C523FA7FD1005DAC30 /* XCRemoteSwiftPackageReference "grpc-swift" */;
 			productName = GRPC;
 		};
 /* End XCSwiftPackageProductDependency section */
